@@ -29,7 +29,6 @@ gem 'omniauth-rails_csrf_protection'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -41,6 +40,8 @@ group :development, :test do
   # gem 'pry-remote'
 
   gem 'rspec-rails', '~> 5.0.0'
+
+  gem 'rubocop-performance', require: false
 
   gem 'rubocop-rails', require: false
 
