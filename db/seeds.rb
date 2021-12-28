@@ -17,4 +17,17 @@ cities = City.create([{name: I18n.t('city.name_1'), locality_size: I18n.t('city.
                     {name: I18n.t('city.name_10'), locality_size: I18n.t('city.locality_size.ls_3'), region: I18n.t('city.region.region_6'), description: I18n.t('city.description.d_10')}, 
                     {name: I18n.t('city.name_11'), locality_size: I18n.t('city.locality_size.ls_3'), region: I18n.t('city.region.region_5'), description: I18n.t('city.description.d_11')}, 
                     {name: I18n.t('city.name_12'), locality_size: I18n.t('city.locality_size.ls_3'), region: I18n.t('city.region.region_2'), description: I18n.t('city.description.d_12')}])
- 
+districts = District.create([{name: I18n.t('district.name_1'), city: cities[5]}, 
+                            {name: I18n.t('district.name_2'), city: cities[5]}, 
+                            {name: I18n.t('district.name_3'), city: cities[5]}, 
+                            {name: I18n.t('district.name_4'), city: cities[5]}, 
+                            {name: I18n.t('district.name_5'), city: cities[5]}, 
+                            {name: I18n.t('district.name_6'), city: cities[5]},
+                            {name: I18n.t('district.name_7'), city: cities[5]}, 
+                            {name: I18n.t('district.name_8'), city: cities[5]}, 
+                            {name: I18n.t('district.name_9'), city: cities[5]}, 
+                            {name: I18n.t('district.name_10'), city: cities.second},
+                            {name: I18n.t('district.name_11'), city: cities[4]}, 
+                            {name: I18n.t('district.name_12'), city: cities[3]}, 
+                            {name: I18n.t('district.name_13'), city: cities[3]}, 
+                            {name: I18n.t('district.name_14'), city: cities[7]}])

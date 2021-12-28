@@ -11,6 +11,7 @@
 #  updated_at    :datetime         not null
 #
 class City < ApplicationRecord
+  has_many :districts
   enum locality_size: %i[no_information village town city]
   enum region: %i[brest gomel grodno minsk minsk_region mogilev vitebsk]
 
