@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @street.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @street.district.name %>
+</p>
+
+<%= link_to 'Edit', edit_street_path(@street), class: "btn btn-warning" %>
+<%= link_to 'Back', streets_path, class: "btn btn-danger" %>

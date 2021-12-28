@@ -18,6 +18,7 @@
 #
 class District < ApplicationRecord
   belongs_to :city
+  has_many :streets
 
   validates :name, length: { in: 2..20 }, format: { with: /\A[a-zA-Z]+\z/ }
 
