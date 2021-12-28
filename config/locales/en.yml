@@ -1,2 +1,40 @@
 en:
-  hello: Hello world!
+  city:
+    name_1: Dzerzhinsk
+    name_2: Brest
+    name_3: Gomel
+    name_4: Grodno
+    name_5: Minsk
+    name_6: Mogilev
+    name_7: Vitebsk
+    name_8: Pinsk
+    name_9: Baranovichi
+    name_10: Lida
+    name_11: Zhlobin
+    name_12: Borisov
+    locality_size:
+      ls_1: no_information
+      ls_2: village
+      ls_3: town
+      ls_4: city
+    region:
+      region_1: minsk
+      region_2: minsk_region
+      region_3: brest
+      region_4: vitebsk
+      region_5: gomel
+      region_6: grodno
+      region_7: mogilev
+    description:
+      d_1: Small cozy town of cats
+      d_2: City in the south-west of Belarus, the administrative center of the Brest region and the Brest region
+      d_3: City in Belarus, the administrative center of the Gomel region and the Gomel region, the second most populous city in the country
+      d_4: City in Belarus, the administrative center of the Grodno region
+      d_5: The capital of Belarus, the administrative center of the Minsk region and the Minsk region. The largest transport hub, political, economic, cultural and scientific center of the country
+      d_6: City in the east of Belarus, the administrative center of the Mogilev region and the Mogilev region
+      d_7: City in the north-east of Belarus, the administrative center of the Vitebsk region and the Vitebsk region
+      d_8: Large cultural and industrial center of Polesie. A large religious core of the country - the center of the Catholic and Orthodox dioceses
+      d_9: Town of regional subordination in Belarus, the administrative center of the Baranovichi district of the Brest region
+      d_10: Town in the western part of Belarus. A large industrial town of the Grodno region, the administrative center of the Lida region
+      d_11: Town of district subordination in the Zhlobin district of the Gomel region of Belarus, the administrative center of the district
+      d_12: Town in Belarus, the administrative center of the Borisov district of the Minsk region

@@ -1,0 +1,38 @@
+<%= form_with(model: city) do |form| %>
+  <% if city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+        <% city.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <label class="form-label"><%= form.label :name %></label>
+    <%= form.text_field :name, class: "form-control"%>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :locality_size %>
+    <%= form.select :locality_size, City.locality_sizes.map {|loc_size| loc_size.first } %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :region %>
+    <%= form.select :region, City.regions.map {|reg| reg.first } %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= form.submit 'Save', class:"btn btn-outline-success" %>
+  </div>
+<% end %>
+
