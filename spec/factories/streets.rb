@@ -18,7 +18,24 @@
 #
 FactoryBot.define do
   factory :street do
-    name { "MyString" }
-    district { nil }
+    trait :valid do
+      association :district
+      name { Faker::Address.street_name }
+    end
+
+    trait :invalid_long do
+      association :district
+      name { Faker::Lorem.characters(number: 41, min_alpha: 41) }
+    end
+    
+    trait :invalid_short do
+      association :district
+      name { Faker::Lorem.characters(number: 1, min_alpha: 1) }
+    end
+  
+    trait :invalid_with_numbers do
+      association :district
+      name { Faker::Lorem.characters(number: 10, min_alpha: 4, min_numeric: 1) }
+    end
   end
 end

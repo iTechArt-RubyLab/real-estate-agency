@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="mx-auto" style="width: 200px;">
+  <h1>Addresses</h1>
+</div>
+
+<table class="table table-bordered table-hover mt-3">
+  <thead>
+    <tr style="background-color: #C8EEFF;">
+      <th>Building</th>
+      <th>Number of storeys</th>
+      <th>Street</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.building %></td>
+        <td><%= address.number_of_storeys %></td>
+        <td><%= address.street.name %></td>
+        <td><%= link_to 'Show', address %></td>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_address_path, class: "btn btn-outline-info"  %>

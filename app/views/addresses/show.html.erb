@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @address.building %>
+</p>
+
+<p>
+  <strong>Number of storeys:</strong>
+  <%= @address.number_of_storeys %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @address.street.name %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address), class: "btn btn-warning" %>
+<%= link_to 'Back', addresses_path, class: "btn btn-danger"  %>

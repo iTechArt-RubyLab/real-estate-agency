@@ -19,5 +19,26 @@
 require 'rails_helper'
 
 RSpec.describe Street, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'create street' do
+    let(:valid) { create :street, :valid }
+    let(:invalid_long) { build :street, :invalid_long }
+    let(:invalid_short) { build :street, :invalid_short }
+    let(:invalid_with_numbers) { build :street, :invalid_with_numbers }
+
+    context 'with valid attributes' do
+      it { expect(valid).to be_valid }
+    end
+
+    context 'when too long name' do
+      it { expect(invalid_long).not_to be_valid }
+    end
+
+    context 'when too short name' do
+      it { expect(invalid_short).not_to be_valid }
+    end
+
+    context 'when name with numbers' do
+      it { expect(invalid_with_numbers).not_to be_valid }
+    end
+  end
 end

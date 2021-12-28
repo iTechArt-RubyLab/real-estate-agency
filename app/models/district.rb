@@ -17,10 +17,10 @@
 #  fk_rails_...  (city_id => cities.id)
 #
 class District < ApplicationRecord
-  belongs_to :city
+  belongs_to :city, optional: true
   has_many :streets
 
-  validates :name, length: { in: 2..20 }, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :name, length: { in: 2..20 }, format: { with: /\A[a-zA-Z ]+\z/ }
 
   scope :with_city, ->(city_id) { where(city_id: city_id) }
 end

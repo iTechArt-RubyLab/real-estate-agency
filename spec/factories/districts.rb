@@ -18,7 +18,20 @@
 #
 FactoryBot.define do
   factory :district do
-    name { "MyString" }
-    city { nil }
+    trait :valid do
+      name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
+    end
+
+    trait :invalid_long do
+      name { Faker::Lorem.characters(number: 21, min_alpha: 21) }
+    end
+
+    trait :invalid_short do
+      name { Faker::Lorem.characters(number: 1, min_alpha: 1) }
+    end
+
+    trait :invalid_with_numbers do
+      name { Faker::Lorem.characters(number: 10, min_alpha: 4, min_numeric: 1) }
+    end
   end
 end

@@ -45,3 +45,17 @@ streets = Street.create([{name: I18n.t('street.name_1'), district: districts.fir
                             {name: I18n.t('street.name_12'), district: districts[13]}, 
                             {name: I18n.t('street.name_13'), district: districts[10]}, 
                             {name: I18n.t('street.name_14'), district: districts[14]}])
+addresses = Address.create([{building: 34, number_of_storeys: 12, street_id: streets.first}, 
+                            {building: 12, number_of_storeys: 9, street_id: streets.second}, 
+                            {building: 65, number_of_storeys: 18, street_id: streets[3]}, 
+                            {building: 140, number_of_storeys: 9, street_id: streets[4]}, 
+                            {building: 2, number_of_storeys: 23, street_id: streets[5]}, 
+                            {building: 95, number_of_storeys: 12, street_id: streets[6]},
+                            {building: 1, number_of_storeys: 4, street_id: streets[7]}, 
+                            {building: 87, number_of_storeys: 5, street_id: streets[8]}, 
+                            {building: 30, number_of_storeys: 9, street_id: streets[9]}, 
+                            {building: 76, number_of_storeys: 3, street_id: streets[10]},
+                            {building: 21, number_of_storeys: 2, street_id: streets[11]}, 
+                            {building: 238, number_of_storeys: 9, street_id: streets[12]}, 
+                            {building: 19, number_of_storeys: 11, street_id: streets[13]}, 
+                            {building: 82, number_of_storeys: 5, street_id: streets[14]}])
