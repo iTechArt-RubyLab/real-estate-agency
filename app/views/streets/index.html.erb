@@ -4,28 +4,34 @@
   <h1>Streets</h1>
 </div>
 
-<table class="table table-bordered table-hover mt-3">
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="streets-datatable", data-source="<%= streets_path(format: :json) %>">
   <thead>
     <tr style="background-color: #C8EEFF;">
       <th>Name</th>
       <th>District</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @streets.each do |street| %>
-      <tr>
-        <td><%= street.name %></td>
-        <td><%= street.district_id %></td>
-        <td><%= link_to 'Show', street %></td>
-        <td><%= link_to 'Edit', edit_street_path(street) %></td>
-        <td><%= link_to 'Destroy', street, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#streets-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#streets-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "district_id"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
 <%= link_to 'New Street', new_street_path, class: "btn btn-outline-info"  %>

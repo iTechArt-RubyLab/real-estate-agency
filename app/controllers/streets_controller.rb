@@ -1,14 +1,16 @@
 class StreetsController < ApplicationController
-  before_action :set_street, only: %i[ show edit update destroy ]
+  before_action :set_street, only: %i[show edit update destroy]
 
   # GET /streets or /streets.json
   def index
-    @streets = Street.all
+    respond_to do |format|
+      format.html
+      format.json { render json: StreetDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /streets/1 or /streets/1.json
-  def show
-  end
+  def show; end
 
   # GET /streets/new
   def new
@@ -16,8 +18,7 @@ class StreetsController < ApplicationController
   end
 
   # GET /streets/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /streets or /streets.json
   def create
@@ -25,7 +26,7 @@ class StreetsController < ApplicationController
 
     respond_to do |format|
       if @street.save
-        format.html { redirect_to street_url(@street), notice: "Street was successfully created." }
+        format.html { redirect_to street_url(@street), notice: 'Street was successfully created.' }
         format.json { render :show, status: :created, location: @street }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class StreetsController < ApplicationController
   def update
     respond_to do |format|
       if @street.update(street_params)
-        format.html { redirect_to street_url(@street), notice: "Street was successfully updated." }
+        format.html { redirect_to street_url(@street), notice: 'Street was successfully updated.' }
         format.json { render :show, status: :ok, location: @street }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +53,20 @@ class StreetsController < ApplicationController
     @street.destroy
 
     respond_to do |format|
-      format.html { redirect_to streets_url, notice: "Street was successfully destroyed." }
+      format.html { redirect_to streets_url, notice: 'Street was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_street
-      @street = Street.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def street_params
-      params.require(:street).permit(:name, :district_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_street
+    @street = Street.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def street_params
+    params.require(:street).permit(:name, :district_id)
+  end
 end
