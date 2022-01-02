@@ -42,6 +42,8 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 
 gem 'popper_js', '~> 2.9.3'
+
+gem 'image_processing'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
