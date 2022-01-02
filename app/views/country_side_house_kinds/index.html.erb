@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Country Side House Kinds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @country_side_house_kinds.each do |country_side_house_kind| %>
+      <tr>
+        <td><%= country_side_house_kind.name %></td>
+        <td><%= link_to 'Show', country_side_house_kind %></td>
+        <td><%= link_to 'Edit', edit_country_side_house_kind_path(country_side_house_kind) %></td>
+        <td><%= link_to 'Destroy', country_side_house_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country Side House Kind', new_country_side_house_kind_path %>

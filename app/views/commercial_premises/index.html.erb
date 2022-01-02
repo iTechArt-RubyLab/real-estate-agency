@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Commercial Premises</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Area</th>
+      <th>Floor</th>
+      <th>Number of premises</th>
+      <th>Plot of land</th>
+      <th>Commercial premises kind</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commercial_premises.each do |commercial_premise| %>
+      <tr>
+        <td><%= commercial_premise.area %></td>
+        <td><%= commercial_premise.floor %></td>
+        <td><%= commercial_premise.number_of_premises %></td>
+        <td><%= commercial_premise.plot_of_land %></td>
+        <td><%= commercial_premise.commercial_premises_kind_id %></td>
+        <td><%= link_to 'Show', commercial_premise %></td>
+        <td><%= link_to 'Edit', edit_commercial_premise_path(commercial_premise) %></td>
+        <td><%= link_to 'Destroy', commercial_premise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commercial Premise', new_commercial_premise_path %>

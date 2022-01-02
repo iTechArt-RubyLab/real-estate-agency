@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ready States</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ready_states.each do |ready_state| %>
+      <tr>
+        <td><%= ready_state.name %></td>
+        <td><%= link_to 'Show', ready_state %></td>
+        <td><%= link_to 'Edit', edit_ready_state_path(ready_state) %></td>
+        <td><%= link_to 'Destroy', ready_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ready State', new_ready_state_path %>

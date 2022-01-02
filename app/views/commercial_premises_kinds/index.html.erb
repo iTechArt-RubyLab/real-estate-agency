@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Commercial Premises Kinds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commercial_premises_kinds.each do |commercial_premises_kind| %>
+      <tr>
+        <td><%= commercial_premises_kind.name %></td>
+        <td><%= link_to 'Show', commercial_premises_kind %></td>
+        <td><%= link_to 'Edit', edit_commercial_premises_kind_path(commercial_premises_kind) %></td>
+        <td><%= link_to 'Destroy', commercial_premises_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commercial Premises Kind', new_commercial_premises_kind_path %>

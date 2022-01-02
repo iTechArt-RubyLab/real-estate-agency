@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total area:</strong>
+  <%= @country_side_house.total_area %>
+</p>
+
+<p>
+  <strong>Land area:</strong>
+  <%= @country_side_house.land_area %>
+</p>
+
+<p>
+  <strong>Floors count:</strong>
+  <%= @country_side_house.floors_count %>
+</p>
+
+<p>
+  <strong>Year of construction:</strong>
+  <%= @country_side_house.year_of_construction %>
+</p>
+
+<p>
+  <strong>Wall material:</strong>
+  <%= @country_side_house.wall_material_id %>
+</p>
+
+<p>
+  <strong>Country side house kind:</strong>
+  <%= @country_side_house.country_side_house_kind_id %>
+</p>
+
+<p>
+  <strong>Ready state:</strong>
+  <%= @country_side_house.ready_state_id %>
+</p>
+
+<%= link_to 'Edit', edit_country_side_house_path(@country_side_house) %> |
+<%= link_to 'Back', country_side_houses_path %>

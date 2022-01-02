@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @commercial_premise.area %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @commercial_premise.floor %>
+</p>
+
+<p>
+  <strong>Number of premises:</strong>
+  <%= @commercial_premise.number_of_premises %>
+</p>
+
+<p>
+  <strong>Plot of land:</strong>
+  <%= @commercial_premise.plot_of_land %>
+</p>
+
+<p>
+  <strong>Commercial premises kind:</strong>
+  <%= @commercial_premise.commercial_premises_kind_id %>
+</p>
+
+<%= link_to 'Edit', edit_commercial_premise_path(@commercial_premise) %> |
+<%= link_to 'Back', commercial_premises_path %>

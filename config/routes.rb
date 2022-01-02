@@ -2,6 +2,14 @@
 #
 
 Rails.application.routes.draw do
+  resources :country_side_houses
+  resources :ready_states
+  resources :country_side_house_kinds
+  resources :commercial_premises
+  resources :commercial_premises_kinds
+  resources :flats
+  resources :renovations
+  resources :wall_materials
   resources :cities do
     resources :streets
   end

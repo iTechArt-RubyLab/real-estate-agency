@@ -1,0 +1,62 @@
+<%= form_with(model: flat) do |form| %>
+  <% if flat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
+
+      <ul>
+        <% flat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rooms_count %>
+    <%= form.number_field :rooms_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floor %>
+    <%= form.number_field :floor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_of_construction %>
+    <%= form.number_field :year_of_construction %>
+  </div>
+
+  <div class="field">
+    <%= form.label :celling_height %>
+    <%= form.text_field :celling_height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_area %>
+    <%= form.text_field :total_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :living_area %>
+    <%= form.text_field :living_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kitchen_area %>
+    <%= form.text_field :kitchen_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :renovation_id %>
+    <%= form.text_field :renovation_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wall_material_id %>
+    <%= form.text_field :wall_material_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

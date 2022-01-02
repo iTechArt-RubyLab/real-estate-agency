@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_071841) do
+ActiveRecord::Schema.define(version: 2022_01_02_050158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,78 @@ ActiveRecord::Schema.define(version: 2021_12_28_071841) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "commercial_premises", force: :cascade do |t|
+    t.decimal "area"
+    t.integer "floor"
+    t.integer "number_of_premises"
+    t.integer "plot_of_land"
+    t.bigint "commercial_premises_kind_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commercial_premises_kind_id"], name: "index_commercial_premises_on_commercial_premises_kind_id"
+  end
+
+  create_table "commercial_premises_kinds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "country_side_house_kinds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "country_side_houses", force: :cascade do |t|
+    t.decimal "total_area"
+    t.decimal "land_area"
+    t.integer "floors_count"
+    t.integer "year_of_construction"
+    t.bigint "wall_material_id", null: false
+    t.bigint "country_side_house_kind_id", null: false
+    t.bigint "ready_state_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_side_house_kind_id"], name: "index_country_side_houses_on_country_side_house_kind_id"
+    t.index ["ready_state_id"], name: "index_country_side_houses_on_ready_state_id"
+    t.index ["wall_material_id"], name: "index_country_side_houses_on_wall_material_id"
+  end
+
   create_table "districts", force: :cascade do |t|
     t.string "name"
     t.bigint "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_districts_on_city_id"
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.integer "rooms_count"
+    t.integer "floor"
+    t.integer "year_of_construction"
+    t.decimal "celling_height"
+    t.decimal "total_area"
+    t.decimal "living_area"
+    t.decimal "kitchen_area"
+    t.bigint "renovation_id", null: false
+    t.bigint "wall_material_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["renovation_id"], name: "index_flats_on_renovation_id"
+    t.index ["wall_material_id"], name: "index_flats_on_wall_material_id"
+  end
+
+  create_table "ready_states", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "renovations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "streets", force: :cascade do |t|
@@ -73,7 +139,19 @@ ActiveRecord::Schema.define(version: 2021_12_28_071841) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wall_materials", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "addresses", "streets"
+  add_foreign_key "commercial_premises", "commercial_premises_kinds"
+  add_foreign_key "country_side_houses", "country_side_house_kinds"
+  add_foreign_key "country_side_houses", "ready_states"
+  add_foreign_key "country_side_houses", "wall_materials"
   add_foreign_key "districts", "cities"
+  add_foreign_key "flats", "renovations"
+  add_foreign_key "flats", "wall_materials"
   add_foreign_key "streets", "districts"
 end

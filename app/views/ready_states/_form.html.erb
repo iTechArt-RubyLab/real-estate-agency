@@ -1,0 +1,22 @@
+<%= form_with(model: ready_state) do |form| %>
+  <% if ready_state.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ready_state.errors.count, "error") %> prohibited this ready_state from being saved:</h2>
+
+      <ul>
+        <% ready_state.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Country Side Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Total area</th>
+      <th>Land area</th>
+      <th>Floors count</th>
+      <th>Year of construction</th>
+      <th>Wall material</th>
+      <th>Country side house kind</th>
+      <th>Ready state</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @country_side_houses.each do |country_side_house| %>
+      <tr>
+        <td><%= country_side_house.total_area %></td>
+        <td><%= country_side_house.land_area %></td>
+        <td><%= country_side_house.floors_count %></td>
+        <td><%= country_side_house.year_of_construction %></td>
+        <td><%= country_side_house.wall_material_id %></td>
+        <td><%= country_side_house.country_side_house_kind_id %></td>
+        <td><%= country_side_house.ready_state_id %></td>
+        <td><%= link_to 'Show', country_side_house %></td>
+        <td><%= link_to 'Edit', edit_country_side_house_path(country_side_house) %></td>
+        <td><%= link_to 'Destroy', country_side_house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country Side House', new_country_side_house_path %>

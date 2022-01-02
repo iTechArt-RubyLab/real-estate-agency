@@ -1,0 +1,52 @@
+<%= form_with(model: country_side_house) do |form| %>
+  <% if country_side_house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(country_side_house.errors.count, "error") %> prohibited this country_side_house from being saved:</h2>
+
+      <ul>
+        <% country_side_house.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :total_area %>
+    <%= form.text_field :total_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :land_area %>
+    <%= form.text_field :land_area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :floors_count %>
+    <%= form.number_field :floors_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_of_construction %>
+    <%= form.number_field :year_of_construction %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wall_material_id %>
+    <%= form.text_field :wall_material_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country_side_house_kind_id %>
+    <%= form.text_field :country_side_house_kind_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ready_state_id %>
+    <%= form.text_field :ready_state_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

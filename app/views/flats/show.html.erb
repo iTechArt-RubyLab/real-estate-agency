@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rooms count:</strong>
+  <%= @flat.rooms_count %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @flat.floor %>
+</p>
+
+<p>
+  <strong>Year of construction:</strong>
+  <%= @flat.year_of_construction %>
+</p>
+
+<p>
+  <strong>Celling height:</strong>
+  <%= @flat.celling_height %>
+</p>
+
+<p>
+  <strong>Total area:</strong>
+  <%= @flat.total_area %>
+</p>
+
+<p>
+  <strong>Living area:</strong>
+  <%= @flat.living_area %>
+</p>
+
+<p>
+  <strong>Kitchen area:</strong>
+  <%= @flat.kitchen_area %>
+</p>
+
+<p>
+  <strong>Renovation:</strong>
+  <%= @flat.renovation_id %>
+</p>
+
+<p>
+  <strong>Wall material:</strong>
+  <%= @flat.wall_material_id %>
+</p>
+
+<%= link_to 'Edit', edit_flat_path(@flat) %> |
+<%= link_to 'Back', flats_path %>
