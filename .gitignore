@@ -36,3 +36,4 @@ package-lock.json
 yarn-debug.log*
 .yarn-integrity
 coverage
+erd.pdf
