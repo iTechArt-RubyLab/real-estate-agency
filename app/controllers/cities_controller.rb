@@ -10,7 +10,9 @@ class CitiesController < ApplicationController
   end
 
   # GET /cities/1 or /cities/1.json
-  def show; end
+  def show
+    @districts = @city.districts.preload(:streets)
+  end
 
   # GET /cities/new
   def new

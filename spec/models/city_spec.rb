@@ -14,10 +14,10 @@ require 'rails_helper'
 
 RSpec.describe City, type: :model do
   describe 'create city name' do
-    let(:valid) { create :name, :valid }
-    let(:invalid_long) { build :name, :invalid_long }
-    let(:invalid_short) { build :name, :invalid_short }
-    let(:invalid_with_numbers) { build :name, :invalid_with_numbers }
+    let(:valid) { create :city, :valid }
+    let(:invalid_long) { build :city, :invalid_long }
+    let(:invalid_short) { build :city, :invalid_short }
+    let(:invalid_with_numbers) { build :city, :invalid_with_numbers }
 
     context 'with valid attributes' do
       it { expect(valid).to be_valid }

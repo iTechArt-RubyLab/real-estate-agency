@@ -1,1 +1,1 @@
-json.array! @districts, partial: "districts/district", as: :district
+json.array! @districts, partial: 'districts/district', as: :district

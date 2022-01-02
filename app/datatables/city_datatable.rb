@@ -13,7 +13,7 @@ class CityDatatable < AjaxDatatablesRails::ActiveRecord
       name: { source: 'City.name', cond: :like, searchable: true },
       locality_size: { source: 'City.locality_size', cond: :like, searchable: true },
       region: { source: 'City.region', cond: :like, searchable: true },
-      description: { source: 'City.description', cond: :like, searchable: true },
+      description: { source: 'City.description', cond: :like, searchable: false },
       actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end

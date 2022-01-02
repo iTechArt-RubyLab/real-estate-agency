@@ -1,12 +1,13 @@
 class StreetsController < ApplicationController
   before_action :set_street, only: %i[show edit update destroy]
-
   # GET /streets or /streets.json
   def index
     respond_to do |format|
       format.html
       format.json { render json: StreetDatatable.new(params, view_context: view_context) }
     end
+    # @streets = Street.all
+    @streets = Streets::Finder.new(params[:city_id]).call
   end
 
   # GET /streets/1 or /streets/1.json

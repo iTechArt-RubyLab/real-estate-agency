@@ -7,6 +7,7 @@ class DistrictsController < ApplicationController
       format.html
       format.json { render json: DistrictDatatable.new(params, view_context: view_context) }
     end
+    @districts = District.preload(:streets)
   end
 
   # GET /districts/1 or /districts/1.json

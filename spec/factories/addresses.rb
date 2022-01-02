@@ -2,12 +2,12 @@
 #
 # Table name: addresses
 #
-#  id                :bigint           not null, primary key
-#  building          :integer
-#  number_of_storeys :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  street_id         :bigint           not null
+#  id          :bigint           not null, primary key
+#  building    :integer
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  street_id   :bigint           not null
 #
 # Indexes
 #
@@ -22,50 +22,44 @@ FactoryBot.define do
     trait :valid do
       association :street
       building { Faker::Number.within(range: 1..300) }
-      number_of_storeys { Faker::Number.within(range: 1..34) }
+      description { Faker::Lorem.sentence }
     end
 
     trait :invalid_big do
       association :street
       building { Faker::Number.within(range: 301..500) }
-      number_of_storeys { Faker::Number.within(range: 1..34) }
+      description { Faker::Lorem.sentence }
     end
-    
+
     trait :invalid_negative do
       association :street
-      building { Faker::Number.negative  }
-      number_of_storeys { Faker::Number.within(range: 1..34) }
+      building { Faker::Number.negative }
+      description { Faker::Lorem.sentence }
     end
-  
+
     trait :invalid_with_letters do
       association :street
       building { Faker::Movies::LordOfTheRings.character }
-      number_of_storeys { Faker::Number.within(range: 1..34) }
+      description { Faker::Lorem.sentence }
     end
   end
 
-  factory :number_of_storeys, class: Address do
+  factory :description, class: Address do
     trait :valid do
       association :street
-      number_of_storeys { Faker::Number.within(range: 1..34) }
+      description { Faker::Lorem.sentence }
       building { Faker::Number.within(range: 1..300) }
     end
-  
-    trait :invalid_big do
+
+    trait :invalid_long do
       association :street
-      number_of_storeys { Faker::Number.within(range: 35..100) }
+      description { Faker::Lorem.characters(number: 510) }
       building { Faker::Number.within(range: 1..300) }
     end
-    
-    trait :invalid_negative do
+
+    trait :invalid_short do
       association :street
-      number_of_storeys { Faker::Number.negative }
-      building { Faker::Number.within(range: 1..300) }
-    end
-  
-    trait :invalid_with_letters do
-      association :street
-      number_of_storeys { Faker::Movies::LordOfTheRings.location }
+      description { Faker::Lorem.characters(number: 2) }
       building { Faker::Number.within(range: 1..300) }
     end
   end

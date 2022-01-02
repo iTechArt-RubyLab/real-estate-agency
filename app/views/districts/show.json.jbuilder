@@ -1,1 +1,1 @@
-json.partial! "districts/district", district: @district
+json.partial! 'districts/district', district: @district

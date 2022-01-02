@@ -12,7 +12,7 @@ class AddressDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       street_id: { source: 'Street.name', cond: :like, searchable: true },
       building: { source: 'Address.building', cond: :like, searchable: true },
-      number_of_storeys: { source: 'Address.number_of_storeys', cond: :like, searchable: true },
+      description: { source: 'Address.description', cond: :like, searchable: false },
       actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end
@@ -22,7 +22,7 @@ class AddressDatatable < AjaxDatatablesRails::ActiveRecord
       {
         street_id: record.street.name,
         building: record.building,
-        number_of_storeys: record.number_of_storeys,
+        description: record.description,
         actions: link_to('Show', record)
           .concat(' | ')
           .concat(link_to('Edit', edit_address_path(record)))

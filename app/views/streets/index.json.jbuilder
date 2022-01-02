@@ -1,1 +1,1 @@
-json.array! @streets, partial: "streets/street", as: :street
+json.array! @streets, partial: 'streets/street', as: :street

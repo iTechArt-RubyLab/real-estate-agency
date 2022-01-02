@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_071841) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "building"
-    t.integer "number_of_storeys"
+    t.text "description"
     t.bigint "street_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

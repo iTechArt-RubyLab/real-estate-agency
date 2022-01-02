@@ -20,6 +20,8 @@ class Street < ApplicationRecord
   belongs_to :district, optional: true
   has_many :addresses
 
+  delegate :city, to: :district
+
   validates :name, length: { in: 2..40 }, format: { with: /\A[a-zA-Z ]+\z/ }
 
   scope :with_district, ->(district_id) { where(district_id: district_id) }

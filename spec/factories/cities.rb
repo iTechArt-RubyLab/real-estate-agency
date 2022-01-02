@@ -11,7 +11,7 @@
 #  updated_at    :datetime         not null
 #
 FactoryBot.define do
-  factory :name, class: City do
+  factory :city, class: City do
     trait :valid do
       name { Faker::Address.city }
     end
@@ -19,7 +19,7 @@ FactoryBot.define do
     trait :invalid_long do
       name { Faker::Lorem.characters(number: 41, min_alpha: 41) }
     end
-    
+
     trait :invalid_short do
       name { Faker::Lorem.characters(number: 1, min_alpha: 1) }
     end
