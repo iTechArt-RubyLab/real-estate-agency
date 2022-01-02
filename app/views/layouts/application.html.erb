@@ -30,6 +30,11 @@
         <li>
           <%= link_to current_user.email, edit_user_registration_path, class: "nav-link" %>
         </li>
+        <li>
+          <div class ="avatar" style="border-radius: 50%;">
+            <%= image_tag current_user.avatar.variant(resize_to_limit: [50, 50]) %>
+          </div>
+        </li>
         <li class="nav-item">
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>

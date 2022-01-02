@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :addresses
   resources :streets
   resources :districts
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth' }
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'omniauth',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations' }
   root to: 'home#index'
 end
