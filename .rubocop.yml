@@ -36,3 +36,7 @@ Metrics/MethodLength:
 Naming/AccessorMethodName:
   Exclude:
     - 'app/datatables/**'
+
+Lint/MissingSuper:
+  Exclude:
+    - 'app/policies/**'
