@@ -1,6 +1,8 @@
-<h1>Editing Commercial Premises Kind</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Commercial Premises Kind</h1>
+</div>
 
 <%= render 'form', commercial_premises_kind: @commercial_premises_kind %>
 
-<%= link_to 'Show', @commercial_premises_kind %> |
-<%= link_to 'Back', commercial_premises_kinds_path %>
+<%= link_to 'Show', @commercial_premises_kind, class: "btn btn-warning"  %>
+<%= link_to 'Back', commercial_premises_kinds_path, class: "btn btn-danger" %>

@@ -3,7 +3,10 @@ class RenovationsController < ApplicationController
 
   # GET /renovations or /renovations.json
   def index
-    @renovations = Renovation.all
+    respond_to do |format|
+      format.html
+      format.json { render json: RenovationDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /renovations/1 or /renovations/1.json

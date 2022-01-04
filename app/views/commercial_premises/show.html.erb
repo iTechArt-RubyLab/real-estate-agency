@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Kind:</strong>
+  <%= @commercial_premise.commercial_premises_kind.name %>
+</p>
+
+<p>
   <strong>Area:</strong>
   <%= @commercial_premise.area %>
 </p>
@@ -20,10 +25,5 @@
   <%= @commercial_premise.plot_of_land %>
 </p>
 
-<p>
-  <strong>Commercial premises kind:</strong>
-  <%= @commercial_premise.commercial_premises_kind_id %>
-</p>
-
-<%= link_to 'Edit', edit_commercial_premise_path(@commercial_premise) %> |
-<%= link_to 'Back', commercial_premises_path %>
+<%= link_to 'Edit', edit_commercial_premise_path(@commercial_premise), class: "btn btn-warning" %>
+<%= link_to 'Back', commercial_premises_path, class: "btn btn-danger" %>

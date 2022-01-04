@@ -11,52 +11,52 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :rooms_count %>
-    <%= form.number_field :rooms_count %>
-  </div>
-
-  <div class="field">
-    <%= form.label :floor %>
-    <%= form.number_field :floor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year_of_construction %>
-    <%= form.number_field :year_of_construction %>
-  </div>
-
-  <div class="field">
-    <%= form.label :celling_height %>
-    <%= form.text_field :celling_height %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_area %>
-    <%= form.text_field :total_area %>
-  </div>
-
-  <div class="field">
-    <%= form.label :living_area %>
-    <%= form.text_field :living_area %>
-  </div>
-
-  <div class="field">
-    <%= form.label :kitchen_area %>
-    <%= form.text_field :kitchen_area %>
-  </div>
-
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :renovation_id %>
-    <%= form.text_field :renovation_id %>
+    <%= form.collection_select :renovation_id, Renovation.order(:name), :id, :name %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
+    <%= form.label :rooms_count %>
+    <%= form.number_field :rooms_count, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :floor %>
+    <%= form.number_field :floor, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
     <%= form.label :wall_material_id %>
-    <%= form.text_field :wall_material_id %>
+    <%= form.collection_select :wall_material_id, WallMaterial.order(:name), :id, :name %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field mb-3">
+    <%= form.label :kitchen_area %>
+    <%= form.text_field :kitchen_area, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :living_area %>
+    <%= form.text_field :living_area, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :total_area %>
+    <%= form.text_field :total_area, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :celling_height %>
+    <%= form.text_field :celling_height, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :year_of_construction %>
+    <%= form.number_field :year_of_construction, class: "form-control" %>
+  </div>
+
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= form.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>

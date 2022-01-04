@@ -1,27 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ready States</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Ready States</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="ready_states-datatable", data-source="<%= ready_states_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @ready_states.each do |ready_state| %>
-      <tr>
-        <td><%= ready_state.name %></td>
-        <td><%= link_to 'Show', ready_state %></td>
-        <td><%= link_to 'Edit', edit_ready_state_path(ready_state) %></td>
-        <td><%= link_to 'Destroy', ready_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#ready_states-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#ready_states-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Ready State', new_ready_state_path %>
+<%= link_to 'New Ready State', new_ready_state_path, class: "btn btn-outline-info" %>

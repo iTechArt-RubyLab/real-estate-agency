@@ -5,5 +5,5 @@
   <%= @ready_state.name %>
 </p>
 
-<%= link_to 'Edit', edit_ready_state_path(@ready_state) %> |
-<%= link_to 'Back', ready_states_path %>
+<%= link_to 'Edit', edit_ready_state_path(@ready_state), class: "btn btn-warning" %>
+<%= link_to 'Back', ready_states_path, class: "btn btn-danger" %>

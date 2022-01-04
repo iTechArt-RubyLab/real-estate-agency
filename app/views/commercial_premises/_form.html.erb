@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :area %>
-    <%= form.text_field :area %>
-  </div>
-
-  <div class="field">
-    <%= form.label :floor %>
-    <%= form.number_field :floor %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number_of_premises %>
-    <%= form.number_field :number_of_premises %>
-  </div>
-
-  <div class="field">
-    <%= form.label :plot_of_land %>
-    <%= form.number_field :plot_of_land %>
-  </div>
-
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :commercial_premises_kind_id %>
-    <%= form.text_field :commercial_premises_kind_id %>
+    <%= form.collection_select :commercial_premises_kind_id, CommercialPremisesKind.order(:name), :id, :name %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field mb-3">
+    <%= form.label :area %>
+    <%= form.text_field :area, class: "form-control"  %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :floor %>
+    <%= form.number_field :floor, class: "form-control"  %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :number_of_premises %>
+    <%= form.number_field :number_of_premises, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :plot_of_land %>
+    <%= form.number_field :plot_of_land, class: "form-control" %>
+  </div>
+
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= form.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>

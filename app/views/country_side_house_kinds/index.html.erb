@@ -1,27 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Country Side House Kinds</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Country Side House Kinds</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="country_side_house_kinds-datatable", data-source="<%= country_side_house_kinds_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @country_side_house_kinds.each do |country_side_house_kind| %>
-      <tr>
-        <td><%= country_side_house_kind.name %></td>
-        <td><%= link_to 'Show', country_side_house_kind %></td>
-        <td><%= link_to 'Edit', edit_country_side_house_kind_path(country_side_house_kind) %></td>
-        <td><%= link_to 'Destroy', country_side_house_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#country_side_house_kinds-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#country_side_house_kinds-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Country Side House Kind', new_country_side_house_kind_path %>
+<%= link_to 'New Country Side House Kind', new_country_side_house_kind_path, class: "btn btn-outline-info" %>

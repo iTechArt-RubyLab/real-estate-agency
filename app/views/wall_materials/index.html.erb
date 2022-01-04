@@ -1,27 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Wall Materials</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Wall Materials</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="wall_materials-datatable", data-source="<%= wall_materials_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @wall_materials.each do |wall_material| %>
-      <tr>
-        <td><%= wall_material.name %></td>
-        <td><%= link_to 'Show', wall_material %></td>
-        <td><%= link_to 'Edit', edit_wall_material_path(wall_material) %></td>
-        <td><%= link_to 'Destroy', wall_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#wall_materials-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#wall_materials-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Wall Material', new_wall_material_path %>
+<%= link_to 'New Wall Material', new_wall_material_path, class: "btn btn-outline-info" %>

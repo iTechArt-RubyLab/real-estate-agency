@@ -1,6 +1,8 @@
-<h1>Editing Flat</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Flat</h1>
+</div>
 
 <%= render 'form', flat: @flat %>
 
-<%= link_to 'Show', @flat %> |
-<%= link_to 'Back', flats_path %>
+<%= link_to 'Show', @flat, class: "btn btn-warning" %>
+<%= link_to 'Back', flats_path, class: "btn btn-danger" %>

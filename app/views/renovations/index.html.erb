@@ -1,27 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Renovations</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Renovations</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="renovations-datatable", data-source="<%= renovations_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @renovations.each do |renovation| %>
-      <tr>
-        <td><%= renovation.name %></td>
-        <td><%= link_to 'Show', renovation %></td>
-        <td><%= link_to 'Edit', edit_renovation_path(renovation) %></td>
-        <td><%= link_to 'Destroy', renovation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#renovations-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#renovations-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Renovation', new_renovation_path %>
+<%= link_to 'New Renovation', new_renovation_path, class: "btn btn-outline-info" %>

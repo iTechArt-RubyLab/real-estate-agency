@@ -1,6 +1,8 @@
-<h1>Editing Wall Material</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Wall Material</h1>
+</div>
 
 <%= render 'form', wall_material: @wall_material %>
 
-<%= link_to 'Show', @wall_material %> |
-<%= link_to 'Back', wall_materials_path %>
+<%= link_to 'Show', @wall_material, class: "btn btn-warning" %>
+<%= link_to 'Back', wall_materials_path, class: "btn btn-danger" %>

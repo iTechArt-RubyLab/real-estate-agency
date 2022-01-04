@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Flats</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Flats</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="flats-datatable", data-source="<%= flats_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Rooms count</th>
       <th>Floor</th>
       <th>Year of construction</th>
@@ -14,30 +16,36 @@
       <th>Kitchen area</th>
       <th>Renovation</th>
       <th>Wall material</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @flats.each do |flat| %>
-      <tr>
-        <td><%= flat.rooms_count %></td>
-        <td><%= flat.floor %></td>
-        <td><%= flat.year_of_construction %></td>
-        <td><%= flat.celling_height %></td>
-        <td><%= flat.total_area %></td>
-        <td><%= flat.living_area %></td>
-        <td><%= flat.kitchen_area %></td>
-        <td><%= flat.renovation_id %></td>
-        <td><%= flat.wall_material_id %></td>
-        <td><%= link_to 'Show', flat %></td>
-        <td><%= link_to 'Edit', edit_flat_path(flat) %></td>
-        <td><%= link_to 'Destroy', flat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#flats-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#flats-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "renovation_id"},
+      {"data": "rooms_count"},
+      {"data": "floor"},
+      {"data": "wall_material_id"},
+      {"data": "kitchen_area"},
+      {"data": "living_area"},
+      {"data": "total_area"},
+      {"data": "celling_height"},
+      {"data": "year_of_construction"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Flat', new_flat_path %>
+<%= link_to 'New Flat', new_flat_path, class: "btn btn-outline-info" %>

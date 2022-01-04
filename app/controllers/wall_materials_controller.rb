@@ -3,7 +3,10 @@ class WallMaterialsController < ApplicationController
 
   # GET /wall_materials or /wall_materials.json
   def index
-    @wall_materials = WallMaterial.all
+    respond_to do |format|
+      format.html
+      format.json { render json: WallMaterialDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /wall_materials/1 or /wall_materials/1.json

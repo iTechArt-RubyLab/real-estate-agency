@@ -28,4 +28,22 @@
 class Flat < ApplicationRecord
   belongs_to :renovation
   belongs_to :wall_material
+
+  validates :celling_height, inclusion: { in: 1.80..5.0 }
+  validates :floor, numericality: { only_integer: true }, inclusion: { in: 1..34 }
+  validates :kitchen_area, inclusion: { in: 2.0..100.0 }
+  validates :living_area, inclusion: { in: 2.0..100.0 }
+  validates :rooms_count, numericality: { only_integer: true }, inclusion: { in: 1..40 }
+  validates :total_area, inclusion: { in: 2.0..1000.0 }
+  validates :year_of_construction, numericality: { only_integer: true }, inclusion: { in: 1900..2022 }
+
+  scope :with_celling_height, ->(celling_height) { where(celling_height: celling_height) }
+  scope :with_floor, ->(floor) { where(floor: floor) }
+  scope :with_kitchen_area, ->(kitchen_area) { where(kitchen_area: kitchen_area) }
+  scope :with_living_area, ->(living_area) { where(living_area: living_area) }
+  scope :with_rooms_count, ->(rooms_count) { where(rooms_count: rooms_count) }
+  scope :with_total_area, ->(total_area) { where(total_area: total_area) }
+  scope :with_year_of_construction, ->(year_of_construction) { where(year_of_construction: year_of_construction) }
+  scope :with_renovation_id, ->(renovation_id) { where(renovation_id: renovation_id) }
+  scope :with_wall_material_id, ->(wall_material_id) { where(wall_material_id: wall_material_id) }
 end

@@ -3,7 +3,10 @@ class CommercialPremisesKindsController < ApplicationController
 
   # GET /commercial_premises_kinds or /commercial_premises_kinds.json
   def index
-    @commercial_premises_kinds = CommercialPremisesKind.all
+    respond_to do |format|
+      format.html
+      format.json { render json: CommercialPremisesKindDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /commercial_premises_kinds/1 or /commercial_premises_kinds/1.json

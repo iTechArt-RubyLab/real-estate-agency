@@ -1,27 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Commercial Premises Kinds</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Commercial Premises Kinds</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="commercial_premises_kinds-datatable", data-source="<%= commercial_premises_kinds_path(format: :json) %>" >
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @commercial_premises_kinds.each do |commercial_premises_kind| %>
-      <tr>
-        <td><%= commercial_premises_kind.name %></td>
-        <td><%= link_to 'Show', commercial_premises_kind %></td>
-        <td><%= link_to 'Edit', edit_commercial_premises_kind_path(commercial_premises_kind) %></td>
-        <td><%= link_to 'Destroy', commercial_premises_kind, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#commercial_premises_kinds-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#commercial_premises_kinds-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Commercial Premises Kind', new_commercial_premises_kind_path %>
+<%= link_to 'New Commercial Premises Kind', new_commercial_premises_kind_path, class: "btn btn-outline-info" %>

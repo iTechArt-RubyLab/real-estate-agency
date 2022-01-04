@@ -3,7 +3,10 @@ class FlatsController < ApplicationController
 
   # GET /flats or /flats.json
   def index
-    @flats = Flat.all
+    respond_to do |format|
+      format.html
+      format.json { render json: FlatDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /flats/1 or /flats/1.json

@@ -1,39 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Country Side Houses</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Country Side Houses</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="country_side_houses-datatable", data-source="<%= country_side_houses_path(format: :json) %>" >
   <thead>
-    <tr>
-      <th>Total area</th>
-      <th>Land area</th>
+    <tr style="background-color: #C8EEFF;">
+      <th>Kind</th>
+      <th>Ready state</th>
       <th>Floors count</th>
+      <th>Land area</th>
+      <th>Total area</th>
       <th>Year of construction</th>
       <th>Wall material</th>
-      <th>Country side house kind</th>
-      <th>Ready state</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @country_side_houses.each do |country_side_house| %>
-      <tr>
-        <td><%= country_side_house.total_area %></td>
-        <td><%= country_side_house.land_area %></td>
-        <td><%= country_side_house.floors_count %></td>
-        <td><%= country_side_house.year_of_construction %></td>
-        <td><%= country_side_house.wall_material_id %></td>
-        <td><%= country_side_house.country_side_house_kind_id %></td>
-        <td><%= country_side_house.ready_state_id %></td>
-        <td><%= link_to 'Show', country_side_house %></td>
-        <td><%= link_to 'Edit', edit_country_side_house_path(country_side_house) %></td>
-        <td><%= link_to 'Destroy', country_side_house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#country_side_houses-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#country_side_houses-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "country_side_house_kind_id"},
+      {"data": "ready_state_id"},
+      {"data": "floors_count"},
+      {"data": "land_area"},
+      {"data": "total_area"},
+      {"data": "year_of_construction"},
+      {"data": "wall_material_id"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Country Side House', new_country_side_house_path %>
+<%= link_to 'New Country Side House', new_country_side_house_path, class: "btn btn-outline-info"  %>

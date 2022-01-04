@@ -1,35 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Commercial Premises</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Commercial Premises</h1>
+</div>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="commercial_premises-datatable", data-source="<%= commercial_premises_path(format: :json) %>" >
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
+      <th>Kind</th>
       <th>Area</th>
       <th>Floor</th>
       <th>Number of premises</th>
       <th>Plot of land</th>
-      <th>Commercial premises kind</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @commercial_premises.each do |commercial_premise| %>
-      <tr>
-        <td><%= commercial_premise.area %></td>
-        <td><%= commercial_premise.floor %></td>
-        <td><%= commercial_premise.number_of_premises %></td>
-        <td><%= commercial_premise.plot_of_land %></td>
-        <td><%= commercial_premise.commercial_premises_kind_id %></td>
-        <td><%= link_to 'Show', commercial_premise %></td>
-        <td><%= link_to 'Edit', edit_commercial_premise_path(commercial_premise) %></td>
-        <td><%= link_to 'Destroy', commercial_premise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#commercial_premises-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#commercial_premises-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "commercial_premises_kind_id"},
+      {"data": "area"},
+      {"data": "floor"},
+      {"data": "number_of_premises"},
+      {"data": "plot_of_land"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Commercial Premise', new_commercial_premise_path %>
+<%= link_to 'New Commercial Premise', new_commercial_premise_path, class: "btn btn-outline-info" %>

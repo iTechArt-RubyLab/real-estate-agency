@@ -3,7 +3,10 @@ class CountrySideHousesController < ApplicationController
 
   # GET /country_side_houses or /country_side_houses.json
   def index
-    @country_side_houses = CountrySideHouse.all
+    respond_to do |format|
+      format.html
+      format.json { render json: CountrySideHouseDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /country_side_houses/1 or /country_side_houses/1.json

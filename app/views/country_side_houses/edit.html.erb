@@ -1,6 +1,8 @@
-<h1>Editing Country Side House</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Country Side House</h1>
+</div>
 
 <%= render 'form', country_side_house: @country_side_house %>
 
-<%= link_to 'Show', @country_side_house %> |
-<%= link_to 'Back', country_side_houses_path %>
+<%= link_to 'Show', @country_side_house, class: "btn btn-warning" %>
+<%= link_to 'Back', country_side_houses_path, class: "btn btn-danger" %>

@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Renovation:</strong>
+  <%= @flat.renovation.name %>
+</p>
+
+<p>
   <strong>Rooms count:</strong>
   <%= @flat.rooms_count %>
 </p>
@@ -11,23 +16,8 @@
 </p>
 
 <p>
-  <strong>Year of construction:</strong>
-  <%= @flat.year_of_construction %>
-</p>
-
-<p>
-  <strong>Celling height:</strong>
-  <%= @flat.celling_height %>
-</p>
-
-<p>
-  <strong>Total area:</strong>
-  <%= @flat.total_area %>
-</p>
-
-<p>
-  <strong>Living area:</strong>
-  <%= @flat.living_area %>
+  <strong>Wall material:</strong>
+  <%= @flat.wall_material.name %>
 </p>
 
 <p>
@@ -36,14 +26,24 @@
 </p>
 
 <p>
-  <strong>Renovation:</strong>
-  <%= @flat.renovation_id %>
+  <strong>Living area:</strong>
+  <%= @flat.living_area %>
 </p>
 
 <p>
-  <strong>Wall material:</strong>
-  <%= @flat.wall_material_id %>
+  <strong>Total area:</strong>
+  <%= @flat.total_area %>
 </p>
 
-<%= link_to 'Edit', edit_flat_path(@flat) %> |
-<%= link_to 'Back', flats_path %>
+<p>
+  <strong>Celling height:</strong>
+  <%= @flat.celling_height %>
+</p>
+
+<p>
+  <strong>Year of construction:</strong>
+  <%= @flat.year_of_construction %>
+</p>
+
+<%= link_to 'Edit', edit_flat_path(@flat), class: "btn btn-warning" %>
+<%= link_to 'Back', flats_path, class: "btn btn-danger" %>

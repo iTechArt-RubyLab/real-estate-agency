@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Total area:</strong>
-  <%= @country_side_house.total_area %>
+  <strong>Kind:</strong>
+  <%= @country_side_house.country_side_house_kind.name %>
+</p>
+
+<p>
+  <strong>Ready state:</strong>
+  <%= @country_side_house.ready_state.name %>
+</p>
+
+<p>
+  <strong>Floors count:</strong>
+  <%= @country_side_house.floors_count %>
 </p>
 
 <p>
@@ -11,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Floors count:</strong>
-  <%= @country_side_house.floors_count %>
+  <strong>Total area:</strong>
+  <%= @country_side_house.total_area %>
 </p>
 
 <p>
@@ -22,18 +32,8 @@
 
 <p>
   <strong>Wall material:</strong>
-  <%= @country_side_house.wall_material_id %>
+  <%= @country_side_house.wall_material.name %>
 </p>
 
-<p>
-  <strong>Country side house kind:</strong>
-  <%= @country_side_house.country_side_house_kind_id %>
-</p>
-
-<p>
-  <strong>Ready state:</strong>
-  <%= @country_side_house.ready_state_id %>
-</p>
-
-<%= link_to 'Edit', edit_country_side_house_path(@country_side_house) %> |
-<%= link_to 'Back', country_side_houses_path %>
+<%= link_to 'Edit', edit_country_side_house_path(@country_side_house), class: "btn btn-warning" %>
+<%= link_to 'Back', country_side_houses_path, class: "btn btn-danger" %>

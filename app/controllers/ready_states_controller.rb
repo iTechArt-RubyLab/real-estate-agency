@@ -3,7 +3,10 @@ class ReadyStatesController < ApplicationController
 
   # GET /ready_states or /ready_states.json
   def index
-    @ready_states = ReadyState.all
+    respond_to do |format|
+      format.html
+      format.json { render json: ReadyStateDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /ready_states/1 or /ready_states/1.json

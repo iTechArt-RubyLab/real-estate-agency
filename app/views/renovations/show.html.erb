@@ -5,5 +5,5 @@
   <%= @renovation.name %>
 </p>
 
-<%= link_to 'Edit', edit_renovation_path(@renovation) %> |
-<%= link_to 'Back', renovations_path %>
+<%= link_to 'Edit', edit_renovation_path(@renovation), class: "btn btn-warning" %>
+<%= link_to 'Back', renovations_path, class: "btn btn-danger" %>

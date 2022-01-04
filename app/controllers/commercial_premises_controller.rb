@@ -3,7 +3,10 @@ class CommercialPremisesController < ApplicationController
 
   # GET /commercial_premises or /commercial_premises.json
   def index
-    @commercial_premises = CommercialPremise.all
+    respond_to do |format|
+      format.html
+      format.json { render json: CommercialPremiseDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /commercial_premises/1 or /commercial_premises/1.json

@@ -1,6 +1,8 @@
-<h1>Editing Renovation</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Renovation</h1>
+</div>
 
 <%= render 'form', renovation: @renovation %>
 
-<%= link_to 'Show', @renovation %> |
-<%= link_to 'Back', renovations_path %>
+<%= link_to 'Show', @renovation, class: "btn btn-warning" %>
+<%= link_to 'Back', renovations_path, class: "btn btn-danger" %>
