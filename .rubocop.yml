@@ -43,3 +43,8 @@ Metrics/AbcSize:
 Lint/MissingSuper:
   Exclude:
     - 'app/policies/**'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/**'
+    - 'app/datatables/**'

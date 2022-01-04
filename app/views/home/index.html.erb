@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
   <h1> Hello <%= current_user.email.split('@').first %>!</h1>
-  <%= image_tag current_user.avatar.variant(resize_to_limit: [300, 300]) %>
 <% else %>
   <h1> Hello friend! </h1>
 <% end %>

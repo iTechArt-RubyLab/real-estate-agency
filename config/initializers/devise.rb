@@ -83,7 +83,7 @@ Devise.setup do |config|
   config.omniauth :github, '650ea47fadbcb7360e85', 'fe9959cce71f951b925711cf4631310ea24a23a9', scope: 'user:email'
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
-
+  config.omniauth :google_oauth2, '193978783239-bgm97q57kefdkcams9mmio3p31511t0a.apps.googleusercontent.com', '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', { name: "google" }
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
 
