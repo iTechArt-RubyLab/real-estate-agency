@@ -27,8 +27,8 @@ class CountrySideHouseDatatable < AjaxDatatablesRails::ActiveRecord
         country_side_house_kind_id: record.country_side_house_kind.name,
         ready_state_id: record.ready_state.name,
         floors_count: record.floors_count,
-        land_area: record.land_area,
-        total_area: record.total_area,
+        land_area: record.land_area.round(2),
+        total_area: record.total_area.round(2),
         year_of_construction: record.year_of_construction,
         wall_material_id: record.wall_material.name,
         actions: link_to('Show', record)
