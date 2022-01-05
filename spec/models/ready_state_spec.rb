@@ -10,5 +10,26 @@
 require 'rails_helper'
 
 RSpec.describe ReadyState, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'create ready state name' do
+    let(:valid) { build :ready_state, :valid }
+    let(:invalid_long) { build :ready_state, :invalid_long }
+    let(:invalid_short) { build :ready_state, :invalid_short }
+    let(:invalid_with_numbers) { build :ready_state, :invalid_with_numbers }
+
+    context 'with valid' do
+      it { expect(valid).to be_valid }
+    end
+
+    context 'when too long' do
+      it { expect(invalid_long).not_to be_valid }
+    end
+
+    context 'when too short' do
+      it { expect(invalid_short).not_to be_valid }
+    end
+
+    context 'when with numbers' do
+      it { expect(invalid_with_numbers).not_to be_valid }
+    end
+  end
 end
