@@ -26,13 +26,171 @@
 #  fk_rails_...  (wall_material_id => wall_materials.id)
 #
 FactoryBot.define do
-  factory :country_side_house do
-    total_area { '9.99' }
-    land_area { '9.99' }
-    floors_count { 1 }
-    year_of_construction { 1 }
-    wall_material { nil }
-    country_side_house_kind { nil }
-    ready_state { nil }
+  factory :floors_count, class: CountrySideHouse do
+    trait :valid do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_big do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      floors_count { Faker::Number.within(range: 11..20) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_negative do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      floors_count { Faker::Number.negative }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_with_letters do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      floors_count { Faker::Movies::LordOfTheRings.character }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+  end
+
+  factory :land_area, class: CountrySideHouse do
+    trait :valid do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_big do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      land_area { Faker::Number.within(range: 1000.1..2000.0) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_negative do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      land_area { Faker::Number.negative }
+      floors_count { Faker::Number.within(range: 1..10) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_with_letters do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      land_area { Faker::Movies::LordOfTheRings.character }
+      floors_count { Faker::Number.within(range: 1..10) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+  end
+
+  factory :total_area, class: CountrySideHouse do
+    trait :valid do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_big do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      total_area { Faker::Number.within(range: 1000.1..2000.0) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_negative do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      total_area { Faker::Number.negative }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+
+    trait :invalid_with_letters do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      total_area { Faker::Movies::LordOfTheRings.character }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+    end
+  end
+
+  factory :year_of_construction, class: CountrySideHouse do
+    trait :valid do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      year_of_construction { Faker::Number.within(range: 1900..2022) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+    end
+
+    trait :invalid_big do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      year_of_construction { Faker::Number.within(range: 2023..2100) }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+    end
+
+    trait :invalid_negative do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      year_of_construction { Faker::Number.negative }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+    end
+
+    trait :invalid_with_letters do
+      association :wall_material
+      association :country_side_house_kind
+      association :ready_state
+      year_of_construction { Faker::Movies::LordOfTheRings.character }
+      floors_count { Faker::Number.within(range: 1..10) }
+      land_area { Faker::Number.within(range: 0.1..1000.0) }
+      total_area { Faker::Number.within(range: 0.1..1000.0) }
+    end
   end
 end
