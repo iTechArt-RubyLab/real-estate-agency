@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_154844) do
   end
 
   create_table "user_infos", force: :cascade do |t|
-    t.bigint "city_id", null: false
+    t.bigint "city_id"
     t.string "first_name"
     t.string "last_name"
     t.string "second_name"
@@ -228,7 +228,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_154844) do
     t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_info_id", null: false
+    t.bigint "user_info_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

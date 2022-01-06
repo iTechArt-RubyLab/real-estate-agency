@@ -21,7 +21,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  user_info_id           :bigint           not null
+#  user_info_id           :bigint
 #
 # Indexes
 #
