@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_060612) do
+ActiveRecord::Schema.define(version: 2022_01_06_151048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["street_id"], name: "index_addresses_on_street_id"
+  end
+
+  create_table "changes_histories", force: :cascade do |t|
+    t.string "changes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_changes_histories_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -123,8 +131,26 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.index ["wall_material_id"], name: "index_flats_on_wall_material_id"
   end
 
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "property_types_realtor_profiles", id: false, force: :cascade do |t|
+    t.bigint "realtor_profile_id", null: false
+    t.bigint "property_type_id", null: false
+  end
+
   create_table "ready_states", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "realtor_profiles", force: :cascade do |t|
+    t.string "registration_number"
+    t.date "employment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -176,6 +202,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "streets"
+  add_foreign_key "changes_histories", "users"
   add_foreign_key "commercial_premises", "commercial_premises_kinds"
   add_foreign_key "country_side_houses", "country_side_house_kinds"
   add_foreign_key "country_side_houses", "ready_states"
