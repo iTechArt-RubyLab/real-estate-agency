@@ -1,0 +1,2 @@
+module RealtorProfilesHelper
+end
