@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Registration number:</strong>
+  <%= @realtor_profile.registration_number %>
+</p>
+
+<p>
+  <strong>Employment date:</strong>
+  <%= @realtor_profile.employment_date %>
+</p>
+
+<%= link_to 'Edit', edit_realtor_profile_path(@realtor_profile) %> |
+<%= link_to 'Back', realtor_profiles_path %>
