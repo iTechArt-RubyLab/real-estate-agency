@@ -17,7 +17,7 @@
 # Indexes
 #
 #  index_user_infos_on_city_id                            (city_id)
-#  index_user_infos_on_profilable_type_and_profilable_id  (profilable_type,profilable_id)
+#  index_user_infos_on_profilable_type_and_profilable_id  (profilable_type,profilable_id) UNIQUE
 #
 # Foreign Keys
 #
