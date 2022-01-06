@@ -23,7 +23,7 @@ class CommercialPremiseDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         commercial_premises_kind_id: record.commercial_premises_kind.name,
-        area: record.area,
+        area: record.area.round(2),
         floor: record.floor,
         number_of_premises: record.number_of_premises,
         plot_of_land: record.plot_of_land,
