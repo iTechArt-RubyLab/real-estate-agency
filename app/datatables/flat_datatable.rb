@@ -30,10 +30,10 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
         rooms_count: record.rooms_count,
         floor: record.floor,
         wall_material_id: record.wall_material.name,
-        kitchen_area: record.kitchen_area,
-        living_area: record.living_area,
-        total_area: record.total_area,
-        celling_height: record.celling_height,
+        kitchen_area: record.kitchen_area.round(2),
+        living_area: record.living_area.round(2),
+        total_area: record.total_area.round(2),
+        celling_height: record.celling_height.round(2),
         year_of_construction: record.year_of_construction,
         actions: link_to('Show', record)
           .concat(' | ')
