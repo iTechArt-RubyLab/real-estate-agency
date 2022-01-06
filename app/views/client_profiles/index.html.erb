@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Client Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @client_profiles.each do |client_profile| %>
+      <tr>
+        <td><%= client_profile.country_id %></td>
+        <td><%= link_to 'Show', client_profile %></td>
+        <td><%= link_to 'Edit', edit_client_profile_path(client_profile) %></td>
+        <td><%= link_to 'Destroy', client_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Client Profile', new_client_profile_path %>
