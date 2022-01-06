@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
   resources :client_profiles
+  resources :user_infos
   resources :countries
   resources :client_profiles
   resources :tags
