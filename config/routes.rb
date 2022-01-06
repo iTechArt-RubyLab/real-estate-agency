@@ -2,6 +2,8 @@
 #
 
 Rails.application.routes.draw do
+  resources :countries
+  resources :client_profiles
   resources :tags
   resources :changes_histories
   resources :property_types
