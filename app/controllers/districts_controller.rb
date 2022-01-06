@@ -11,7 +11,9 @@ class DistrictsController < ApplicationController
   end
 
   # GET /districts/1 or /districts/1.json
-  def show; end
+  def show
+    @streets = @district.streets.preload(:streets)
+  end
 
   # GET /districts/new
   def new
