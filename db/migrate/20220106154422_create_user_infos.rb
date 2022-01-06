@@ -7,8 +7,12 @@ class CreateUserInfos < ActiveRecord::Migration[6.1]
       t.string :second_name
       t.date :date_of_birth
       t.integer :gender
+      t.bigint :profilable_id
+      t.string :profilable_type
 
       t.timestamps
     end
+
+    add_index :user_infos, [:profilable_type, :profilable_id]
   end
 end

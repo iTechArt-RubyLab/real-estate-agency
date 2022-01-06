@@ -9,4 +9,5 @@
 #  updated_at          :datetime         not null
 #
 class RealtorProfile < ApplicationRecord
+  has_one :user_infos, as: :profilable
 end
