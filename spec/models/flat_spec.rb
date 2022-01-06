@@ -28,15 +28,15 @@
 require 'rails_helper'
 
 RSpec.describe Flat, type: :model do
-  describe 'create flat' do
-    let(:flats) { build :flats }
+  describe '.flat' do
+    let(:flats) { create :flats }
 
     context 'with valid attributes' do
       it { expect(flats).to be_valid }
     end
   end
 
-  describe 'create flat rooms count' do
+  describe '#rooms_count' do
     let(:invalid_big_rooms_count) { build :flats, :invalid_big_rooms_count }
     let(:invalid_negative_rooms_count) { build :flats, :invalid_negative_rooms_count }
     let(:invalid_with_letters_rooms_count) { build :flats, :invalid_with_letters_rooms_count }
@@ -54,7 +54,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat floor' do
+  describe '#floor' do
     let(:invalid_big_floor) { build :flats, :invalid_big_floor }
     let(:invalid_negative_floor) { build :flats, :invalid_negative_floor }
     let(:invalid_with_letters_floor) { build :flats, :invalid_with_letters_floor }
@@ -72,7 +72,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat year of construction' do
+  describe '#year_of_construction' do
     let(:invalid_big_year_of_construction) { build :flats, :invalid_big_year_of_construction }
     let(:invalid_negative_year_of_construction) { build :flats, :invalid_negative_year_of_construction }
     let(:invalid_with_letters_year_of_construction) { build :flats, :invalid_with_letters_year_of_construction }
@@ -90,7 +90,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat celling height' do
+  describe '#celling_height' do
     let(:invalid_big_celling_height) { build :flats, :invalid_big_celling_height }
     let(:invalid_negative_celling_height) { build :flats, :invalid_negative_celling_height }
     let(:invalid_with_letters_celling_height) { build :flats, :invalid_with_letters_celling_height }
@@ -108,7 +108,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat total area' do
+  describe '#total_area' do
     let(:invalid_big_total_area) { build :flats, :invalid_big_total_area }
     let(:invalid_negative_total_area) { build :flats, :invalid_negative_total_area }
     let(:invalid_with_letters_total_area) { build :flats, :invalid_with_letters_total_area }
@@ -126,7 +126,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat living area' do
+  describe '#living_area' do
     let(:invalid_big_living_area) { build :flats, :invalid_big_living_area }
     let(:invalid_negative_living_area) { build :flats, :invalid_negative_living_area }
     let(:invalid_with_letters_living_area) { build :flats, :invalid_with_letters_living_area }
@@ -144,7 +144,7 @@ RSpec.describe Flat, type: :model do
     end
   end
 
-  describe 'create flat kitchen area' do
+  describe '#kitchen_area' do
     let(:invalid_big_kitchen_area) { build :flats, :invalid_big_kitchen_area }
     let(:invalid_negative_kitchen_area) { build :flats, :invalid_negative_kitchen_area }
     let(:invalid_with_letters_kitchen_area) { build :flats, :invalid_with_letters_kitchen_area }

@@ -19,8 +19,8 @@
 require 'rails_helper'
 
 RSpec.describe District, type: :model do
-  describe 'create district name' do
-    let(:district) { build :district }
+  describe '.district' do
+    let(:district) { create :district }
     let(:invalid_long) { build :district, :invalid_long }
     let(:invalid_short) { build :district, :invalid_short }
     let(:invalid_with_numbers) { build :district, :invalid_with_numbers }

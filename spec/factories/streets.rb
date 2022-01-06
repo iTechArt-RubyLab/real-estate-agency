@@ -19,7 +19,6 @@
 FactoryBot.define do
   factory :street, class: Street do
     association :district
-
     name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
 
     trait :invalid_long do

@@ -10,8 +10,8 @@
 require 'rails_helper'
 
 RSpec.describe Renovation, type: :model do
-  describe 'create renovation name' do
-    let(:renovation) { build :renovation }
+  describe '.renovation' do
+    let(:renovation) { create :renovation }
     let(:invalid_long) { build :renovation, :invalid_long }
     let(:invalid_short) { build :renovation, :invalid_short }
     let(:invalid_with_numbers) { build :renovation, :invalid_with_numbers }

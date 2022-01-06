@@ -28,15 +28,15 @@
 require 'rails_helper'
 
 RSpec.describe CountrySideHouse, type: :model do
-  describe 'create country side house' do
-    let(:country_side_house) { build :country_side_house }
+  describe '.country_side_house' do
+    let(:country_side_house) { create :country_side_house }
 
     context 'with valid attributes' do
       it { expect(country_side_house).to be_valid }
     end
   end
 
-  describe 'create country side house floors count' do
+  describe '#floors_count' do
     let(:invalid_big_floors_count) { build :country_side_house, :invalid_big_floors_count }
     let(:invalid_negative_floors_count) { build :country_side_house, :invalid_negative_floors_count }
     let(:invalid_with_letters_floors_count) { build :country_side_house, :invalid_with_letters_floors_count }
@@ -54,7 +54,7 @@ RSpec.describe CountrySideHouse, type: :model do
     end
   end
 
-  describe 'create country side house land area' do
+  describe '#land_area' do
     let(:invalid_big_land_area) { build :country_side_house, :invalid_big_land_area }
     let(:invalid_negative_land_area) { build :country_side_house, :invalid_negative_land_area }
     let(:invalid_with_letters_land_area) { build :country_side_house, :invalid_with_letters_land_area }
@@ -72,7 +72,7 @@ RSpec.describe CountrySideHouse, type: :model do
     end
   end
 
-  describe 'create country side house total area' do
+  describe '#total_area' do
     let(:invalid_big_total_area) { build :country_side_house, :invalid_big_total_area }
     let(:invalid_negative_total_area) { build :country_side_house, :invalid_negative_total_area }
     let(:invalid_with_letters_total_area) { build :country_side_house, :invalid_with_letters_total_area }
@@ -90,7 +90,7 @@ RSpec.describe CountrySideHouse, type: :model do
     end
   end
 
-  describe 'create country side house year of construction' do
+  describe '#year_of_construction' do
     let(:invalid_big_year_of_construction) { build :country_side_house, :invalid_big_year_of_construction }
     let(:invalid_negative_year_of_construction) { build :country_side_house, :invalid_negative_year_of_construction }
     let(:invalid_with_letters_year_of_construction) do

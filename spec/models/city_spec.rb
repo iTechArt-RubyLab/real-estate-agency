@@ -13,7 +13,7 @@
 require 'rails_helper'
 
 RSpec.describe City, type: :model do
-  describe 'create city name' do
+  describe '.city' do
     let(:city) { create :city }
     let(:invalid_long) { build :city, :invalid_long }
     let(:invalid_short) { build :city, :invalid_short }

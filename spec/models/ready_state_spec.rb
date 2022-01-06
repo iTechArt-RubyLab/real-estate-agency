@@ -10,8 +10,8 @@
 require 'rails_helper'
 
 RSpec.describe ReadyState, type: :model do
-  describe 'create ready state name' do
-    let(:ready_state) { build :ready_state }
+  describe '.ready_state' do
+    let(:ready_state) { create :ready_state }
     let(:invalid_long) { build :ready_state, :invalid_long }
     let(:invalid_short) { build :ready_state, :invalid_short }
     let(:invalid_with_numbers) { build :ready_state, :invalid_with_numbers }

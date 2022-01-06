@@ -20,15 +20,15 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  describe 'create address' do
-    let(:address) { build :addresses }
+  describe '.address' do
+    let(:address) { create :addresses }
 
     context 'with valid attributes' do
       it { expect(address).to be_valid }
     end
   end
 
-  describe 'create address building' do
+  describe '#building' do
     let(:invalid_big_building) { build :addresses, :invalid_big_building }
     let(:invalid_negative_building) { build :addresses, :invalid_negative_building }
     let(:invalid_with_letters_building) { build :addresses, :invalid_with_letters_building }
@@ -46,7 +46,7 @@ RSpec.describe Address, type: :model do
     end
   end
 
-  describe 'create address description' do
+  describe '#description' do
     let(:invalid_long_description) { build :addresses, :invalid_long_description }
     let(:invalid_short_description) { build :addresses, :invalid_short_description }
 

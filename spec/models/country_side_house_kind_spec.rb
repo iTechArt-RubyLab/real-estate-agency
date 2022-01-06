@@ -10,8 +10,8 @@
 require 'rails_helper'
 
 RSpec.describe CountrySideHouseKind, type: :model do
-  describe 'create country side house kind name' do
-    let(:country_side_house_kind) { build :country_side_house_kind }
+  describe '.country_side_house_kind' do
+    let(:country_side_house_kind) { create :country_side_house_kind }
     let(:invalid_long) { build :country_side_house_kind, :invalid_long }
     let(:invalid_short) { build :country_side_house_kind, :invalid_short }
     let(:invalid_with_numbers) { build :country_side_house_kind, :invalid_with_numbers }

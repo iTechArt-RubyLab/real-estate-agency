@@ -10,8 +10,8 @@
 require 'rails_helper'
 
 RSpec.describe CommercialPremisesKind, type: :model do
-  describe 'create commercial premises kind name' do
-    let(:commercial_premises_kind) { build :commercial_premises_kind }
+  describe '.commercial_premises_kind' do
+    let(:commercial_premises_kind) { create :commercial_premises_kind }
     let(:invalid_long) { build :commercial_premises_kind, :invalid_long }
     let(:invalid_short) { build :commercial_premises_kind, :invalid_short }
     let(:invalid_with_numbers) { build :commercial_premises_kind, :invalid_with_numbers }
