@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :tags
   resources :changes_histories
   resources :property_types
   resources :realtor_profiles
