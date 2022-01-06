@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
   resources :changes_histories
+  resources :property_types
   resources :country_side_houses
   resources :ready_states
   resources :country_side_house_kinds
