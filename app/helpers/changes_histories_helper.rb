@@ -1,0 +1,2 @@
+module ChangesHistoriesHelper
+end
