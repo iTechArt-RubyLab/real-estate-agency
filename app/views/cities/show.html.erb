@@ -23,35 +23,23 @@
 <%= link_to 'Edit', edit_city_path(@city), class: "btn btn-warning" %>
 <%= link_to 'Back', cities_path, class: "btn btn-danger" %>
 
-<h4 class="mt-5">Districts with streets of <%= @city.name %> </h4>
+<h4 class="mt-5">Districts of <%= @city.name %> city</h4>
 
 <table class="table table-bordered table-hover mt-3">
   <thead>
     <tr style="background-color: #C8EEFF;">
-      <th>Distrcit</th>
+      <th>District</th>
       <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @districts.each do |district| %>
-      <tr style="background-color: #E2F6FF">
+    <% @city.districts.each do |district| %>
+      <tr>
         <td ><%= district.name %></td>
         <td><%= link_to 'Show', district %></td>
         <td><%= link_to 'Edit', edit_district_path(district) %></td>
         <td><%= link_to 'Destroy', district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <tbody>
-            <% district.streets.each do |street| %>
-              <tr style="height: 30%">
-                <td><%= street.name %></td>
-                <td><%= link_to 'Show', street %></td>
-                <td><%= link_to 'Edit', edit_street_path(street) %></td>
-                <td><%= link_to 'Destroy', street, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </td>
       </tr>
     <% end %>
   </tbody>
