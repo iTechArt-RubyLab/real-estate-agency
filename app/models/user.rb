@@ -21,15 +21,22 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  user_info_id           :bigint           not null
 #
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_user_info_id          (user_info_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_info_id => user_infos.id)
 #
 class User < ApplicationRecord
   has_one_attached :avatar
+  has_many :changes_histories
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,

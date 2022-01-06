@@ -1,0 +1,22 @@
+<%= form_with(model: client_profile) do |form| %>
+  <% if client_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client_profile.errors.count, "error") %> prohibited this client_profile from being saved:</h2>
+
+      <ul>
+        <% client_profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :country_id %>
+    <%= form.text_field :country_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

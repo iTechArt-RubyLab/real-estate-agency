@@ -1,5 +1,5 @@
 class PropertyTypesController < ApplicationController
-  before_action :set_property_type, only: %i[ show edit update destroy ]
+  before_action :set_property_type, only: %i[show edit update destroy]
 
   # GET /property_types or /property_types.json
   def index
@@ -7,8 +7,7 @@ class PropertyTypesController < ApplicationController
   end
 
   # GET /property_types/1 or /property_types/1.json
-  def show
-  end
+  def show; end
 
   # GET /property_types/new
   def new
@@ -16,8 +15,7 @@ class PropertyTypesController < ApplicationController
   end
 
   # GET /property_types/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /property_types or /property_types.json
   def create
@@ -25,7 +23,7 @@ class PropertyTypesController < ApplicationController
 
     respond_to do |format|
       if @property_type.save
-        format.html { redirect_to property_type_url(@property_type), notice: "Property type was successfully created." }
+        format.html { redirect_to property_type_url(@property_type), notice: 'Property type was successfully created.' }
         format.json { render :show, status: :created, location: @property_type }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class PropertyTypesController < ApplicationController
   def update
     respond_to do |format|
       if @property_type.update(property_type_params)
-        format.html { redirect_to property_type_url(@property_type), notice: "Property type was successfully updated." }
+        format.html { redirect_to property_type_url(@property_type), notice: 'Property type was successfully updated.' }
         format.json { render :show, status: :ok, location: @property_type }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class PropertyTypesController < ApplicationController
     @property_type.destroy
 
     respond_to do |format|
-      format.html { redirect_to property_types_url, notice: "Property type was successfully destroyed." }
+      format.html { redirect_to property_types_url, notice: 'Property type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_property_type
-      @property_type = PropertyType.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def property_type_params
-      params.require(:property_type).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_property_type
+    @property_type = PropertyType.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def property_type_params
+    params.require(:property_type).permit(:name)
+  end
 end
