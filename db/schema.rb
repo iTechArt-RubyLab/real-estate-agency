@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_060612) do
+ActiveRecord::Schema.define(version: 2022_01_06_154844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.index ["street_id"], name: "index_addresses_on_street_id"
   end
 
+  create_table "changes_histories", force: :cascade do |t|
+    t.string "changes"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_changes_histories_on_user_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "locality_size"
@@ -59,6 +67,18 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "client_profiles", force: :cascade do |t|
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_client_profiles_on_country_id"
+  end
+
+  create_table "client_profiles_tags", id: false, force: :cascade do |t|
+    t.bigint "client_profile_id", null: false
+    t.bigint "tag_id", null: false
   end
 
   create_table "commercial_premises", force: :cascade do |t|
@@ -74,6 +94,13 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
 
   create_table "commercial_premises_kinds", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,8 +150,26 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.index ["wall_material_id"], name: "index_flats_on_wall_material_id"
   end
 
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "property_types_realtor_profiles", id: false, force: :cascade do |t|
+    t.bigint "realtor_profile_id", null: false
+    t.bigint "property_type_id", null: false
+  end
+
   create_table "ready_states", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "realtor_profiles", force: :cascade do |t|
+    t.string "registration_number"
+    t.date "employment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -141,6 +186,27 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["district_id"], name: "index_streets_on_district_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "second_name"
+    t.date "date_of_birth"
+    t.integer "gender"
+    t.bigint "profilable_id"
+    t.string "profilable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_user_infos_on_city_id"
+    t.index ["profilable_type", "profilable_id"], name: "index_user_infos_on_profilable_type_and_profilable_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -162,9 +228,11 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
     t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_info_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_info_id"], name: "index_users_on_user_info_id"
   end
 
   create_table "wall_materials", force: :cascade do |t|
@@ -176,6 +244,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "streets"
+  add_foreign_key "changes_histories", "users"
+  add_foreign_key "client_profiles", "countries"
   add_foreign_key "commercial_premises", "commercial_premises_kinds"
   add_foreign_key "country_side_houses", "country_side_house_kinds"
   add_foreign_key "country_side_houses", "ready_states"
@@ -184,4 +254,6 @@ ActiveRecord::Schema.define(version: 2022_01_02_060612) do
   add_foreign_key "flats", "renovations"
   add_foreign_key "flats", "wall_materials"
   add_foreign_key "streets", "districts"
+  add_foreign_key "user_infos", "cities"
+  add_foreign_key "users", "user_infos"
 end
