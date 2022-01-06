@@ -11,13 +11,13 @@ require 'rails_helper'
 
 RSpec.describe Renovation, type: :model do
   describe 'create renovation name' do
-    let(:valid) { build :renovation, :valid }
+    let(:renovation) { build :renovation }
     let(:invalid_long) { build :renovation, :invalid_long }
     let(:invalid_short) { build :renovation, :invalid_short }
     let(:invalid_with_numbers) { build :renovation, :invalid_with_numbers }
 
-    context 'with valid' do
-      it { expect(valid).to be_valid }
+    context 'with valid attributes' do
+      it { expect(renovation).to be_valid }
     end
 
     context 'when too long' do

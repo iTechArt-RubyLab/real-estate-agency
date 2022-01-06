@@ -9,9 +9,7 @@
 #
 FactoryBot.define do
   factory :renovation, class: Renovation do
-    trait :valid do
-      name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
-    end
+    name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
 
     trait :invalid_long do
       name { Faker::Lorem.characters(number: 31, min_alpha: 31) }

@@ -11,13 +11,13 @@ require 'rails_helper'
 
 RSpec.describe CommercialPremisesKind, type: :model do
   describe 'create commercial premises kind name' do
-    let(:valid) { build :commercial_premises_kind, :valid }
+    let(:commercial_premises_kind) { build :commercial_premises_kind }
     let(:invalid_long) { build :commercial_premises_kind, :invalid_long }
     let(:invalid_short) { build :commercial_premises_kind, :invalid_short }
     let(:invalid_with_numbers) { build :commercial_premises_kind, :invalid_with_numbers }
 
-    context 'with valid' do
-      it { expect(valid).to be_valid }
+    context 'with valid attributes' do
+      it { expect(commercial_premises_kind).to be_valid }
     end
 
     context 'when too long' do

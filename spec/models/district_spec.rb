@@ -20,13 +20,13 @@ require 'rails_helper'
 
 RSpec.describe District, type: :model do
   describe 'create district name' do
-    let(:valid) { build :district, :valid }
+    let(:district) { build :district }
     let(:invalid_long) { build :district, :invalid_long }
     let(:invalid_short) { build :district, :invalid_short }
     let(:invalid_with_numbers) { build :district, :invalid_with_numbers }
 
-    context 'with valid' do
-      it { expect(valid).to be_valid }
+    context 'with valid attributes' do
+      it { expect(district).to be_valid }
     end
 
     context 'when too long' do

@@ -11,13 +11,13 @@ require 'rails_helper'
 
 RSpec.describe ReadyState, type: :model do
   describe 'create ready state name' do
-    let(:valid) { build :ready_state, :valid }
+    let(:ready_state) { build :ready_state }
     let(:invalid_long) { build :ready_state, :invalid_long }
     let(:invalid_short) { build :ready_state, :invalid_short }
     let(:invalid_with_numbers) { build :ready_state, :invalid_with_numbers }
 
-    context 'with valid' do
-      it { expect(valid).to be_valid }
+    context 'with valid attributes' do
+      it { expect(ready_state).to be_valid }
     end
 
     context 'when too long' do

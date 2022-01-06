@@ -28,95 +28,85 @@
 require 'rails_helper'
 
 RSpec.describe CountrySideHouse, type: :model do
-  describe 'create country side house floors count' do
-    let(:valid) { build :floors_count, :valid }
-    let(:invalid_big) { build :floors_count, :invalid_big }
-    let(:invalid_negative) { build :floors_count, :invalid_negative }
-    let(:invalid_with_letters) { build :floors_count, :invalid_with_letters }
+  describe 'create country side house' do
+    let(:country_side_house) { build :country_side_house }
 
     context 'with valid attributes' do
-      it { expect(valid).to be_valid }
+      it { expect(country_side_house).to be_valid }
     end
+  end
+
+  describe 'create country side house floors count' do
+    let(:invalid_big_floors_count) { build :country_side_house, :invalid_big_floors_count }
+    let(:invalid_negative_floors_count) { build :country_side_house, :invalid_negative_floors_count }
+    let(:invalid_with_letters_floors_count) { build :country_side_house, :invalid_with_letters_floors_count }
 
     context 'when too big floors count' do
-      it { expect(invalid_big).not_to be_valid }
+      it { expect(invalid_big_floors_count).not_to be_valid }
     end
 
     context 'when negative floors count' do
-      it { expect(invalid_negative).not_to be_valid }
+      it { expect(invalid_negative_floors_count).not_to be_valid }
     end
 
     context 'when floors count with letters' do
-      it { expect(invalid_with_letters).not_to be_valid }
+      it { expect(invalid_with_letters_floors_count).not_to be_valid }
     end
   end
 
   describe 'create country side house land area' do
-    let(:valid) { build :land_area, :valid }
-    let(:invalid_big) { build :land_area, :invalid_big }
-    let(:invalid_negative) { build :land_area, :invalid_negative }
-    let(:invalid_with_letters) { build :land_area, :invalid_with_letters }
-
-    context 'with valid attributes' do
-      it { expect(valid).to be_valid }
-    end
+    let(:invalid_big_land_area) { build :country_side_house, :invalid_big_land_area }
+    let(:invalid_negative_land_area) { build :country_side_house, :invalid_negative_land_area }
+    let(:invalid_with_letters_land_area) { build :country_side_house, :invalid_with_letters_land_area }
 
     context 'when too big land area' do
-      it { expect(invalid_big).not_to be_valid }
+      it { expect(invalid_big_land_area).not_to be_valid }
     end
 
     context 'when negative land area' do
-      it { expect(invalid_negative).not_to be_valid }
+      it { expect(invalid_negative_land_area).not_to be_valid }
     end
 
     context 'when land area with letters' do
-      it { expect(invalid_with_letters).not_to be_valid }
+      it { expect(invalid_with_letters_land_area).not_to be_valid }
     end
   end
 
   describe 'create country side house total area' do
-    let(:valid) { build :total_area, :valid }
-    let(:invalid_big) { build :total_area, :invalid_big }
-    let(:invalid_negative) { build :total_area, :invalid_negative }
-    let(:invalid_with_letters) { build :total_area, :invalid_with_letters }
-
-    context 'with valid attributes' do
-      it { expect(valid).to be_valid }
-    end
+    let(:invalid_big_total_area) { build :country_side_house, :invalid_big_total_area }
+    let(:invalid_negative_total_area) { build :country_side_house, :invalid_negative_total_area }
+    let(:invalid_with_letters_total_area) { build :country_side_house, :invalid_with_letters_total_area }
 
     context 'when too big total area' do
-      it { expect(invalid_big).not_to be_valid }
+      it { expect(invalid_big_total_area).not_to be_valid }
     end
 
     context 'when negative total area' do
-      it { expect(invalid_negative).not_to be_valid }
+      it { expect(invalid_negative_total_area).not_to be_valid }
     end
 
     context 'when total area with letters' do
-      it { expect(invalid_with_letters).not_to be_valid }
+      it { expect(invalid_with_letters_total_area).not_to be_valid }
     end
   end
 
   describe 'create country side house year of construction' do
-    let(:valid) { build :year_of_construction, :valid }
-    let(:invalid_big) { build :year_of_construction, :invalid_big }
-    let(:invalid_negative) { build :year_of_construction, :invalid_negative }
-    let(:invalid_with_letters) { build :year_of_construction, :invalid_with_letters }
-
-    context 'with valid attributes' do
-      it { expect(valid).to be_valid }
+    let(:invalid_big_year_of_construction) { build :country_side_house, :invalid_big_year_of_construction }
+    let(:invalid_negative_year_of_construction) { build :country_side_house, :invalid_negative_year_of_construction }
+    let(:invalid_with_letters_year_of_construction) do
+      build :country_side_house, :invalid_with_letters_year_of_construction
     end
 
     context 'when too big year of construction' do
-      it { expect(invalid_big).not_to be_valid }
+      it { expect(invalid_big_year_of_construction).not_to be_valid }
     end
 
     context 'when negative year of construction' do
-      it { expect(invalid_negative).not_to be_valid }
+      it { expect(invalid_negative_year_of_construction).not_to be_valid }
     end
 
     context 'when year of construction with letters' do
-      it { expect(invalid_with_letters).not_to be_valid }
+      it { expect(invalid_with_letters_year_of_construction).not_to be_valid }
     end
   end
 end
