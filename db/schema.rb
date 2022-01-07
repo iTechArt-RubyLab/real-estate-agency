@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_154844) do
+ActiveRecord::Schema.define(version: 2022_01_07_154000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,22 @@ ActiveRecord::Schema.define(version: 2022_01_06_154844) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.boolean "can_read_lot"
+    t.boolean "can_edit_lot"
+    t.boolean "can_asign"
+    t.boolean "can_read_dictionary"
+    t.boolean "can_edit_dictionary"
+    t.boolean "can_give_permission"
+    t.boolean "can_work_with_all_property_types"
+    t.boolean "can_create_role"
+    t.boolean "can_approve_realtor"
+    t.boolean "can_freeze_user"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "streets", force: :cascade do |t|
     t.string "name"
     t.bigint "district_id", null: false
@@ -229,9 +245,11 @@ ActiveRecord::Schema.define(version: 2022_01_06_154844) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_info_id"
+    t.bigint "role_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["user_info_id"], name: "index_users_on_user_info_id"
   end
 
@@ -255,5 +273,6 @@ ActiveRecord::Schema.define(version: 2022_01_06_154844) do
   add_foreign_key "flats", "wall_materials"
   add_foreign_key "streets", "districts"
   add_foreign_key "user_infos", "cities"
+  add_foreign_key "users", "roles"
   add_foreign_key "users", "user_infos"
 end
