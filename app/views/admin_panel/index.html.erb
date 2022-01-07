@@ -1,55 +1,4 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-  Admin panel
-</a>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-<div class="offcanvas-header">
-  <h5 class="offcanvas-title" id="offcanvasExampleLabel">All tables</h5>
-  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-</div>
-<div class="offcanvas-body">
-  <div>
-    You can read, edit, delete inforamation from all tables!!!
-  </div>
-  <div class="dropdown mt-3">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-      Addresses
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <li><a class="dropdown-item" href="http://localhost:3000/cities">Cities</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/districts">Districts</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/streets">Street</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/addresses">Addresses</a></li>
-    </ul>
-  </div>
-  <div class="dropdown mt-3">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-      Properties parametrs
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <li><a class="dropdown-item" href="http://localhost:3000/commercial_premises_kinds">Commercial premises kinds</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/country_side_house_kinds">Country side house kinds</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/ready_states">Ready states</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/renovations">Renovations</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/wall_materials">Wall materials</a></li>
-    </ul>
-  </div>
-  <div class="dropdown mt-3">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-      Properties
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <li><a class="dropdown-item" href="http://localhost:3000/commercial_premises">Commercial premises</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/country_side_houses">Country side houses</a></li>
-      <li><a class="dropdown-item" href="http://localhost:3000/flats">Flats</a></li>
-    </ul>
-  </div>
-</div>
-</div>
+<%= stylesheet_link_tag :admin_panel %>
 
 <% if user_signed_in? %>
   <h1> Hello <%= current_user.email.split('@').first %>!</h1>
@@ -59,25 +8,70 @@
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col m-2 p-5 border" style="background-color: #AEEEFF">
-      <h3>Number of users</h3>
+    <div class="col-3">
+      <div class="col m-2 p-1 border">
+        <h4><a><%= link_to 'Cities', cities_path, class: "menu_item" %></a></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Addresses', addresses_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Commercial premises', commercial_premises_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Commercial premises kinds', commercial_premises_kinds_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Country side houses', country_side_houses_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Country side houses kinds', country_side_house_kinds_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Flats', flats_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Ready states', ready_states_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Renovations', renovations_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Wall materials', wall_materials_path, class: "menu_item" %></h4>
+      </div>
     </div>
-    <div class="col m-2 p-5 border" style="background-color: #FFC5F1">
-      <h3>Number of clients</h3>
+    <div class="col-3">
+      <div class="col m-2 p-5 border report_item">
+        <h3>Number of users</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Number of clients</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Number of clients</h3>
+      </div>
     </div>
-    <div class="col m-2 p-5 border" style="background-color: #D1FFBE">
-      <h3>Completed lots</h3>
+    <div class="col-3">
+      <div class="col m-2 p-5 border report_item">
+        <h3>Best realtasdadasdor</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Most active user</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Number of clients</h3>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col m-2 p-5 border" style="background-color: #FFC8C8">
-      <h3>Best realtor</h3>
-    </div>
-    <div class="col m-2 p-5 border" style="background-color: #FFEDAF">
-      <h3>Most active user</h3>
-    </div>
-    <div class="col m-2 p-5 border" style="background-color: #C8CAFF">
-      <h3>Most interesting lot</h3>
+    <div class="col-3">
+      <div class="col m-2 p-5 border report_item">
+        <h3>Completed lots</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Most interesting lot</h3>
+      </div>
+      <div class="col m-2 p-5 border report_item">
+        <h3>Number of clients</h3>
+      </div>
     </div>
   </div>
 </div>
