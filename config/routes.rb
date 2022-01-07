@@ -2,7 +2,6 @@
 #
 
 Rails.application.routes.draw do
-  resources :roles
   get 'admin_panel', to: 'admin_panel#index'
   resources :client_profiles
   resources :user_infos
@@ -29,6 +28,9 @@ Rails.application.routes.draw do
   resources :addresses
   resources :streets
   resources :districts
+  resources :users do
+    resources :roles
+  end
   devise_for :users, controllers: { 
     omniauth_callbacks: 'omniauth',
     sessions: 'users/sessions',
