@@ -3,7 +3,10 @@ class RolesController < ApplicationController
 
   # GET /roles or /roles.json
   def index
-    @roles = Role.all
+    respond_to do |format|
+      format.html
+      format.json { render json: RoleDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /roles/1 or /roles/1.json
