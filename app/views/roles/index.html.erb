@@ -2,9 +2,9 @@
 
 <h1>Roles</h1>
 
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="roles-datatable", data-source="<%= roles_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
       <th>Can read lot</th>
       <th>Can edit lot</th>
@@ -16,32 +16,38 @@
       <th>Can create role</th>
       <th>Can approve realtor</th>
       <th>Can freeze user</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @roles.each do |role| %>
-      <tr>
-        <td><%= role.name %></td>
-        <td><%= role.can_read_lot %></td>
-        <td><%= role.can_edit_lot %></td>
-        <td><%= role.can_asign %></td>
-        <td><%= role.can_read_dictionary %></td>
-        <td><%= role.can_edit_dictionary %></td>
-        <td><%= role.can_give_permission %></td>
-        <td><%= role.can_work_with_all_property_types %></td>
-        <td><%= role.can_create_role %></td>
-        <td><%= role.can_approve_realtor %></td>
-        <td><%= role.can_freeze_user %></td>
-        <td><%= link_to 'Show', role %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#roles-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#roles-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "can_read_lot"},
+      {"data": "can_edit_lot"},
+      {"data": "can_asign"},
+      {"data": "can_read_dictionary"},
+      {"data": "can_edit_dictionary"},
+      {"data": "can_give_permission"},
+      {"data": "can_work_with_all_property_types"},
+      {"data": "can_create_role"},
+      {"data": "can_approve_realtor"},
+      {"data": "can_freeze_user"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
 <%= link_to 'New Role', new_role_path %>
