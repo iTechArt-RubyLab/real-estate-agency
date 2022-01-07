@@ -4,11 +4,10 @@
   <h1>Districts</h1>
 </div>
 
-<table class="table table-striped table-bordered table-hover" style="width:100%" id="districts-datatable", data-source="<%= districts_path(format: :json) %>">
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="districts-datatable", data-source="<%= city_districts_path(format: :json, city_id: 1) %>">
   <thead>
     <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th>City</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -27,7 +26,6 @@
     "pagingType": "full_numbers",
     "columns": [
       {"data": "name"},
-      {"data": "city_id"},
       {"data": "actions"}
     ]
   });
