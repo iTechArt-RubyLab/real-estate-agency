@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   resources :wall_materials
   resources :cities do
     resources :streets
+    resources :districts do
+      resources :streets
+    end
   end
   resources :addresses
   resources :streets

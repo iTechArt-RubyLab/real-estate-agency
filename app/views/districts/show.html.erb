@@ -15,22 +15,32 @@
 
 <h4 class="mt-5">Streets of <%= @district.name %> district</h4>
 
-<table class="table table-bordered table-hover mt-3">
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="streets-datatable", data-source="<%= city_district_streets_path(format: :json, city_id: 1, district_id: @district.id) %>">
   <thead>
     <tr style="background-color: #C8EEFF;">
-      <th>Street</th>
-      <th colspan="4"></th>
+      <th>Name</th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @district.streets.each do |street| %>
-      <tr>
-        <td ><%= street.name %></td>
-        <td><%= link_to 'Show', street %></td>
-        <td><%= link_to 'Edit', edit_street_path(street) %></td>
-        <td><%= link_to 'Destroy', street, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
+
+<script>
+  jQuery(document).ready(function() {
+  $('#streets-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#streets-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
+
+<%= link_to 'New District', new_city_district_street_path(city_id: 1, district_id: @district.id), class: "btn btn-outline-info" %>
