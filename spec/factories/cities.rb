@@ -12,9 +12,7 @@
 #
 FactoryBot.define do
   factory :city, class: City do
-    trait :valid do
-      name { Faker::Address.city }
-    end
+    name { Faker::Address.city }
 
     trait :invalid_long do
       name { Faker::Lorem.characters(number: 41, min_alpha: 41) }
@@ -28,22 +26,4 @@ FactoryBot.define do
       name { Faker::Lorem.characters(number: 10, min_alpha: 4, min_numeric: 1) }
     end
   end
-
-  # factory :city do
-  #   trait :brest_region do
-  #     region { :brest }
-  #   end
-
-  #   trait :gomel_region do
-  #     region { :gomel }
-  #   end
-
-  #   trait :town_locality_size do
-  #     locality_size { :town }
-  #   end
-
-  #   trait :village_locality_size do
-  #     locality_size { :village }
-  #   end
-  # end
 end
