@@ -1,17 +1,17 @@
 class StreetDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
-  def_delegators :@view, :link_to, :street_path, :edit_street_path
+  def_delegators :@view, :link_to, :city_district_street_path, :edit_city_district_street_url
 
   def initialize(params, opts = {})
     @view = opts[:view_context]
+    @params = params
     super
   end
 
   def view_columns
     @view_columns ||= {
       name: { source: 'Street.name', cond: :like, searchable: true },
-      district_id: { source: 'District.name', cond: :like, searchable: true },
       actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end
@@ -20,10 +20,11 @@ class StreetDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         name: record.name,
-        district_id: record.district.name,
         actions: link_to('Show', record)
           .concat(' | ')
-          .concat(link_to('Edit', edit_street_path(record)))
+          .concat(link_to('Edit',
+                          edit_city_district_street_url(record, city_id: @params[:city_id],
+                                                                district_id: @params[:district_id])))
           .concat(' | ')
           .concat(link_to('Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }))
       }
@@ -31,6 +32,6 @@ class StreetDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Street.joins(:district)
+    Street.preload(:district).where(district_id: @params[:district_id])
   end
 end
