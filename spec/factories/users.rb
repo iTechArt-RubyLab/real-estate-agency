@@ -21,6 +21,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  role_id                :bigint
 #  user_info_id           :bigint
 #
 # Indexes
@@ -28,10 +29,12 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_role_id               (role_id)
 #  index_users_on_user_info_id          (user_info_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (role_id => roles.id)
 #  fk_rails_...  (user_info_id => user_infos.id)
 #
 FactoryBot.define do

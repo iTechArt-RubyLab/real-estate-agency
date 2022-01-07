@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @role.name %>
+</p>
+
+<p>
+  <strong>Can read lot:</strong>
+  <%= @role.can_read_lot %>
+</p>
+
+<p>
+  <strong>Can edit lot:</strong>
+  <%= @role.can_edit_lot %>
+</p>
+
+<p>
+  <strong>Can asign:</strong>
+  <%= @role.can_asign %>
+</p>
+
+<p>
+  <strong>Can read dictionary:</strong>
+  <%= @role.can_read_dictionary %>
+</p>
+
+<p>
+  <strong>Can edit dictionary:</strong>
+  <%= @role.can_edit_dictionary %>
+</p>
+
+<p>
+  <strong>Can give permission:</strong>
+  <%= @role.can_give_permission %>
+</p>
+
+<p>
+  <strong>Can work with all property types:</strong>
+  <%= @role.can_work_with_all_property_types %>
+</p>
+
+<p>
+  <strong>Can create role:</strong>
+  <%= @role.can_create_role %>
+</p>
+
+<p>
+  <strong>Can approve realtor:</strong>
+  <%= @role.can_approve_realtor %>
+</p>
+
+<p>
+  <strong>Can freeze user:</strong>
+  <%= @role.can_freeze_user %>
+</p>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>
