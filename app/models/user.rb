@@ -21,7 +21,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  user_info_id           :bigint           not null
+#  user_info_id           :bigint
 #
 # Indexes
 #
@@ -37,6 +37,7 @@
 class User < ApplicationRecord
   has_one_attached :avatar
   has_many :changes_histories
+  belongs_to :user_info, optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
