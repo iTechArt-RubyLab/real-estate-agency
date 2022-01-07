@@ -11,7 +11,7 @@
 #  second_name     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  city_id         :bigint           not null
+#  city_id         :bigint
 #  profilable_id   :bigint
 #
 # Indexes
@@ -26,4 +26,5 @@
 class UserInfo < ApplicationRecord
   belongs_to :city
   belongs_to :profilable, polymorphic: true
+  has_one :user
 end

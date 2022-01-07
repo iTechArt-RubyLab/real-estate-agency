@@ -12,6 +12,7 @@
 #
 class City < ApplicationRecord
   has_many :districts
+  has_many :user_infos
   enum locality_size: %i[no_information village town city]
   enum region: %i[brest gomel grodno minsk minsk_region mogilev vitebsk]
 
