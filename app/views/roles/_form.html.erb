@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@role) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :can_read_lot %>
+    <%= f.input :can_edit_lot %>
+    <%= f.input :can_asign %>
+    <%= f.input :can_read_dictionary %>
+    <%= f.input :can_edit_dictionary %>
+    <%= f.input :can_give_permission %>
+    <%= f.input :can_work_with_all_property_types %>
+    <%= f.input :can_create_role %>
+    <%= f.input :can_approve_realtor %>
+    <%= f.input :can_freeze_user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
