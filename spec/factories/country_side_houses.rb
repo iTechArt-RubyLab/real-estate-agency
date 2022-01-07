@@ -26,13 +26,61 @@
 #  fk_rails_...  (wall_material_id => wall_materials.id)
 #
 FactoryBot.define do
-  factory :country_side_house do
-    total_area { '9.99' }
-    land_area { '9.99' }
-    floors_count { 1 }
-    year_of_construction { 1 }
-    wall_material { nil }
-    country_side_house_kind { nil }
-    ready_state { nil }
+  factory :country_side_house, class: CountrySideHouse do
+    association :wall_material
+    association :country_side_house_kind
+    association :ready_state
+    floors_count { Faker::Number.within(range: 1..10) }
+    land_area { Faker::Number.within(range: 0.1..1000.0) }
+    total_area { Faker::Number.within(range: 0.1..1000.0) }
+    year_of_construction { Faker::Number.within(range: 1900..2022) }
+
+    trait :invalid_big_floors_count do
+      floors_count { Faker::Number.within(range: 11..20) }
+    end
+
+    trait :invalid_negative_floors_count do
+      floors_count { Faker::Number.negative }
+    end
+
+    trait :invalid_with_letters_floors_count do
+      floors_count { Faker::Movies::LordOfTheRings.character }
+    end
+
+    trait :invalid_big_land_area do
+      land_area { Faker::Number.within(range: 1000.1..2000.0) }
+    end
+
+    trait :invalid_negative_land_area do
+      land_area { Faker::Number.negative }
+    end
+
+    trait :invalid_with_letters_land_area do
+      land_area { Faker::Movies::LordOfTheRings.character }
+    end
+
+    trait :invalid_big_total_area do
+      total_area { Faker::Number.within(range: 1000.1..2000.0) }
+    end
+
+    trait :invalid_negative_total_area do
+      total_area { Faker::Number.negative }
+    end
+
+    trait :invalid_with_letters_total_area do
+      total_area { Faker::Movies::LordOfTheRings.character }
+    end
+
+    trait :invalid_big_year_of_construction do
+      year_of_construction { Faker::Number.within(range: 2023..2100) }
+    end
+
+    trait :invalid_negative_year_of_construction do
+      year_of_construction { Faker::Number.negative }
+    end
+
+    trait :invalid_with_letters_year_of_construction do
+      year_of_construction { Faker::Movies::LordOfTheRings.character }
+    end
   end
 end
