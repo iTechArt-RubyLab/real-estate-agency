@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  get 'admin_panel', to: 'admin_panel#index'
   resources :client_profiles
   resources :user_infos
   resources :countries
