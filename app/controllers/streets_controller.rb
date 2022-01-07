@@ -16,6 +16,8 @@ class StreetsController < ApplicationController
   # GET /streets/new
   def new
     @street = Street.new
+    @city = City.find(params[:city_id])
+    @district = District.find(params[:district_id])
   end
 
   # GET /streets/1/edit
