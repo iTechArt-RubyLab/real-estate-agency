@@ -18,6 +18,7 @@ class DistrictsController < ApplicationController
   # GET /districts/new
   def new
     @district = District.new
+    @city = City.find(params[:city_id])
   end
 
   # GET /districts/1/edit
