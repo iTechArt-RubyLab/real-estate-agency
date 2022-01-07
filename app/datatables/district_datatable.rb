@@ -1,7 +1,7 @@
 class DistrictDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
-  def_delegators :@view, :link_to, :city_district_path, :edit_city_district_url
+  def_delegators :@view, :link_to, :city_district_path, :edit_city_district_path
 
   def initialize(params, opts = {})
     @view = opts[:view_context]
@@ -22,7 +22,7 @@ class DistrictDatatable < AjaxDatatablesRails::ActiveRecord
         name: record.name,
         actions: link_to('Show', city_district_path(record, city_id: @params[:city_id]))
           .concat(' | ')
-          .concat(link_to('Edit', edit_city_district_url(record, city_id: @params[:city_id])))
+          .concat(link_to('Edit', edit_city_district_path(record, city_id: @params[:city_id])))
           .concat(' | ')
           .concat(link_to('Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }))
       }
