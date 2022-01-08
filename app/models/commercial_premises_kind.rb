@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 class CommercialPremisesKind < ApplicationRecord
-  has_one :commercial_premise
+  has_one :commercial_premise, dependent: :nullify
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
 

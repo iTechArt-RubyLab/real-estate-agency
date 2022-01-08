@@ -9,5 +9,5 @@
 #  updated_at :datetime         not null
 #
 class Country < ApplicationRecord
-  has_many :client_profiles
+  has_many :client_profiles, dependent: :delete_all
 end

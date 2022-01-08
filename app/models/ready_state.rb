@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 class ReadyState < ApplicationRecord
-  has_one :country_side_house
+  has_one :country_side_house, dependent: :nullify
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
 
