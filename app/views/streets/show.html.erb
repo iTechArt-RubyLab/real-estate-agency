@@ -11,4 +11,4 @@
 </p>
 
 <%= link_to 'Edit', edit_street_path(@street), class: "btn btn-warning" %>
-<%= link_to 'Back', streets_path, class: "btn btn-danger" %>
+<%= link_to 'Back', city_district_path(city_id: @street.district.city.id, id: @street.district.id), class: "btn btn-danger" %>

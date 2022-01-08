@@ -1,6 +1,6 @@
 <div class="mx-auto" style="width: 200px;">
   <h1>New Street</h1>
 </div>
-<%= render 'form', street: @street %>
+<%= render 'form', street: @street, district: @district %>
 
-<%= link_to 'Back', streets_path, class: "btn btn-danger" %>
+<%= link_to 'Back', city_district_path(id: @district.id), class: "btn btn-danger" %>

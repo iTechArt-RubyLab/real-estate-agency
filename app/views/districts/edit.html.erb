@@ -5,4 +5,4 @@
 <%= render 'form', district: @district %>
 
 <%= link_to 'Show', @district, class: "btn btn-warning" %>
-<%= link_to 'Back', districts_path, class: "btn btn-danger" %>
+<%= link_to 'Back', city_path(id: @district.city.id), class: "btn btn-danger" %>

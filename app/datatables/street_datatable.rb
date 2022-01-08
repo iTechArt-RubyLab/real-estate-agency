@@ -20,7 +20,7 @@ class StreetDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         name: record.name,
-        actions: link_to('Show', record)
+        actions: link_to('Show', city_district_street_path(record, city_id: @params[:city_id], district_id: @params[:district_id]))
           .concat(' | ')
           .concat(link_to('Edit',
                           edit_city_district_street_path(record, city_id: @params[:city_id],
