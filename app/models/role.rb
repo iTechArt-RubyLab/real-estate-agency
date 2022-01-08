@@ -18,5 +18,5 @@
 #  updated_at                       :datetime         not null
 #
 class Role < ApplicationRecord
-  has_one :user
+  has_one :user, dependent: :nullify
 end

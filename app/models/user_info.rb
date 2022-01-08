@@ -26,5 +26,5 @@
 class UserInfo < ApplicationRecord
   belongs_to :city
   belongs_to :profilable, polymorphic: true
-  has_one :user
+  has_one :user, dependent: :nullify
 end

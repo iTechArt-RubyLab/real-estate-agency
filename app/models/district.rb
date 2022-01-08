@@ -18,7 +18,7 @@
 #
 class District < ApplicationRecord
   belongs_to :city, optional: true
-  has_many :streets
+  has_many :streets, dependent: :delete_all
 
   validates :name, length: { in: 2..20 }, format: { with: /\A[a-zA-Z ]+\z/ }
 
