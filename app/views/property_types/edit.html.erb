@@ -1,6 +1,8 @@
-<h1>Editing Property Type</h1>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Editing Property Type</h1>
+</div>
 
 <%= render 'form', property_type: @property_type %>
 
-<%= link_to 'Show', @property_type %> |
-<%= link_to 'Back', property_types_path %>
+<%= link_to 'Show', @property_type, class: "btn btn-warning" %>
+<%= link_to 'Back', property_types_path, class: "btn btn-danger" %>
