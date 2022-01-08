@@ -18,7 +18,7 @@
 #
 class Street < ApplicationRecord
   belongs_to :district, optional: true
-  has_many :addresses
+  has_many :addresses, dependent: :delete_all
 
   delegate :city, to: :district
 
