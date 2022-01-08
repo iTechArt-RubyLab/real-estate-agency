@@ -3,7 +3,10 @@ class TagsController < ApplicationController
 
   # GET /tags or /tags.json
   def index
-    @tags = Tag.all
+    respond_to do |format|
+      format.html
+      format.json { render json: TagDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /tags/1 or /tags/1.json
