@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  country_id :bigint           not null
+#  country_id :bigint
 #
 # Indexes
 #
@@ -16,7 +16,7 @@
 #  fk_rails_...  (country_id => countries.id)
 #
 class ClientProfile < ApplicationRecord
-  belongs_to :country
+  belongs_to :country, optional: true
   has_and_belongs_to_many :tags
-  has_one :user_info, as: :profilable
+  has_one :user, as: :profilable
 end

@@ -34,6 +34,21 @@
     <%= form.select :gender, UserInfo.genders.map {|gen| gen.first } %>
   </div>
 
+  <div class="mx-auto" style="width: 500px; text-align: center">
+    <h2>Choose your role</h2>
+  </div>
+  
+  <%= form_for :user do |f| %>
+    <div class="field mb-3">
+      <%= f.label :User %>
+      <%= f.radio_button :role_id, Role.where(name: 'Registred user') %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :Realtor %>
+      <%= f.radio_button :role_id, Role.where(name: 'Realtor') %>
+    </div>
+  <% end %>
+
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
     <%= form.submit 'Save', class:"btn btn-outline-success" %>
   </div>
