@@ -3,7 +3,10 @@ class CountriesController < ApplicationController
 
   # GET /countries or /countries.json
   def index
-    @countries = Country.all
+    respond_to do |format|
+      format.html
+      format.json { render json: CountryDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /countries/1 or /countries/1.json
