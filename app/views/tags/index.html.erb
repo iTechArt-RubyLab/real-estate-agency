@@ -1,27 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="mx-auto" style="width: 200px;">
+  <h1>Tags</h1>
+</div>
 
-<h1>Tags</h1>
-
-<table>
+<table class="table table-striped table-bordered table-hover" style="width:100%" id="tags-datatable", data-source="<%= tags_path(format: :json) %>">
   <thead>
-    <tr>
+    <tr style="background-color: #C8EEFF;">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
-<br>
+<script>
+  jQuery(document).ready(function() {
+  $('#tags-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#tags-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'New Tag', new_tag_path, class: "btn btn-outline-info" %>

@@ -3,7 +3,10 @@ class PropertyTypesController < ApplicationController
 
   # GET /property_types or /property_types.json
   def index
-    @property_types = PropertyType.all
+    respond_to do |format|
+      format.html
+      format.json { render json: PropertyTypeDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /property_types/1 or /property_types/1.json
