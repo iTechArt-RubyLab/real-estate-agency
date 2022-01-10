@@ -11,4 +11,6 @@ class Tag < ApplicationRecord
   has_and_belongs_to_many :client_profiles
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
+
+  scope :with_name, ->(name) { where(name: name) }
 end
