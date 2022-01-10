@@ -19,6 +19,8 @@
 #
 class Role < ApplicationRecord
   has_one :user, dependent: :nullify
-  
+
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
+
+  scope :with_name, ->(name) { where(name: name) }
 end
