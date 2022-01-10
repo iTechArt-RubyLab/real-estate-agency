@@ -19,4 +19,6 @@
 #
 class Role < ApplicationRecord
   has_one :user, dependent: :nullify
+  
+  validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
 end
