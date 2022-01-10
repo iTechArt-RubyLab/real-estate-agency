@@ -10,4 +10,8 @@
 #
 class Country < ApplicationRecord
   has_many :client_profiles, dependent: :delete_all
+
+  validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
+
+  scope :with_name, ->(name) { where(name: name) }
 end
