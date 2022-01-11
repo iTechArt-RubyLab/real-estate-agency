@@ -59,6 +59,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable
 
+  after_commit :set_default_avatar, on: %i[create update]
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -75,6 +77,21 @@ class User < ApplicationRecord
       avatar.variant(resize: "150x150!").processed 
     else
       "/default_avatar.png"
+    end
+  end
+
+  private
+
+  def set_default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(
+          Rails.root.join(
+            'app', 'assets', 'images', 'default_avatar.png'
+          )
+        ), filename: 'default_avatar.png',
+        content_type: 'image/png'
+      )
     end
   end
 end

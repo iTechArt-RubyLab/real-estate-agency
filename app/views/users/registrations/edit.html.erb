@@ -4,7 +4,7 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <% image_tag resource.avatar_miniature if resource.avatar.attached? %>
+    <%= image_tag(resource.avatar_miniature) if resource.avatar.attached? %>
   </div>
 
   <div class="field">
