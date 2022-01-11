@@ -69,4 +69,12 @@ class User < ApplicationRecord
       user.skip_confirmation!
     end
   end
+
+  def avatar_miniature
+    if avatar.attached?
+      avatar.variant(resize: "150x150!").processed 
+    else
+      "/default_avatar.png"
+    end
+  end
 end
