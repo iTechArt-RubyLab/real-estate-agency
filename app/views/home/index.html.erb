@@ -4,6 +4,8 @@
 <% else %>
   <h1> Hello friend! </h1>
 <% end %>
+<br />
+<%= image_tag(current_user.avatar_miniature)  %>
 
 <h2 class="mt-5">You can check <%= link_to 'cities', cities_path %></h2>
 <h2 class="mt-5">You can check <%= link_to 'districts', districts_path %></h2>
