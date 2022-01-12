@@ -1,3 +1,4 @@
+<% presenter = CommercialPremisePresenter.new %>
 <%= form_with(model: commercial_premise) do |form| %>
   <% if commercial_premise.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +14,7 @@
 
   <div class="field mb-3">
     <%= form.label :commercial_premises_kind_id %>
-    <%= form.collection_select :commercial_premises_kind_id, CommercialPremisesKind.order(:name), :id, :name %>
+    <%= form.collection_select :commercial_premises_kind_id, presenter.ordered_commercial_premises_kinds, :id, :name %>
   </div>
 
   <div class="field mb-3">

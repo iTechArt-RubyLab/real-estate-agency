@@ -1,3 +1,4 @@
+<% presenter = CountrySideHousePresenter.new %>
 <%= form_with(model: country_side_house) do |form| %>
   <% if country_side_house.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +14,12 @@
 
   <div class="field mb-3">
     <%= form.label :country_side_house_kind_id %>
-    <%= form.collection_select :country_side_house_kind_id, CountrySideHouseKind.order(:name), :id, :name %>
+    <%= form.collection_select :country_side_house_kind_id, presenter.ordered_country_side_house_kinds, :id, :name %>
   </div>
 
   <div class="field mb-3">
     <%= form.label :ready_state_id %>
-    <%= form.collection_select :ready_state_id, ReadyState.order(:name), :id, :name %>
+    <%= form.collection_select :ready_state_id, presenter.ordered_ready_states, :id, :name %>
   </div>
 
   <div class="field mb-3">
@@ -43,7 +44,7 @@
 
   <div class="field mb-3">
     <%= form.label :wall_material_id %>
-    <%= form.collection_select :wall_material_id, WallMaterial.order(:name), :id, :name %>
+    <%= form.collection_select :wall_material_id, presenter.ordered_wall_materials, :id, :name %>
   </div>
 
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
