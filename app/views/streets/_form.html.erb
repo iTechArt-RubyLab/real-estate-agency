@@ -1,3 +1,4 @@
+<% presenter = StreetPresenter.new %>
 <%= form_with(model: street) do |form| %>
   <% if street.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +19,7 @@
 
   <div class="field mb-3">
     <label class="form-label"><%= form.label :district_id %></label>
-    <%= form.collection_select :district_id, District.order(:name), :id, :name %>
+    <%= form.collection_select :district_id, presenter.ordered_districts, :id, :name %>
   </div>
 
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
