@@ -1,3 +1,4 @@
+<% presenter = FlatPresenter.new %>
 <%= form_with(model: flat) do |form| %>
   <% if flat.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +14,7 @@
 
   <div class="field mb-3">
     <%= form.label :renovation_id %>
-    <%= form.collection_select :renovation_id, Renovation.order(:name), :id, :name %>
+    <%= form.collection_select :renovation_id, presenter.ordered_renovations, :id, :name %>
   </div>
 
   <div class="field mb-3">
@@ -28,7 +29,7 @@
 
   <div class="field mb-3">
     <%= form.label :wall_material_id %>
-    <%= form.collection_select :wall_material_id, WallMaterial.order(:name), :id, :name %>
+    <%= form.collection_select :wall_material_id, presenter.ordered_wall_materials, :id, :name %>
   </div>
 
   <div class="field mb-3">
