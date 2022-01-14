@@ -33,13 +33,16 @@ Documentation:
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
 
 Naming/AccessorMethodName:
-  Exclude:
-    - 'app/datatables/**'
-Metrics/AbcSize:
   Exclude:
     - 'app/datatables/**'
 
@@ -47,7 +50,8 @@ Lint/MissingSuper:
   Exclude:
     - 'app/policies/**'
 
-Metrics/AbcSize:
-  Exclude:
-    - 'app/controllers/**'
-    - 'app/datatables/**'
+Style/GuardClause:
+    Exclude:
+    - 'app/models/user.rb'
+
+
