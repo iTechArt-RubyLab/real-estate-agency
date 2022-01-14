@@ -27,7 +27,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  city_id                :bigint           not null
+#  city_id                :bigint
 #  profilable_id          :bigint
 #  role_id                :bigint
 #
