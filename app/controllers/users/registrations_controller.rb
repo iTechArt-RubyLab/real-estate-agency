@@ -6,13 +6,6 @@ module Users
     before_action :configure_account_update_params, only: [:update]
 
     def create
-      if sign_up_params[:profilable_type] == 'ClientProfile'
-        client_profile = ClientProfile.create(sign_up_client_profile_params)
-        user_sign_up_params = sign_up_params.merge(profilable_id: client_profile.id)
-      else
-        realtor_profile = RealtorProfile.create(sign_up_realtor_profile_params)
-        user_sign_up_params = sign_up_params.merge(profilable_id: realtor_profile.id)
-      end
       build_resource(user_sign_up_params)
       resource.save
       yield resource if block_given?
@@ -35,16 +28,16 @@ module Users
 
     protected
 
+    def profilable_type
+      sign_up_params[:profilable_type]
+    end
+
+    def user_sign_up_params
+      Users::ProfileCreatorService.new(profilable_type, params, sign_up_params).call
+    end
+
     def configure_sign_up_params
       devise_parameter_sanitizer.permit(:sign_up, keys: %i[user profilable_type first_name last_name second_name city_id gender avatar])
-    end
-
-    def sign_up_client_profile_params
-      params.require(:user).permit(%i[country_id description])
-    end
-
-    def sign_up_realtor_profile_params
-      params.require(:user).permit(%i[registration_number employment_date])
     end
 
     def configure_account_update_params
