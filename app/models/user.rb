@@ -52,7 +52,7 @@ class User < ApplicationRecord
   enum gender: %i[male female]
   belongs_to :profilable, polymorphic: true
   accepts_nested_attributes_for :profilable
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
@@ -73,9 +73,9 @@ class User < ApplicationRecord
 
   def avatar_miniature
     if avatar.attached?
-      avatar.variant(resize: "150x150!").processed 
+      avatar.variant(resize: '150x150!').processed
     else
-      "/default_avatar.png"
+      '/default_avatar.png'
     end
   end
 
