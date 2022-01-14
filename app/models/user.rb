@@ -27,33 +27,32 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  city_id                :bigint           not null
 #  profilable_id          :bigint           not null
 #  role_id                :bigint
-#  user_info_id           :bigint
 #
 # Indexes
 #
+#  index_users_on_city_id               (city_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_profilable            (profilable_type,profilable_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_role_id               (role_id)
-#  index_users_on_user_info_id          (user_info_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (city_id => cities.id)
 #  fk_rails_...  (role_id => roles.id)
-#  fk_rails_...  (user_info_id => user_infos.id)
 #
 class User < ApplicationRecord
   has_one_attached :avatar
   has_many :changes_histories, dependent: :delete_all
   belongs_to :role, optional: true
-  belongs_to :user_info, optional: true
   enum gender: %i[male female]
   belongs_to :profilable, polymorphic: true
   accepts_nested_attributes_for :profilable
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :trackable,
@@ -74,9 +73,9 @@ class User < ApplicationRecord
 
   def avatar_miniature
     if avatar.attached?
-      avatar.variant(resize: "150x150!").processed 
+      avatar.variant(resize: '150x150!').processed
     else
-      "/default_avatar.png"
+      '/default_avatar.png'
     end
   end
 
