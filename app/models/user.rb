@@ -30,7 +30,6 @@
 #  city_id                :bigint           not null
 #  profilable_id          :bigint           not null
 #  role_id                :bigint
-#  user_info_id           :bigint
 #
 # Indexes
 #
@@ -40,13 +39,11 @@
 #  index_users_on_profilable            (profilable_type,profilable_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_role_id               (role_id)
-#  index_users_on_user_info_id          (user_info_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (city_id => cities.id)
 #  fk_rails_...  (role_id => roles.id)
-#  fk_rails_...  (user_info_id => user_infos.id)
 #
 class User < ApplicationRecord
   has_one_attached :avatar

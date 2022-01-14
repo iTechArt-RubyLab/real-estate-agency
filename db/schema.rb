@@ -250,7 +250,6 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_info_id"
     t.bigint "role_id"
     t.string "profilable_type", null: false
     t.bigint "profilable_id", null: false
@@ -260,7 +259,6 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.index ["profilable_type", "profilable_id"], name: "index_users_on_profilable"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["user_info_id"], name: "index_users_on_user_info_id"
   end
 
   create_table "wall_materials", force: :cascade do |t|
@@ -285,5 +283,4 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
   add_foreign_key "user_infos", "cities"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "roles"
-  add_foreign_key "users", "user_infos"
 end
