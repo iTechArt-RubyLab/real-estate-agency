@@ -18,12 +18,19 @@ module Users
     protected
 
     def configure_sign_up_params
-      binding.pry
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password avatar first_name last_name second_name date_of_birth gender profilable_type profilable_attributes])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[user profilable_type first_name last_name second_name city_id gender])
+    end
+
+    def sign_up_client_profile_params
+      params.require(:user).permit(%i[country_id description])
+    end
+
+    def sign_up_realtor_profile_params
+      params.require(:user).permit(%i[registration_number employment_date])
     end
 
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: %i[email password avatar first_name last_name second_name date_of_birth gender profilable_type profilable_attributes])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[user profilable_type first_name last_name second_name city_id gender])
     end
   end
 end
