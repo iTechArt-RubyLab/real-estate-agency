@@ -21,6 +21,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field mb-3">
+    <%= f.label :profilable_type, "Client", value: ClientProfile %>
+    <%= f.radio_button :profilable_type, ClientProfile %>
+    <%= f.label :profilable_type, "Realtor", value: RealtorProfile %>
+    <%= f.radio_button :profilable_type, RealtorProfile %>
+  </div>
+
   <div class="field">
     <h5>Avatar</h5><br />
     <%= f.file_field :avatar %>
