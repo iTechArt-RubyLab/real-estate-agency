@@ -27,7 +27,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  city_id                :bigint           not null
+#  city_id                :bigint
 #  profilable_id          :bigint
 #  role_id                :bigint
 #
@@ -49,6 +49,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :changes_histories, dependent: :delete_all
   belongs_to :role, optional: true
+  belongs_to :city, optional: true
   enum gender: %i[male female]
   belongs_to :profilable, polymorphic: true, optional: true
   accepts_nested_attributes_for :profilable
