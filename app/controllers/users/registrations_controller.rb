@@ -36,7 +36,7 @@ module Users
     protected
 
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: %i[user profilable_type first_name last_name second_name city_id gender])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[user profilable_type first_name last_name second_name city_id gender avatar])
     end
 
     def sign_up_client_profile_params
@@ -48,7 +48,7 @@ module Users
     end
 
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: %i[user profilable_type first_name last_name second_name city_id gender])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[user profilable_type first_name last_name second_name city_id gender avatar])
     end
   end
 end
