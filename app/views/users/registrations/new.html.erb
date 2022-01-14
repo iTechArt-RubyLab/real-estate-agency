@@ -1,22 +1,27 @@
-<h2>Sign up</h2>
+<div class="title">
+  <h1>Sign up</h1>
+</div>
 
+<div class="container mt-5">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <% if resource.avatar.attached? %>
-      <%= image_tag(resource.avatar) %>
-    <% else %>
-      <%= image_tag("/default_avatar.png") %>
-    <% end %>
+  <div class="field mb-3 profile_choice">
+    <div class="profile_choice_title">
+      <h4>Choose your role</h4>
+    </div>
+    <%= f.label :profilable, 'Client' %>
+    <%= f.radio_button :profilable_type, 'ClientProfile' %>
+    <%= f.label :profilable, 'Realtor' %>
+    <%= f.radio_button :profilable_type, 'RealtorProfile'%>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -24,16 +29,39 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field mb-3">
-    <%= f.label :profilable_type, "Client", value: ClientProfile %>
-    <%= f.radio_button :profilable_type, ClientProfile %>
-    <%= f.label :profilable_type, "Realtor", value: RealtorProfile %>
-    <%= f.radio_button :profilable_type, RealtorProfile %>
+    <%= f.label :city_id %>
+    <%= f.collection_select :city_id, City.order(:name), :id, :name %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :second_name %>
+    <%= f.text_field :second_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :gender %>
+    <%= f.select :gender, User.genders.map {|gen| gen.first } %>
   </div>
 
   <div class="field">
@@ -41,9 +69,12 @@
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= f.submit "Sign up", class:"btn btn-outline-success" %>
   </div>
 <% end %>
+</div>
 
-<%= render "users/shared/links" %>
+<div class="links">
+  <%= render "users/shared/links" %>
+</div>
