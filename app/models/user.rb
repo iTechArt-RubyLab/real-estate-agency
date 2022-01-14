@@ -16,7 +16,7 @@
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
-#  profilable_type        :string           not null
+#  profilable_type        :string
 #  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -28,7 +28,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  city_id                :bigint           not null
-#  profilable_id          :bigint           not null
+#  profilable_id          :bigint
 #  role_id                :bigint
 #
 # Indexes
@@ -50,7 +50,7 @@ class User < ApplicationRecord
   has_many :changes_histories, dependent: :delete_all
   belongs_to :role, optional: true
   enum gender: %i[male female]
-  belongs_to :profilable, polymorphic: true
+  belongs_to :profilable, polymorphic: true, optional: true
   accepts_nested_attributes_for :profilable
 
   # Include default devise modules. Others available are:

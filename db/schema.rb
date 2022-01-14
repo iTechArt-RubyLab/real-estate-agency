@@ -237,8 +237,8 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "role_id"
-    t.string "profilable_type", null: false
-    t.bigint "profilable_id", null: false
+    t.string "profilable_type"
+    t.bigint "profilable_id"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
