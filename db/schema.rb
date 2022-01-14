@@ -210,21 +210,6 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_infos", force: :cascade do |t|
-    t.bigint "city_id"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "second_name"
-    t.date "date_of_birth"
-    t.integer "gender"
-    t.bigint "profilable_id"
-    t.string "profilable_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_user_infos_on_city_id"
-    t.index ["profilable_type", "profilable_id"], name: "index_user_infos_on_profilable_type_and_profilable_id", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -280,7 +265,6 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
   add_foreign_key "flats", "renovations"
   add_foreign_key "flats", "wall_materials"
   add_foreign_key "streets", "districts"
-  add_foreign_key "user_infos", "cities"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "roles"
 end

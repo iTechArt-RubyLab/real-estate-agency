@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'admin_panel', to: 'admin_panel#index'
   get 'users/profiles/index', to: 'users/profiles#index'
   resources :client_profiles
-  resources :user_infos
   resources :countries
   resources :client_profiles
   resources :tags

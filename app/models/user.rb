@@ -49,7 +49,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :changes_histories, dependent: :delete_all
   belongs_to :role, optional: true
-  belongs_to :user_info, optional: true
   enum gender: %i[male female]
   belongs_to :profilable, polymorphic: true
   accepts_nested_attributes_for :profilable
