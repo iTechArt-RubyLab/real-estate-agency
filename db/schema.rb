@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
+    t.bigint "city_id", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "second_name"
@@ -253,6 +254,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.bigint "role_id"
     t.string "profilable_type", null: false
     t.bigint "profilable_id", null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profilable_type", "profilable_id"], name: "index_users_on_profilable"
@@ -281,6 +283,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
   add_foreign_key "flats", "wall_materials"
   add_foreign_key "streets", "districts"
   add_foreign_key "user_infos", "cities"
+  add_foreign_key "users", "cities"
   add_foreign_key "users", "roles"
   add_foreign_key "users", "user_infos"
 end

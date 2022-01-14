@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string :provider
 
+      t.references :city, null: false, foreign_key: true
       t.string :first_name
       t.string :last_name
       t.string :second_name
