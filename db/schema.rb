@@ -228,7 +228,7 @@ ActiveRecord::Schema.define(version: 2022_01_09_122445) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
-    t.bigint "city_id", null: false
+    t.bigint "city_id"
     t.string "first_name"
     t.string "last_name"
     t.string "second_name"
