@@ -1,0 +1,56 @@
+<div class="mx-auto" style="width: 500px; text-align: center">
+  <h1>Fill in your profile</h1>
+</div>
+
+<div class="container mt-5" style="width: 500px">
+<%= form_for :user_info do |form| %>
+  <div class="field mb-3">
+    <%= form.label :city_id %>
+    <%= form.collection_select :city_id, City.order(:name), :id, :name %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :second_name %>
+    <%= form.text_field :second_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :date_of_birth %>
+    <%= form.date_select :date_of_birth, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :gender %>
+    <%= form.select :gender, UserInfo.genders.map {|gen| gen.first } %>
+  </div>
+
+  <div class="mx-auto" style="width: 500px; text-align: center">
+    <h2>Choose your role</h2>
+  </div>
+  
+  <%= form_for :user do |f| %>
+    <div class="field mb-3">
+      <%= f.label :User %>
+      <%= f.radio_button :role_id, Role.where(name: 'Registred user') %>
+    </div>
+    <div class="field mb-3">
+      <%= f.label :Realtor %>
+      <%= f.radio_button :role_id, Role.where(name: 'Realtor') %>
+    </div>
+  <% end %>
+
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= form.submit 'Save', class:"btn btn-outline-success" %>
+  </div>
+<% end %>
+</div>

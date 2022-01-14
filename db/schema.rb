@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_154000) do
+ActiveRecord::Schema.define(version: 2022_01_09_122445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_01_07_154000) do
   end
 
   create_table "client_profiles", force: :cascade do |t|
-    t.bigint "country_id", null: false
+    t.bigint "country_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_client_profiles_on_country_id"
@@ -242,12 +242,20 @@ ActiveRecord::Schema.define(version: 2022_01_07_154000) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "second_name"
+    t.date "date_of_birth"
+    t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_info_id"
     t.bigint "role_id"
+    t.string "profilable_type", null: false
+    t.bigint "profilable_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["profilable_type", "profilable_id"], name: "index_users_on_profilable"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["user_info_id"], name: "index_users_on_user_info_id"
