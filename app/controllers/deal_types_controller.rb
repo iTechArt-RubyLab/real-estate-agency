@@ -3,7 +3,10 @@ class DealTypesController < ApplicationController
 
   # GET /deal_types or /deal_types.json
   def index
-    @deal_types = DealType.all
+    respond_to do |format|
+      format.html
+      format.json { render json: DealTypeDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /deal_types/1 or /deal_types/1.json

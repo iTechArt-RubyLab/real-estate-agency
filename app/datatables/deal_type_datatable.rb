@@ -1,25 +1,34 @@
 class DealTypeDatatable < AjaxDatatablesRails::ActiveRecord
+  extend Forwardable
+
+  def_delegators :@view, :link_to, :deal_type_path, :edit_deal_type_path
+
+  def initialize(params, opts = {})
+    @view = opts[:view_context]
+    super
+  end
+
   def view_columns
-    # Declare strings in this format: ModelName.column_name
-    # or in aliased_join_table.column_name format
     @view_columns ||= {
-      # id: { source: "User.id", cond: :eq },
-      # name: { source: "User.name", cond: :like }
+      name: { source: 'DealType.name', cond: :like, searchable: true },
+      actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end
 
   def data
-    records.map do |_record|
+    records.map do |record|
       {
-        # example:
-        # id: record.id,
-        # name: record.name
+        name: record.name,
+        actions: link_to('Show', record)
+          .concat(' | ')
+          .concat(link_to('Edit', edit_deal_type_path(record)))
+          .concat(' | ')
+          .concat(link_to('Destroy', record, method: :delete, data: { confirm: 'Are you sure?' }))
       }
     end
   end
 
   def get_raw_records
-    # insert query here
-    # User.all
+    DealType.all
   end
 end
