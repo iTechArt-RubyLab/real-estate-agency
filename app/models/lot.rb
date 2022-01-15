@@ -37,4 +37,7 @@ class Lot < ApplicationRecord
   belongs_to :deal_type
   belongs_to :address
   belongs_to :lotable, polymorphic: true
+  belongs_to :asigner, class_name: "User"
+  belongs_to :asignee, class_name: "User"
+  belongs_to :client, class_name: "User"
 end

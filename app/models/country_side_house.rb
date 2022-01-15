@@ -29,6 +29,7 @@ class CountrySideHouse < ApplicationRecord
   belongs_to :wall_material
   belongs_to :country_side_house_kind
   belongs_to :ready_state
+  has_one :lot, as: :lotable
 
   validates :floors_count, numericality: { only_integer: true }, inclusion: { in: 1..10 }
   validates :land_area, inclusion: { in: 0.1..1000.0 }
