@@ -1,4 +1,5 @@
 class ReadyStatesController < ApplicationController
+  include Authenticated
   before_action :set_ready_state, only: %i[show edit update destroy]
 
   # GET /ready_states or /ready_states.json

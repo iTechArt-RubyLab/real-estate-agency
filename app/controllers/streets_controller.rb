@@ -1,4 +1,5 @@
 class StreetsController < ApplicationController
+  include Authenticated
   before_action :set_street, only: %i[show edit update destroy]
   # GET /streets or /streets.json
   def index

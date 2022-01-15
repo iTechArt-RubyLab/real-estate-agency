@@ -1,4 +1,5 @@
 class WallMaterialsController < ApplicationController
+  include Authenticated
   before_action :set_wall_material, only: %i[show edit update destroy]
 
   # GET /wall_materials or /wall_materials.json

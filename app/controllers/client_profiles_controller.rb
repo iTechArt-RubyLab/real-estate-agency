@@ -1,4 +1,5 @@
 class ClientProfilesController < ApplicationController
+  include Authenticated
   before_action :set_client_profile, only: %i[show edit update destroy]
 
   # GET /client_profiles or /client_profiles.json

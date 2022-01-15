@@ -1,4 +1,5 @@
 class RenovationsController < ApplicationController
+  include Authenticated
   before_action :set_renovation, only: %i[show edit update destroy]
 
   # GET /renovations or /renovations.json

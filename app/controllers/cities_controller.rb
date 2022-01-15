@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  include Authenticated
   before_action :set_city, only: %i[show edit update destroy]
 
   # GET /cities or /cities.json
