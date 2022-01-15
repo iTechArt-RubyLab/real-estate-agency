@@ -1,0 +1,33 @@
+<div class="mx-auto" style="width: 240px;">
+  <h1>Deal Types</h1>
+</div>
+
+<table  class="table table-striped table-bordered table-hover" style="width:100%" id="deal_types-datatable", data-source="<%= deal_types_path(format: :json) %>" >
+  <thead>
+    <tr style="background-color: #C8EEFF;">
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  jQuery(document).ready(function() {
+  $('#deal_types-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#deal_types-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "name"},
+      {"data": "actions"}
+    ]
+  });
+});
+</script>
+
+<%= link_to 'New Deal Type', new_deal_type_path, class: "btn btn-outline-info" %>
