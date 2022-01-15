@@ -8,4 +8,7 @@
 #  updated_at :datetime         not null
 #
 class DealType < ApplicationRecord
+  validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
+
+  scope :with_name, ->(name) { where(name: name) }
 end
