@@ -3,11 +3,11 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="form-inputs mb-3">
     <%= f.input :name %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= f.button :submit, class:"btn btn-outline-success" %>
   </div>
 <% end %>
