@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  include Authenticated
   before_action :set_tag, only: %i[show edit update destroy]
 
   # GET /tags or /tags.json

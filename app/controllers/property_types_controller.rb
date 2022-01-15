@@ -1,4 +1,5 @@
 class PropertyTypesController < ApplicationController
+  include Authenticated
   before_action :set_property_type, only: %i[show edit update destroy]
 
   # GET /property_types or /property_types.json

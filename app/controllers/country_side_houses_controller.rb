@@ -1,4 +1,5 @@
 class CountrySideHousesController < ApplicationController
+  include Authenticated
   before_action :set_country_side_house, only: %i[show edit update destroy]
 
   # GET /country_side_houses or /country_side_houses.json

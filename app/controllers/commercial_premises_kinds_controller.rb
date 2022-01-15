@@ -1,4 +1,5 @@
 class CommercialPremisesKindsController < ApplicationController
+  include Authenticated
   before_action :set_commercial_premises_kind, only: %i[show edit update destroy]
 
   # GET /commercial_premises_kinds or /commercial_premises_kinds.json

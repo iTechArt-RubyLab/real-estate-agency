@@ -1,4 +1,5 @@
 class DistrictsController < ApplicationController
+  include Authenticated
   before_action :set_district, only: %i[show edit update destroy]
 
   # GET /districts or /districts.json

@@ -1,4 +1,5 @@
 class AddressesController < ApplicationController
+  include Authenticated
   before_action :set_address, only: %i[show edit update destroy]
 
   # GET /addresses or /addresses.json

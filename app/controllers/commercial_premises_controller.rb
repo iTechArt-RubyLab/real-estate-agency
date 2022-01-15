@@ -1,4 +1,5 @@
 class CommercialPremisesController < ApplicationController
+  include Authenticated
   before_action :set_commercial_premise, only: %i[show edit update destroy]
 
   # GET /commercial_premises or /commercial_premises.json
