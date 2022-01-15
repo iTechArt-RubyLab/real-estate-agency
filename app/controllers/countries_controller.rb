@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController
+  include Authenticated
   before_action :set_country, only: %i[show edit update destroy]
 
   # GET /countries or /countries.json

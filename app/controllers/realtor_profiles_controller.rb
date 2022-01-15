@@ -1,4 +1,5 @@
 class RealtorProfilesController < ApplicationController
+  include Authenticated
   before_action :set_realtor_profile, only: %i[show edit update destroy]
 
   # GET /realtor_profiles or /realtor_profiles.json

@@ -1,4 +1,5 @@
 class FlatsController < ApplicationController
+  include Authenticated
   before_action :set_flat, only: %i[show edit update destroy]
 
   # GET /flats or /flats.json
