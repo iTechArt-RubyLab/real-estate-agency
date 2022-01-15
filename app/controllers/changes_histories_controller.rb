@@ -1,4 +1,4 @@
-class ChangesHistoriesController < ApplicationController\
+class ChangesHistoriesController < ApplicationController
   include Authenticated
   before_action :set_changes_history, only: %i[show edit update destroy]
 
