@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :lots
   resources :deal_types
   get 'admin_panel', to: 'admin_panel#index'
   resources :client_profiles

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_15_111842) do
+ActiveRecord::Schema.define(version: 2022_01_15_120428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,27 @@ ActiveRecord::Schema.define(version: 2022_01_15_111842) do
     t.index ["wall_material_id"], name: "index_flats_on_wall_material_id"
   end
 
+  create_table "lots", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "price"
+    t.bigint "deal_type_id", null: false
+    t.bigint "address_id", null: false
+    t.string "lotable_type", null: false
+    t.bigint "lotable_id", null: false
+    t.bigint "asigner_id"
+    t.bigint "asignee_id"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_lots_on_address_id"
+    t.index ["asignee_id"], name: "index_lots_on_asignee_id"
+    t.index ["asigner_id"], name: "index_lots_on_asigner_id"
+    t.index ["client_id"], name: "index_lots_on_client_id"
+    t.index ["deal_type_id"], name: "index_lots_on_deal_type_id"
+    t.index ["lotable_type", "lotable_id"], name: "index_lots_on_lotable"
+  end
+
   create_table "property_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -271,6 +292,11 @@ ActiveRecord::Schema.define(version: 2022_01_15_111842) do
   add_foreign_key "districts", "cities"
   add_foreign_key "flats", "renovations"
   add_foreign_key "flats", "wall_materials"
+  add_foreign_key "lots", "addresses"
+  add_foreign_key "lots", "deal_types"
+  add_foreign_key "lots", "users", column: "asignee_id"
+  add_foreign_key "lots", "users", column: "asigner_id"
+  add_foreign_key "lots", "users", column: "client_id"
   add_foreign_key "streets", "districts"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "roles"
