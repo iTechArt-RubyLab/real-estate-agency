@@ -12,7 +12,7 @@
 #  address_id   :bigint           not null
 #  asignee_id   :bigint
 #  asigner_id   :bigint
-#  client_id    :bigint
+#  client_id    :bigint           not null
 #  deal_type_id :bigint           not null
 #  lotable_id   :bigint           not null
 #
@@ -37,7 +37,8 @@ class Lot < ApplicationRecord
   belongs_to :deal_type
   belongs_to :address
   belongs_to :lotable, polymorphic: true
-  belongs_to :asigner, class_name: "User"
-  belongs_to :asignee, class_name: "User"
-  belongs_to :client, class_name: "User"
+  belongs_to :asigner, class_name: 'User', optional: true
+  belongs_to :asignee, class_name: 'User', optional: true
+  belongs_to :client, class_name: 'User'
+  accepts_nested_attributes_for :address
 end
