@@ -12,7 +12,7 @@
 #  address_id   :bigint           not null
 #  asignee_id   :bigint
 #  asigner_id   :bigint
-#  client_id    :bigint
+#  client_id    :bigint           not null
 #  deal_type_id :bigint           not null
 #  lotable_id   :bigint           not null
 #

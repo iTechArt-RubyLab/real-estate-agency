@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.bigint "lotable_id", null: false
     t.bigint "asigner_id"
     t.bigint "asignee_id"
-    t.bigint "client_id"
+    t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_lots_on_address_id"

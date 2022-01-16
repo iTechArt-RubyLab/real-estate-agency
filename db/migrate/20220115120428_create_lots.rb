@@ -9,7 +9,7 @@ class CreateLots < ActiveRecord::Migration[6.1]
       t.references :lotable, polymorphic: true, null: false
       t.references :asigner, null: true, foreign_key: { to_table: :users }
       t.references :asignee, null: true, foreign_key: { to_table: :users }
-      t.references :client, null: true, foreign_key: { to_table: :users }
+      t.references :client, null: false, foreign_key: { to_table: :users }
 
       t.timestamps
     end
