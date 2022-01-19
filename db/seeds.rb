@@ -45,32 +45,12 @@ streets = Street.create([{name: I18n.t('street.name_1'), district: districts.fir
                          {name: I18n.t('street.name_12'), district: districts[13]}, 
                          {name: I18n.t('street.name_13'), district: districts[10]}, 
                          {name: I18n.t('street.name_14'), district: districts[13]}])
-addresses = Address.create([{building: 34, description: 'descrption', street: streets[1]}, 
-                            {building: 12, description: 'descrption', street: streets[2]}, 
-                            {building: 65, description: 'descrption', street: streets[3]}, 
-                            {building: 140, description: 'descrption', street: streets[4]}, 
-                            {building: 2, description: 'descrption', street: streets[5]}, 
-                            {building: 95, description: 'descrption', street: streets[6]},
-                            {building: 1, description: 'descrption', street: streets[7]}, 
-                            {building: 87, description: 'descrption', street: streets[8]}, 
-                            {building: 30, description: 'descrption', street: streets[9]}, 
-                            {building: 76, description: 'descrption', street: streets[10]},
-                            {building: 21, description: 'descrption', street: streets[11]}, 
-                            {building: 238, description: 'descrption', street: streets[12]}, 
-                            {building: 19, description: 'descrption', street: streets[13]}, 
-                            {building: 82, description: 'descrption', street: streets[0]}])
 commercial_premises_kinds = CommercialPremisesKind.create([{name: 'Cafe'}, 
                                                            {name: 'Office'}, 
                                                            {name: 'Boutique'}, 
                                                            {name: 'Bank'}, 
                                                            {name: 'Salon'}, 
                                                            {name: 'Bar'}])
-commercial_premises = CommercialPremise.create([{area: 23.5, floor: 1, number_of_premises: 3, plot_of_land: 11, commercial_premises_kind: commercial_premises_kinds[1]}, 
-                                                {area: 123.8, floor: 3, number_of_premises: 10, plot_of_land: 61, commercial_premises_kind: commercial_premises_kinds[2]}, 
-                                                {area: 13.3, floor: 4, number_of_premises: 1, plot_of_land: 6, commercial_premises_kind: commercial_premises_kinds[3]}, 
-                                                {area: 82.4, floor: 1, number_of_premises: 2, plot_of_land: 41, commercial_premises_kind: commercial_premises_kinds[4]}, 
-                                                {area: 14.5, floor: 2, number_of_premises: 1, plot_of_land: 7, commercial_premises_kind: commercial_premises_kinds[5]}, 
-                                                {area: 10.6, floor: 1, number_of_premises: 1, plot_of_land: 5, commercial_premises_kind: commercial_premises_kinds[6]}])
 country_side_house_kinds = CountrySideHouseKind.create([{name: 'Cottage'}, 
                                                         {name: 'House'}, 
                                                         {name: 'Townhouse'}, 
@@ -118,6 +98,81 @@ roles = Role.create([{name: 'Admin', can_read_lot: true, can_edit_lot: true, can
                      {name: 'Realtor', can_read_lot: true, can_edit_lot: true, can_asign: false, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: false, can_work_with_all_property_types: false, can_create_role: false, can_approve_realtor: false, can_freeze_user: true}, 
                      {name: 'Manager', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: false, can_approve_realtor: true, can_freeze_user: true}])
 
-# users = User.create!([{email: "testadmin@gmail.com", password: "testadminuser", password_confirmation: "testadminuser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[0]},
-#                       {email: "testuser@gmail.com", password: "testuseraccount", password_confirmation: "testuseraccount", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[1]},
-#                       {email: "testcustomer@gmail.com", password: "testcustomeruser", password_confirmation: "testcustomeruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc}])
+users = User.create!([{email: "testadmin@gmail.com", password: "testadminuser", password_confirmation: "testadminuser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[0]},
+                      {email: "testuser@gmail.com", password: "testuseraccount", password_confirmation: "testuseraccount", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[1]},
+                      {email: "testcustomer@gmail.com", password: "testcustomeruser", password_confirmation: "testcustomeruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc}])
+
+deal_types = DealType.create([{name: 'Rent'},
+                              {name: 'Sale'},
+                              {name: 'Swap'},
+                              {name: 'Purchase'},
+                              {name: 'Rent for 1 day'}])
+
+commercial_premises = CommercialPremise.create([
+    {
+        area: 23.5, floor: 1, number_of_premises: 3, plot_of_land: 11, commercial_premises_kind: commercial_premises_kinds[1], 
+        lot_attributes: 
+        {
+            title: 'wtf', description: 'the best offer', price: 12.3, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[0],
+            address_attributes: 
+            { 
+                building: 34, description: 'descrption', street: streets[1] 
+            }
+        }
+    }, 
+    {
+        area: 123.8, floor: 3, number_of_premises: 10, plot_of_land: 61, commercial_premises_kind: commercial_premises_kinds[2],
+        lot_attributes: 
+        { 
+            title: 'Great flat', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
+            address_attributes: 
+            { 
+                building: 12, description: 'descrption', street: streets[2] 
+            } 
+        }
+    }, 
+    {
+        area: 13.3, floor: 4, number_of_premises: 1, plot_of_land: 6, commercial_premises_kind: commercial_premises_kinds[3],
+        lot_attributes: 
+        {
+            title: 'Only today', description: 'the best offer', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 65, description: 'descrption', street: streets[3] 
+            } 
+        }
+    }, 
+    {
+        area: 82.4, floor: 1, number_of_premises: 2, plot_of_land: 41, commercial_premises_kind: commercial_premises_kinds[4],
+        lot_attributes: 
+        {
+            title: 'Buy one get second for free', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 140, description: 'descrption', street: streets[4]
+            } 
+        }
+    }, 
+    {
+        area: 14.5, floor: 2, number_of_premises: 1, plot_of_land: 7, commercial_premises_kind: commercial_premises_kinds[5],
+        lot_attributes: 
+        {
+            title: 'ASAP', description: 'the worst offer', price: 25.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 2, description: 'descrption', street: streets[5]
+            } 
+        }
+    }, 
+    {
+        area: 10.6, floor: 1, number_of_premises: 1, plot_of_land: 5, commercial_premises_kind: commercial_premises_kinds[6],
+        lot_attributes: 
+        {
+            title: 'Go 1x1 mid only', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 95, description: 'descrption', street: streets[6] 
+            } 
+        }
+    }
+])
