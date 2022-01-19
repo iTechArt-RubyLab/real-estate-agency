@@ -5,6 +5,15 @@
 <table class="table table-striped table-bordered table-hover" style="width:100%" id="commercial_premises-datatable", data-source="<%= commercial_premises_path(format: :json) %>" >
   <thead>
     <tr style="background-color: #C8EEFF;">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Deal type</th>
+      <th>City</th>
+      <th>District</th>
+      <th>Street</th>
+      <th>Building</th>
+      <th>Address description</th>
       <th>Kind</th>
       <th>Area</th>
       <th>Floor</th>
@@ -27,6 +36,15 @@
     },
     "pagingType": "full_numbers",
     "columns": [
+      {"data": "title"},
+      {"data": "description"},
+      {"data": "price"},
+      {"data": "deal_type"},
+      {"data": "city"},
+      {"data": "district"},
+      {"data": "street"},
+      {"data": "building"},
+      {"data": "address_description"},
       {"data": "commercial_premises_kind_id"},
       {"data": "area"},
       {"data": "floor"},

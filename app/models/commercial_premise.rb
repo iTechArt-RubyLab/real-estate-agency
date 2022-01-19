@@ -23,6 +23,7 @@ class CommercialPremise < ApplicationRecord
   belongs_to :commercial_premises_kind
   has_one :lot, as: :lotable
   accepts_nested_attributes_for :lot
+  delegate :title, :description, :price, to: :lot
 
   validates :area, inclusion: { in: 0.1..1000.0 }
   validates :floor, numericality: { only_integer: true }, inclusion: { in: 1..34 }
