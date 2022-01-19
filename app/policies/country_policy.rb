@@ -1,0 +1,2 @@
+class CountryPolicy < DictionaryBasePolicy
+end
