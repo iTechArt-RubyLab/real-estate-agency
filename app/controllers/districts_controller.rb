@@ -4,31 +4,36 @@ class DistrictsController < ApplicationController
 
   # GET /districts or /districts.json
   def index
+    @districts = District.preload(:streets)
+    authorize @districts
     respond_to do |format|
       format.html
-      format.json { render json: DistrictDatatable.new(params, view_context: view_context) }
+      format.json { render json: DistrictDatatable.new(params, view_context: view_context, districts: @districts) }
     end
-    @districts = District.preload(:streets)
   end
 
   # GET /districts/1 or /districts/1.json
   def show
     @streets = @district.streets.preload(:streets)
+    authorize @district
   end
 
   # GET /districts/new
   def new
     @district = District.new
     @city = City.find(params[:city_id])
+    authorize @district
   end
 
   # GET /districts/1/edit
-  def edit; end
+  def edit
+    authorize @district
+  end
 
   # POST /districts or /districts.json
   def create
     @district = District.new(district_params)
-
+    authorize @district
     respond_to do |format|
       if @district.save
         format.html { redirect_to district_url(@district), notice: 'District was successfully created.' }
@@ -42,6 +47,7 @@ class DistrictsController < ApplicationController
 
   # PATCH/PUT /districts/1 or /districts/1.json
   def update
+    authorize @district
     respond_to do |format|
       if @district.update(district_params)
         format.html { redirect_to district_url(@district), notice: 'District was successfully updated.' }
@@ -56,7 +62,7 @@ class DistrictsController < ApplicationController
   # DELETE /districts/1 or /districts/1.json
   def destroy
     @district.destroy
-
+    authorize @district
     respond_to do |format|
       format.html { redirect_to districts_url, notice: 'District was successfully destroyed.' }
       format.json { head :no_content }

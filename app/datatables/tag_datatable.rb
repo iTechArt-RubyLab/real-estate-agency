@@ -4,6 +4,7 @@ class TagDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :tag_path, :edit_tag_path
 
   def initialize(params, opts = {})
+    @tags = opts[:tags]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class TagDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Tag.all
+    @tags = Tag.all
   end
 end

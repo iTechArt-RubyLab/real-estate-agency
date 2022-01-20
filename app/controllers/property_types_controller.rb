@@ -4,27 +4,34 @@ class PropertyTypesController < ApplicationController
 
   # GET /property_types or /property_types.json
   def index
+    @property_types = PropertyType.all
+    authorize @property_types
     respond_to do |format|
       format.html
-      format.json { render json: PropertyTypeDatatable.new(params, view_context: view_context) }
+      format.json { render json: PropertyTypeDatatable.new(params, view_context: view_context, property_types: @property_types) }
     end
   end
 
   # GET /property_types/1 or /property_types/1.json
-  def show; end
+  def show
+    authorize @property_type
+  end
 
   # GET /property_types/new
   def new
     @property_type = PropertyType.new
+    authorize @property_type
   end
 
   # GET /property_types/1/edit
-  def edit; end
+  def edit
+    authorize @property_type
+  end
 
   # POST /property_types or /property_types.json
   def create
     @property_type = PropertyType.new(property_type_params)
-
+    authorize @property_type
     respond_to do |format|
       if @property_type.save
         format.html { redirect_to property_type_url(@property_type), notice: 'Property type was successfully created.' }
@@ -38,6 +45,7 @@ class PropertyTypesController < ApplicationController
 
   # PATCH/PUT /property_types/1 or /property_types/1.json
   def update
+    authorize @property_type
     respond_to do |format|
       if @property_type.update(property_type_params)
         format.html { redirect_to property_type_url(@property_type), notice: 'Property type was successfully updated.' }
@@ -52,7 +60,7 @@ class PropertyTypesController < ApplicationController
   # DELETE /property_types/1 or /property_types/1.json
   def destroy
     @property_type.destroy
-
+    authorize @property_type
     respond_to do |format|
       format.html { redirect_to property_types_url, notice: 'Property type was successfully destroyed.' }
       format.json { head :no_content }

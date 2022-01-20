@@ -1,0 +1,2 @@
+class PropertyTypePolicy < DictionaryBasePolicy
+end

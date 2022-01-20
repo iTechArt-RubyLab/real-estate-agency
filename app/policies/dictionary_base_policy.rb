@@ -1,4 +1,4 @@
-class CountrySideHousePolicy < ApplicationPolicy
+class DictionaryBasePolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -7,15 +7,15 @@ class CountrySideHousePolicy < ApplicationPolicy
   end
 
   def index?
-    user.role.can_read_lot
+    user.role.can_read_dictionary
   end
 
   def show?
-    user.role.can_read_lot
+    user.role.can_read_dictionary
   end
 
   def create?
-    user.role.can_edit_lot
+    user.role.can_edit_dictionary
   end
 
   def new?
@@ -23,7 +23,7 @@ class CountrySideHousePolicy < ApplicationPolicy
   end
 
   def update?
-    user.role.can_edit_lot
+    user.role.can_edit_dictionary
   end
 
   def edit?
@@ -31,7 +31,7 @@ class CountrySideHousePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.role.can_edit_lot
+    user.role.can_edit_dictionary
   end
 
   class Scope

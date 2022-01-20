@@ -4,27 +4,34 @@ class CommercialPremisesKindsController < ApplicationController
 
   # GET /commercial_premises_kinds or /commercial_premises_kinds.json
   def index
+    @commercial_premises_kinds = CommercialPremisesKind.all
+    authorize @commercial_premises_kinds
     respond_to do |format|
       format.html
-      format.json { render json: CommercialPremisesKindDatatable.new(params, view_context: view_context) }
+      format.json { render json: CommercialPremisesKindDatatable.new(params, view_context: view_context, commercial_premises_kinds: @commercial_premises_kinds) }
     end
   end
 
   # GET /commercial_premises_kinds/1 or /commercial_premises_kinds/1.json
-  def show; end
+  def show
+    authorize @commercial_premises_kind
+  end
 
   # GET /commercial_premises_kinds/new
   def new
     @commercial_premises_kind = CommercialPremisesKind.new
+    authorize @commercial_premises_kind
   end
 
   # GET /commercial_premises_kinds/1/edit
-  def edit; end
+  def edit
+    authorize @commercial_premises_kind
+  end
 
   # POST /commercial_premises_kinds or /commercial_premises_kinds.json
   def create
     @commercial_premises_kind = CommercialPremisesKind.new(commercial_premises_kind_params)
-
+    authorize @commercial_premises_kind
     respond_to do |format|
       if @commercial_premises_kind.save
         format.html do
@@ -41,6 +48,7 @@ class CommercialPremisesKindsController < ApplicationController
 
   # PATCH/PUT /commercial_premises_kinds/1 or /commercial_premises_kinds/1.json
   def update
+    authorize @commercial_premises_kind
     respond_to do |format|
       if @commercial_premises_kind.update(commercial_premises_kind_params)
         format.html do
@@ -58,7 +66,7 @@ class CommercialPremisesKindsController < ApplicationController
   # DELETE /commercial_premises_kinds/1 or /commercial_premises_kinds/1.json
   def destroy
     @commercial_premises_kind.destroy
-
+    authorize @commercial_premises_kind
     respond_to do |format|
       format.html do
         redirect_to commercial_premises_kinds_url, notice: 'Commercial premises kind was successfully destroyed.'

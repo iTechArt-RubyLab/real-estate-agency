@@ -3,30 +3,35 @@ class StreetsController < ApplicationController
   before_action :set_street, only: %i[show edit update destroy]
   # GET /streets or /streets.json
   def index
+    @streets = Streets::Finder.new(params[:city_id]).call
+    authorize @streets
     respond_to do |format|
       format.html
-      format.json { render json: StreetDatatable.new(params, view_context: view_context) }
+      format.json { render json: StreetDatatable.new(params, view_context: view_context, streets: @streets) }
     end
-    # @streets = Street.all
-    @streets = Streets::Finder.new(params[:city_id]).call
   end
 
   # GET /streets/1 or /streets/1.json
-  def show; end
+  def show
+    authorize @street
+  end
 
   # GET /streets/new
   def new
     @street = Street.new
     @district = District.find(params[:district_id])
+    authorize @street
   end
 
   # GET /streets/1/edit
-  def edit; end
+  def edit
+    authorize @street
+  end
 
   # POST /streets or /streets.json
   def create
     @street = Street.new(street_params)
-
+    authorize @street
     respond_to do |format|
       if @street.save
         format.html { redirect_to street_url(@street), notice: 'Street was successfully created.' }
@@ -40,6 +45,7 @@ class StreetsController < ApplicationController
 
   # PATCH/PUT /streets/1 or /streets/1.json
   def update
+    authorize @street
     respond_to do |format|
       if @street.update(street_params)
         format.html { redirect_to street_url(@street), notice: 'Street was successfully updated.' }
@@ -54,7 +60,7 @@ class StreetsController < ApplicationController
   # DELETE /streets/1 or /streets/1.json
   def destroy
     @street.destroy
-
+    authorize @street
     respond_to do |format|
       format.html { redirect_to streets_url, notice: 'Street was successfully destroyed.' }
       format.json { head :no_content }

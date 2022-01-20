@@ -4,6 +4,7 @@ class CityDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :city_path, :edit_city_path
 
   def initialize(params, opts = {})
+    @cities = opts[:cities]
     @view = opts[:view_context]
     super
   end
@@ -35,6 +36,6 @@ class CityDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    City.all
+    @cities = City.all
   end
 end

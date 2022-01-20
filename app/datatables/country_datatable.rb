@@ -4,6 +4,7 @@ class CountryDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :country_path, :edit_country_path
 
   def initialize(params, opts = {})
+    @countries = opts[:countries]
     @view = opts[:view_context]
     super
   end
@@ -31,6 +32,6 @@ class CountryDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Country.all
+    @countries = Country.all
   end
 end

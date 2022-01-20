@@ -4,6 +4,7 @@ class PropertyTypeDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :property_type_path, :edit_property_type_path
 
   def initialize(params, opts = {})
+    @property_types = opts[:property_types]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class PropertyTypeDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    PropertyType.all
+    @property_types = PropertyType.all
   end
 end

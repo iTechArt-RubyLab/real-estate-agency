@@ -4,27 +4,34 @@ class CountrySideHousesController < ApplicationController
 
   # GET /country_side_houses or /country_side_houses.json
   def index
+    @country_side_houses = CountrySideHouse.all
+    authorize @country_side_houses
     respond_to do |format|
       format.html
-      format.json { render json: CountrySideHouseDatatable.new(params, view_context: view_context) }
+      format.json { render json: CountrySideHouseDatatable.new(params, view_context: view_context, country_side_houses: @country_side_houses) }
     end
   end
 
   # GET /country_side_houses/1 or /country_side_houses/1.json
-  def show; end
+  def show
+    authorize @country_side_house
+  end
 
   # GET /country_side_houses/new
   def new
     @country_side_house = CountrySideHouse.new
+    authorize @country_side_house
   end
 
   # GET /country_side_houses/1/edit
-  def edit; end
+  def edit
+    authorize @country_side_house
+  end
 
   # POST /country_side_houses or /country_side_houses.json
   def create
     @country_side_house = CountrySideHouse.new(country_side_house_params)
-
+    authorize @country_side_house
     respond_to do |format|
       if @country_side_house.save
         format.html do
@@ -41,6 +48,7 @@ class CountrySideHousesController < ApplicationController
 
   # PATCH/PUT /country_side_houses/1 or /country_side_houses/1.json
   def update
+    authorize @country_side_house
     respond_to do |format|
       if @country_side_house.update(country_side_house_params)
         format.html do
@@ -58,7 +66,7 @@ class CountrySideHousesController < ApplicationController
   # DELETE /country_side_houses/1 or /country_side_houses/1.json
   def destroy
     @country_side_house.destroy
-
+    authorize @country_side_house
     respond_to do |format|
       format.html { redirect_to country_side_houses_url, notice: 'Country side house was successfully destroyed.' }
       format.json { head :no_content }
