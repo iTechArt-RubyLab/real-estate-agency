@@ -29,7 +29,7 @@ class CountrySideHouse < ApplicationRecord
   belongs_to :wall_material
   belongs_to :country_side_house_kind
   belongs_to :ready_state
-  has_one :lot, as: :lotable
+  has_one :lot, as: :lotable, dependent: :destroy
   accepts_nested_attributes_for :lot
   delegate :title, :description, :price, to: :lot
 

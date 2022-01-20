@@ -46,11 +46,11 @@
 #  fk_rails_...  (role_id => roles.id)
 #
 class User < ApplicationRecord
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
   has_many :changes_histories, dependent: :delete_all
-  has_many :asigner_lot, foreign_key: :asigner_id, class_name: 'Lot'
-  has_many :asignee_lot, foreign_key: :asignee_id, class_name: 'Lot'
-  has_many :client_lot, foreign_key: :client_id, class_name: 'Lot'
+  has_many :asigner_lot, foreign_key: :asigner_id, class_name: 'Lot', dependent: :nullify
+  has_many :asignee_lot, foreign_key: :asignee_id, class_name: 'Lot', dependent: :nullify
+  has_many :client_lot, foreign_key: :client_id, class_name: 'Lot', dependent: :nullify
   belongs_to :role, optional: true
   belongs_to :city, optional: true
   enum gender: %i[male female]
