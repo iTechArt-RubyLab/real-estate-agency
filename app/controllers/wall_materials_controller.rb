@@ -4,27 +4,34 @@ class WallMaterialsController < ApplicationController
 
   # GET /wall_materials or /wall_materials.json
   def index
+    @wall_materials = WallMaterial.all
+    authorize @wall_materials
     respond_to do |format|
       format.html
-      format.json { render json: WallMaterialDatatable.new(params, view_context: view_context) }
+      format.json { render json: WallMaterialDatatable.new(params, view_context: view_context, wall_materials: @wall_materials) }
     end
   end
 
   # GET /wall_materials/1 or /wall_materials/1.json
-  def show; end
+  def show
+    authorize @wall_material
+  end
 
   # GET /wall_materials/new
   def new
     @wall_material = WallMaterial.new
+    authorize @wall_material
   end
 
   # GET /wall_materials/1/edit
-  def edit; end
+  def edit
+    authorize @wall_material
+  end
 
   # POST /wall_materials or /wall_materials.json
   def create
     @wall_material = WallMaterial.new(wall_material_params)
-
+    authorize @wall_material
     respond_to do |format|
       if @wall_material.save
         format.html { redirect_to wall_material_url(@wall_material), notice: 'Wall material was successfully created.' }
@@ -38,6 +45,7 @@ class WallMaterialsController < ApplicationController
 
   # PATCH/PUT /wall_materials/1 or /wall_materials/1.json
   def update
+    authorize @wall_material
     respond_to do |format|
       if @wall_material.update(wall_material_params)
         format.html { redirect_to wall_material_url(@wall_material), notice: 'Wall material was successfully updated.' }
@@ -52,7 +60,7 @@ class WallMaterialsController < ApplicationController
   # DELETE /wall_materials/1 or /wall_materials/1.json
   def destroy
     @wall_material.destroy
-
+    authorize @wall_material
     respond_to do |format|
       format.html { redirect_to wall_materials_url, notice: 'Wall material was successfully destroyed.' }
       format.json { head :no_content }

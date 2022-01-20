@@ -4,6 +4,7 @@ class WallMaterialDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :wall_material_path, :edit_wall_material_path
 
   def initialize(params, opts = {})
+    @wall_materials = opts[:wall_materials]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class WallMaterialDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    WallMaterial.all
+    @wall_materials = WallMaterial.all
   end
 end
