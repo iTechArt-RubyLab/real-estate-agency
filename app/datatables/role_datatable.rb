@@ -4,6 +4,7 @@ class RoleDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :role_path, :edit_role_path
 
   def initialize(params, opts = {})
+    @roles = opts[:roles]
     @view = opts[:view_context]
     super
   end
@@ -49,6 +50,6 @@ class RoleDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Role.all
+    @roles = Role.all
   end
 end
