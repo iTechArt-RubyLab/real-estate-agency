@@ -20,4 +20,8 @@ class ClientProfile < ApplicationRecord
   belongs_to :country, optional: true
   has_and_belongs_to_many :tags
   has_one :user, as: :profilable
+
+  validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
+
+  scope :with_description, ->(description) { where(description: description) }
 end

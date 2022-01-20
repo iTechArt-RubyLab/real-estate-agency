@@ -17,7 +17,16 @@
 #  fk_rails_...  (country_id => countries.id)
 #
 FactoryBot.define do
-  factory :client_profile do
-    country { nil }
+  factory :client_profile, class: ClientProfile do
+    association :country
+    description { Faker::Lorem.sentence }
+
+    trait :invalid_long_description do
+      description { Faker::Lorem.characters(number: 510) }
+    end
+
+    trait :invalid_short_description do
+      description { Faker::Lorem.characters(number: 2) }
+    end
   end
 end
