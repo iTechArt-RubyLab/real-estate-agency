@@ -82,14 +82,22 @@ renovations = Renovation.create([{name: 'Euro-renovation'},
                                  {name: 'Normal repair'},
                                  {name: 'Without finishing'}])
 
-roles = Role.create([{name: 'Admin', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_dictionary: true, can_edit_dictionary: true, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: true, can_approve_realtor: true, can_freeze_user: true}, 
-                     {name: 'Registred user', can_read_lot: true, can_edit_lot: false, can_asign: false, can_read_dictionary: false, can_edit_dictionary: false, can_give_permission: false, can_work_with_all_property_types: false, can_create_role: false, can_approve_realtor: false, can_freeze_user: false}, 
-                     {name: 'Realtor', can_read_lot: true, can_edit_lot: true, can_asign: false, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: false, can_work_with_all_property_types: false, can_create_role: false, can_approve_realtor: false, can_freeze_user: true}, 
-                     {name: 'Manager', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: false, can_approve_realtor: true, can_freeze_user: true}])
+roles = Role.create([{name: 'Manager', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: false, can_approve_realtor: true, can_freeze_user: true}])
 
-users = User.create!([{email: "testadmin@gmail.com", password: "testadminuser", password_confirmation: "testadminuser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[0]},
-                      {email: "testuser@gmail.com", password: "testuseraccount", password_confirmation: "testuseraccount", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles[1]},
-                      {email: "testcustomer@gmail.com", password: "testcustomeruser", password_confirmation: "testcustomeruser", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc}])
+realtor_profiles = []
+3.times do
+  realtor_profiles << RealtorProfile.create()
+end
+
+client_profiles = []
+3.times do
+  client_profiles << ClientProfile.create()
+end
+
+users = User.create!([{email: "testadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: Role.admin},
+                      {email: "testclient@gmail.com", password: "testclient", password_confirmation: "testclient", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: Role.client, profilable: client_profiles.first},
+                      {email: "testrealtor@gmail.com", password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: Role.realtor, profilable: realtor_profiles.first},
+                      {email: "testmanager@gmail.com", password: "testmanager", password_confirmation: "testmanager", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc, role: roles.first, profilable: realtor_profiles.second}])
 
 deal_types = DealType.create([{name: 'Rent'},
                               {name: 'Sale'},
@@ -102,10 +110,10 @@ commercial_premises = CommercialPremise.create([
         area: 23.5, floor: 1, number_of_premises: 3, plot_of_land: 11, commercial_premises_kind: commercial_premises_kinds[1], 
         lot_attributes: 
         {
-            title: 'wtf', description: 'the best offer', price: 12.3, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[0],
+            title: 'Building for sale in the city center', description: 'For sale detached 2-storey office building in the city center, fenced', price: 12.3, asigner: users[0], asignee: users.second,  client: users[2], deal_type: deal_types[1],
             address_attributes: 
             { 
-                building: 34, description: 'descrption', street: streets[1] 
+                building: 34, description: 'The building is located in the courtyards, across the road from the Komarovsky market, 5-7 minutes. walk from the metro station "Y. Kolas Square".', street: streets[1] 
             }
         }
     }, 
@@ -113,10 +121,10 @@ commercial_premises = CommercialPremise.create([
         area: 123.8, floor: 3, number_of_premises: 10, plot_of_land: 61, commercial_premises_kind: commercial_premises_kinds[2],
         lot_attributes: 
         { 
-            title: 'Great flat', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
+            title: 'Commercial space for sale', description: 'Installment offered.', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
             address_attributes: 
             { 
-                building: 12, description: 'descrption', street: streets[2] 
+                building: 12, description: 'Located on Pobediteley Avenue, in the Minsk Arena area.', street: streets[2] 
             } 
         }
     }, 
@@ -124,7 +132,7 @@ commercial_premises = CommercialPremise.create([
         area: 13.3, floor: 4, number_of_premises: 1, plot_of_land: 6, commercial_premises_kind: commercial_premises_kinds[3],
         lot_attributes: 
         {
-            title: 'Only today', description: 'the best offer', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            title: 'Multifunctional Business Center', description: 'Designer renovation of the office.', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 65, description: 'descrption', street: streets[3] 
@@ -135,7 +143,7 @@ commercial_premises = CommercialPremise.create([
         area: 82.4, floor: 1, number_of_premises: 2, plot_of_land: 41, commercial_premises_kind: commercial_premises_kinds[4],
         lot_attributes: 
         {
-            title: 'Buy one get second for free', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            title: 'Sale of class A business center "Depart" from the owner!', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 140, description: 'descrption', street: streets[4]
