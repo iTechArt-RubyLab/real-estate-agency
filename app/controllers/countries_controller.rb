@@ -4,18 +4,23 @@ class CountriesController < ApplicationController
 
   # GET /countries or /countries.json
   def index
+    @countries = Country.all
+    authorize @countries
     respond_to do |format|
       format.html
-      format.json { render json: CountryDatatable.new(params, view_context: view_context) }
+      format.json { render json: CountryDatatable.new(params, view_context: view_context, countries: @countries) }
     end
   end
 
   # GET /countries/1 or /countries/1.json
-  def show; end
+  def show
+    authorize @country
+  end
 
   # GET /countries/new
   def new
     @country = Country.new
+    authorize @country
   end
 
   # GET /countries/1/edit
@@ -24,7 +29,7 @@ class CountriesController < ApplicationController
   # POST /countries or /countries.json
   def create
     @country = Country.new(country_params)
-
+    authorize @country
     respond_to do |format|
       if @country.save
         format.html { redirect_to country_url(@country), notice: 'Country was successfully created.' }
@@ -38,6 +43,7 @@ class CountriesController < ApplicationController
 
   # PATCH/PUT /countries/1 or /countries/1.json
   def update
+    authorize @country
     respond_to do |format|
       if @country.update(country_params)
         format.html { redirect_to country_url(@country), notice: 'Country was successfully updated.' }
@@ -52,7 +58,7 @@ class CountriesController < ApplicationController
   # DELETE /countries/1 or /countries/1.json
   def destroy
     @country.destroy
-
+    authorize @country
     respond_to do |format|
       format.html { redirect_to countries_url, notice: 'Country was successfully destroyed.' }
       format.json { head :no_content }

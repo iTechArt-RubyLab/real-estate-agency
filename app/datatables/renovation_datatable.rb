@@ -4,6 +4,7 @@ class RenovationDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :renovation_path, :edit_renovation_path
 
   def initialize(params, opts = {})
+    @renovations = opts[:renovations]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class RenovationDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Renovation.all
+    @renovations = Renovation.all
   end
 end

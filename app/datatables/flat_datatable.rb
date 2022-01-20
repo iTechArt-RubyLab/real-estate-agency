@@ -4,6 +4,7 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :flat_path, :edit_flat_path
 
   def initialize(params, opts = {})
+    @flats = opts[:flats]
     @view = opts[:view_context]
     super
   end
@@ -63,6 +64,6 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+    @flats = Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
   end
 end

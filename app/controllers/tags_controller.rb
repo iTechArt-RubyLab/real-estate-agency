@@ -4,27 +4,34 @@ class TagsController < ApplicationController
 
   # GET /tags or /tags.json
   def index
+    @tags = Tag.all
+    authorize @tags
     respond_to do |format|
       format.html
-      format.json { render json: TagDatatable.new(params, view_context: view_context) }
+      format.json { render json: TagDatatable.new(params, view_context: view_context, tags: @tags) }
     end
   end
 
   # GET /tags/1 or /tags/1.json
-  def show; end
+  def show
+    authorize @tag
+  end
 
   # GET /tags/new
   def new
     @tag = Tag.new
+    authorize @tag
   end
 
   # GET /tags/1/edit
-  def edit; end
+  def edit
+    authorize @tag
+  end
 
   # POST /tags or /tags.json
   def create
     @tag = Tag.new(tag_params)
-
+    authorize @tag
     respond_to do |format|
       if @tag.save
         format.html { redirect_to tag_url(@tag), notice: 'Tag was successfully created.' }
@@ -38,6 +45,7 @@ class TagsController < ApplicationController
 
   # PATCH/PUT /tags/1 or /tags/1.json
   def update
+    authorize @tag
     respond_to do |format|
       if @tag.update(tag_params)
         format.html { redirect_to tag_url(@tag), notice: 'Tag was successfully updated.' }
@@ -52,7 +60,7 @@ class TagsController < ApplicationController
   # DELETE /tags/1 or /tags/1.json
   def destroy
     @tag.destroy
-
+    authorize @tag
     respond_to do |format|
       format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
       format.json { head :no_content }

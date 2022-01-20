@@ -4,6 +4,7 @@ class CommercialPremisesKindDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :commercial_premises_kind_path, :edit_commercial_premises_kind_path
 
   def initialize(params, opts = {})
+    @commercial_premises_kinds = opts[:commercial_premises_kinds]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class CommercialPremisesKindDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    CommercialPremisesKind.all
+    @commercial_premises_kinds = CommercialPremisesKind.all
   end
 end

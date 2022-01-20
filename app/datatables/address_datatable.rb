@@ -4,6 +4,7 @@ class AddressDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :address_path, :edit_address_path
 
   def initialize(params, opts = {})
+    @addresses = opts[:addresses]
     @view = opts[:view_context]
     super
   end
@@ -33,6 +34,6 @@ class AddressDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Address.joins(:street)
+    @addresses = Address.joins(:street)
   end
 end

@@ -4,27 +4,34 @@ class CommercialPremisesController < ApplicationController
 
   # GET /commercial_premises or /commercial_premises.json
   def index
+    @commercial_premises = CommercialPremise.all
+    authorize @commercial_premises
     respond_to do |format|
       format.html
-      format.json { render json: CommercialPremiseDatatable.new(params, view_context: view_context) }
+      format.json { render json: CommercialPremiseDatatable.new(params, view_context: view_context, commercial_premises: @commercial_premises) }
     end
   end
 
   # GET /commercial_premises/1 or /commercial_premises/1.json
-  def show; end
+  def show
+    authorize @commercial_premise
+  end
 
   # GET /commercial_premises/new
   def new
     @commercial_premise = CommercialPremise.new
+    authorize @commercial_premise
   end
 
   # GET /commercial_premises/1/edit
-  def edit; end
+  def edit
+    authorize @commercial_premise
+  end
 
   # POST /commercial_premises or /commercial_premises.json
   def create
     @commercial_premise = CommercialPremise.new(commercial_premise_params)
-
+    authorize @commercial_premise
     respond_to do |format|
       if @commercial_premise.save
         format.html do
@@ -41,6 +48,7 @@ class CommercialPremisesController < ApplicationController
 
   # PATCH/PUT /commercial_premises/1 or /commercial_premises/1.json
   def update
+    authorize @commercial_premise
     respond_to do |format|
       if @commercial_premise.update(commercial_premise_params)
         format.html do
@@ -58,7 +66,7 @@ class CommercialPremisesController < ApplicationController
   # DELETE /commercial_premises/1 or /commercial_premises/1.json
   def destroy
     @commercial_premise.destroy
-
+    authorize @commercial_premise
     respond_to do |format|
       format.html { redirect_to commercial_premises_url, notice: 'Commercial premise was successfully destroyed.' }
       format.json { head :no_content }

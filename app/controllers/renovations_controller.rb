@@ -4,27 +4,34 @@ class RenovationsController < ApplicationController
 
   # GET /renovations or /renovations.json
   def index
+    @renovations = Renovation.all
+    authorize @renovations
     respond_to do |format|
       format.html
-      format.json { render json: RenovationDatatable.new(params, view_context: view_context) }
+      format.json { render json: RenovationDatatable.new(params, view_context: view_context, renovations: @renovations) }
     end
   end
 
   # GET /renovations/1 or /renovations/1.json
-  def show; end
+  def show
+    authorize @renovation
+  end
 
   # GET /renovations/new
   def new
     @renovation = Renovation.new
+    authorize @renovation
   end
 
   # GET /renovations/1/edit
-  def edit; end
+  def edit
+    authorize @renovation
+  end
 
   # POST /renovations or /renovations.json
   def create
     @renovation = Renovation.new(renovation_params)
-
+    authorize @renovation
     respond_to do |format|
       if @renovation.save
         format.html { redirect_to renovation_url(@renovation), notice: 'Renovation was successfully created.' }
@@ -38,6 +45,7 @@ class RenovationsController < ApplicationController
 
   # PATCH/PUT /renovations/1 or /renovations/1.json
   def update
+    authorize @renovation
     respond_to do |format|
       if @renovation.update(renovation_params)
         format.html { redirect_to renovation_url(@renovation), notice: 'Renovation was successfully updated.' }
@@ -52,7 +60,7 @@ class RenovationsController < ApplicationController
   # DELETE /renovations/1 or /renovations/1.json
   def destroy
     @renovation.destroy
-
+    authorize @renovation
     respond_to do |format|
       format.html { redirect_to renovations_url, notice: 'Renovation was successfully destroyed.' }
       format.json { head :no_content }

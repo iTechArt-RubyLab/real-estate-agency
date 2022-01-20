@@ -4,6 +4,7 @@ class DistrictDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :city_district_path, :edit_city_district_path
 
   def initialize(params, opts = {})
+    @districts = opts[:districts]
     @view = opts[:view_context]
     @params = params
     super
@@ -30,6 +31,6 @@ class DistrictDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    District.preload(:city).where(city_id: @params[:city_id])
+    @districts = District.preload(:city).where(city_id: @params[:city_id])
   end
 end

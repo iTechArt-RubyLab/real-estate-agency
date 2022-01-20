@@ -7,15 +7,15 @@ class CommercialPremisePolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user.role.can_read_lot
   end
 
   def show?
-    true
+    user.role.can_read_lot
   end
 
   def create?
-    true
+    user.role.can_edit_lot
   end
 
   def new?
@@ -23,7 +23,7 @@ class CommercialPremisePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user.role.can_edit_lot
   end
 
   def edit?
@@ -31,7 +31,7 @@ class CommercialPremisePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    user.role.can_edit_lot
   end
 
   class Scope

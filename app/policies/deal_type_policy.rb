@@ -1,0 +1,2 @@
+class DealTypePolicy < DictionaryBasePolicy
+end

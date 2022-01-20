@@ -4,29 +4,35 @@ class CitiesController < ApplicationController
 
   # GET /cities or /cities.json
   def index
+    @cities = City.all
+    authorize @cities
     respond_to do |format|
       format.html
-      format.json { render json: CityDatatable.new(params, view_context: view_context) }
+      format.json { render json: CityDatatable.new(params, view_context: view_context, cities: @cities) }
     end
   end
 
   # GET /cities/1 or /cities/1.json
   def show
     @districts = @city.districts.preload(:districts)
+    authorize @city
   end
 
   # GET /cities/new
   def new
     @city = City.new
+    authorize @city
   end
 
   # GET /cities/1/edit
-  def edit; end
+  def edit
+    authorize @city
+  end
 
   # POST /cities or /cities.json
   def create
     @city = City.new(city_params)
-
+    authorize @city
     respond_to do |format|
       if @city.save
         format.html { redirect_to city_url(@city), notice: 'City was successfully created.' }
@@ -40,6 +46,7 @@ class CitiesController < ApplicationController
 
   # PATCH/PUT /cities/1 or /cities/1.json
   def update
+    authorize @city
     respond_to do |format|
       if @city.update(city_params)
         format.html { redirect_to city_url(@city), notice: 'City was successfully updated.' }
@@ -53,6 +60,7 @@ class CitiesController < ApplicationController
 
   # DELETE /cities/1 or /cities/1.json
   def destroy
+    authorize @city
     @city.destroy
 
     respond_to do |format|

@@ -4,6 +4,7 @@ class DealTypeDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :deal_type_path, :edit_deal_type_path
 
   def initialize(params, opts = {})
+    @deal_types = opts[:deal_types]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class DealTypeDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    DealType.all
+    @deal_types = DealType.all
   end
 end
