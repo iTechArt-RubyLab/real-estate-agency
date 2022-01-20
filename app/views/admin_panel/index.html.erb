@@ -1,41 +1,35 @@
 <% presenter = AdminPanelPresenter.new(current_user) %>
 <%= stylesheet_link_tag :admin_panel %>
 
-<% if user_signed_in? %>
-  <h1> Hello <%= presenter.email_without_domain_name %>!</h1>
-<% else %>
-  <h1> Hello friend! </h1>
-<% end %>
-
 <div class="container mt-5">
   <div class="row">
     <div class="col-3">
       <div class="col m-2 p-1 border">
-        <h4><a><%= link_to 'Cities', cities_path, class: "menu_item" %></a></h4>
+        <h4 class="menu_item"><%= link_to 'Cities', cities_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
-        <h4 class="menu_item"><%= link_to 'Addresses', addresses_path, class: "menu_item" %></h4>
-      </div>
-      <div class="col m-2 p-1 border">
-        <h4 class="menu_item"><%= link_to 'Commercial premises', commercial_premises_path, class: "menu_item" %></h4>
+        <h4 class="menu_item"><%= link_to 'Countries', countries_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
         <h4 class="menu_item"><%= link_to 'Commercial premises kinds', commercial_premises_kinds_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
-        <h4 class="menu_item"><%= link_to 'Country side houses', country_side_houses_path, class: "menu_item" %></h4>
-      </div>
-      <div class="col m-2 p-1 border">
         <h4 class="menu_item"><%= link_to 'Country side houses kinds', country_side_house_kinds_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
-        <h4 class="menu_item"><%= link_to 'Flats', flats_path, class: "menu_item" %></h4>
+        <h4 class="menu_item"><%= link_to 'Deal types', deal_types_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Property types', property_types_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
         <h4 class="menu_item"><%= link_to 'Ready states', ready_states_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
         <h4 class="menu_item"><%= link_to 'Renovations', renovations_path, class: "menu_item" %></h4>
+      </div>
+      <div class="col m-2 p-1 border">
+        <h4 class="menu_item"><%= link_to 'Roles', roles_path, class: "menu_item" %></h4>
       </div>
       <div class="col m-2 p-1 border">
         <h4 class="menu_item"><%= link_to 'Wall materials', wall_materials_path, class: "menu_item" %></h4>
@@ -49,7 +43,7 @@
         <h3>Number of clients</h3>
       </div>
       <div class="col m-2 p-5 border report_item">
-        <h3>Number of clients</h3>
+        <h3>Some report item</h3>
       </div>
     </div>
     <div class="col-3">
@@ -60,7 +54,7 @@
         <h3>Most active user</h3>
       </div>
       <div class="col m-2 p-5 border report_item">
-        <h3>Number of clients</h3>
+        <h3>Some report item</h3>
       </div>
     </div>
     <div class="col-3">
@@ -71,7 +65,7 @@
         <h3>Most interesting lot</h3>
       </div>
       <div class="col m-2 p-5 border report_item">
-        <h3>Number of clients</h3>
+        <h3>Some report item</h3>
       </div>
     </div>
   </div>
