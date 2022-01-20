@@ -42,6 +42,8 @@ class Lot < ApplicationRecord
   belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
 
+  validates_with AsigneeValidator
+
   validates :title, length: { in: 5..50 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
   validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
   validates :price, inclusion: { in: 0.1..10_000_000.0 }
