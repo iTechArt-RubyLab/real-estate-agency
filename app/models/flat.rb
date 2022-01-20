@@ -29,6 +29,8 @@ class Flat < ApplicationRecord
   belongs_to :renovation
   belongs_to :wall_material
   has_one :lot, as: :lotable
+  accepts_nested_attributes_for :lot
+  delegate :title, :description, :price, to: :lot
 
   validates :celling_height, inclusion: { in: 1.80..5.0 }
   validates :floor, numericality: { only_integer: true }, inclusion: { in: 1..34 }
