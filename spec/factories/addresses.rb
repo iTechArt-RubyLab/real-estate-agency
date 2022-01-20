@@ -18,7 +18,7 @@
 #  fk_rails_...  (street_id => streets.id)
 #
 FactoryBot.define do
-  factory :addresses, class: Address do
+  factory :address, class: Address do
     association :street
     building { Faker::Number.within(range: 1..300) }
     description { Faker::Lorem.sentence }
