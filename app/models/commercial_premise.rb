@@ -21,7 +21,7 @@
 #
 class CommercialPremise < ApplicationRecord
   belongs_to :commercial_premises_kind
-  has_one :lot, as: :lotable
+  has_one :lot, as: :lotable, dependent: :destroy
   accepts_nested_attributes_for :lot
   delegate :title, :description, :price, to: :lot
 

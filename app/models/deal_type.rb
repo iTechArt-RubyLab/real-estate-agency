@@ -8,7 +8,7 @@
 #  updated_at :datetime         not null
 #
 class DealType < ApplicationRecord
-  has_many :lots
+  has_many :lots, dependent: :nullify
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
 

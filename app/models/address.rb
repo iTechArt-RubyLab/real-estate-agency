@@ -19,7 +19,7 @@
 #
 class Address < ApplicationRecord
   belongs_to :street, optional: true
-  has_one :lot
+  has_one :lot, dependent: :nullify
 
   validates :building, numericality: { only_integer: true }, inclusion: { in: 1..300 }
   validates :description, length: { in: 3..500 }
