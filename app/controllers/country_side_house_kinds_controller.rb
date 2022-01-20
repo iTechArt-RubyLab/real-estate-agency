@@ -4,27 +4,34 @@ class CountrySideHouseKindsController < ApplicationController
 
   # GET /country_side_house_kinds or /country_side_house_kinds.json
   def index
+    @country_side_house_kinds = CountrySideHouseKind.all
+    authorize @country_side_house_kinds
     respond_to do |format|
       format.html
-      format.json { render json: CountrySideHouseKindDatatable.new(params, view_context: view_context) }
+      format.json { render json: CountrySideHouseKindDatatable.new(params, view_context: view_context, country_side_house_kinds: @country_side_house_kinds) }
     end
   end
 
   # GET /country_side_house_kinds/1 or /country_side_house_kinds/1.json
-  def show; end
+  def show
+    authorize @country_side_house_kind
+  end
 
   # GET /country_side_house_kinds/new
   def new
     @country_side_house_kind = CountrySideHouseKind.new
+    authorize @country_side_house_kind
   end
 
   # GET /country_side_house_kinds/1/edit
-  def edit; end
+  def edit
+    authorize @country_side_house_kind
+  end
 
   # POST /country_side_house_kinds or /country_side_house_kinds.json
   def create
     @country_side_house_kind = CountrySideHouseKind.new(country_side_house_kind_params)
-
+    authorize @country_side_house_kind
     respond_to do |format|
       if @country_side_house_kind.save
         format.html do
@@ -41,6 +48,7 @@ class CountrySideHouseKindsController < ApplicationController
 
   # PATCH/PUT /country_side_house_kinds/1 or /country_side_house_kinds/1.json
   def update
+    authorize @country_side_house_kind
     respond_to do |format|
       if @country_side_house_kind.update(country_side_house_kind_params)
         format.html do
@@ -58,7 +66,7 @@ class CountrySideHouseKindsController < ApplicationController
   # DELETE /country_side_house_kinds/1 or /country_side_house_kinds/1.json
   def destroy
     @country_side_house_kind.destroy
-
+    authorize @country_side_house_kind
     respond_to do |format|
       format.html do
         redirect_to country_side_house_kinds_url, notice: 'Country side house kind was successfully destroyed.'

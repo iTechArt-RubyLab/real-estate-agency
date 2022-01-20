@@ -4,6 +4,7 @@ class CountrySideHouseKindDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :country_side_house_kind_path, :edit_country_side_house_kind_path
 
   def initialize(params, opts = {})
+    @country_side_house_kinds = opts[:country_side_house_kinds]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class CountrySideHouseKindDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    CountrySideHouseKind.all
+    @country_side_house_kinds = CountrySideHouseKind.all
   end
 end
