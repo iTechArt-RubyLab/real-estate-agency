@@ -10,6 +10,15 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
 
   def view_columns
     @view_columns ||= {
+      title: { source: 'Lot.title', cond: :like, searchable: true },
+      description: { source: 'Lot.description', cond: :like, searchable: true },
+      price: { source: 'Lot.price', cond: :like, searchable: true },
+      deal_type: { source: 'DealType.name', cond: :like, searchable: true },
+      city: { source: 'City.name', cond: :like, searchable: true },
+      district: { source: 'District.name', cond: :like, searchable: true },
+      street: { source: 'Street.name', cond: :like, searchable: true },
+      building: { source: 'Address.building', cond: :like, searchable: true },
+      address_description: { source: 'Address.description', cond: :like, searchable: true },
       renovation_id: { source: 'Renovation.name', cond: :like, searchable: true },
       rooms_count: { source: 'Flat.rooms_count', cond: :like, searchable: true },
       floor: { source: 'Flat.floor', cond: :like, searchable: true },
@@ -26,6 +35,15 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
   def data
     records.map do |record|
       {
+        title: record.lot.title,
+        description: record.lot.description,
+        price: record.lot.price,
+        deal_type: record.lot.deal_type.name,
+        city: record.lot.address.street.district.city.name,
+        district: record.lot.address.street.district.name,
+        street: record.lot.address.street.name,
+        building: record.lot.address.building,
+        address_description: record.lot.address.description,
         renovation_id: record.renovation.name,
         rooms_count: record.rooms_count,
         floor: record.floor,
@@ -45,6 +63,6 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Flat.joins(:renovation, :wall_material)
+    Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
   end
 end
