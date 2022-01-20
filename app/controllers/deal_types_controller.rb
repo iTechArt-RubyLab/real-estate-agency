@@ -3,27 +3,34 @@ class DealTypesController < ApplicationController
 
   # GET /deal_types or /deal_types.json
   def index
+    @deal_types = City.all
+    authorize @deal_types
     respond_to do |format|
       format.html
-      format.json { render json: DealTypeDatatable.new(params, view_context: view_context) }
+      format.json { render json: DealTypeDatatable.new(params, view_context: view_context, deal_types: @deal_types) }
     end
   end
 
   # GET /deal_types/1 or /deal_types/1.json
-  def show; end
+  def show
+    authorize @deal_type
+  end
 
   # GET /deal_types/new
   def new
     @deal_type = DealType.new
+    authorize @deal_type
   end
 
   # GET /deal_types/1/edit
-  def edit; end
+  def edit
+    authorize @deal_type
+  end
 
   # POST /deal_types or /deal_types.json
   def create
     @deal_type = DealType.new(deal_type_params)
-
+    authorize @deal_type
     respond_to do |format|
       if @deal_type.save
         format.html { redirect_to deal_type_url(@deal_type), notice: 'Deal type was successfully created.' }
@@ -37,6 +44,7 @@ class DealTypesController < ApplicationController
 
   # PATCH/PUT /deal_types/1 or /deal_types/1.json
   def update
+    authorize @deal_type
     respond_to do |format|
       if @deal_type.update(deal_type_params)
         format.html { redirect_to deal_type_url(@deal_type), notice: 'Deal type was successfully updated.' }
@@ -51,7 +59,7 @@ class DealTypesController < ApplicationController
   # DELETE /deal_types/1 or /deal_types/1.json
   def destroy
     @deal_type.destroy
-
+    authorize @deal_type
     respond_to do |format|
       format.html { redirect_to deal_types_url, notice: 'Deal type was successfully destroyed.' }
       format.json { head :no_content }
