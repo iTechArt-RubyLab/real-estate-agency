@@ -7,15 +7,15 @@ class DictionaryBasePolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user.role.can_read_dictionary
   end
 
   def show?
-    false
+    user.role.can_read_dictionary
   end
 
   def create?
-    true
+    user.role.can_edit_dictionary
   end
 
   def new?
@@ -23,7 +23,7 @@ class DictionaryBasePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user.role.can_edit_dictionary
   end
 
   def edit?
@@ -31,7 +31,7 @@ class DictionaryBasePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    user.role.can_edit_dictionary
   end
 
   class Scope
