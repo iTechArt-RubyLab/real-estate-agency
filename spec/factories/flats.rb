@@ -26,7 +26,7 @@
 #  fk_rails_...  (wall_material_id => wall_materials.id)
 #
 FactoryBot.define do
-  factory :flats, class: Flat do
+  factory :flat, class: Flat do
     association :renovation
     association :wall_material
     rooms_count { Faker::Number.within(range: 1..40) }
@@ -49,10 +49,6 @@ FactoryBot.define do
       rooms_count { Faker::Movies::LordOfTheRings.character }
     end
 
-    trait :valid_floor do
-      floor { Faker::Number.within(range: 1..34) }
-    end
-
     trait :invalid_big_floor do
       floor { Faker::Number.within(range: 35..100) }
     end
@@ -63,10 +59,6 @@ FactoryBot.define do
 
     trait :invalid_with_letters_floor do
       floor { Faker::Movies::LordOfTheRings.character }
-    end
-
-    trait :valid_year_of_construction do
-      year_of_construction { Faker::Number.within(range: 1900..2022) }
     end
 
     trait :invalid_big_year_of_construction do
@@ -81,10 +73,6 @@ FactoryBot.define do
       year_of_construction { Faker::Movies::LordOfTheRings.character }
     end
 
-    trait :valid_celling_height do
-      celling_height { Faker::Number.within(range: 1.80..5.0) }
-    end
-
     trait :invalid_big_celling_height do
       celling_height { Faker::Number.within(range: 5.1..10.0) }
     end
@@ -95,10 +83,6 @@ FactoryBot.define do
 
     trait :invalid_with_letters_celling_height do
       celling_height { Faker::Movies::LordOfTheRings.character }
-    end
-
-    trait :valid_total_area do
-      total_area { Faker::Number.within(range: 2.0..1000.0) }
     end
 
     trait :invalid_big_total_area do
@@ -113,10 +97,6 @@ FactoryBot.define do
       total_area { Faker::Movies::LordOfTheRings.character }
     end
 
-    trait :valid_living_area do
-      living_area { Faker::Number.within(range: 2.0..100.0) }
-    end
-
     trait :invalid_big_living_area do
       living_area { Faker::Number.within(range: 100.1..200.0) }
     end
@@ -127,10 +107,6 @@ FactoryBot.define do
 
     trait :invalid_with_letters_living_area do
       living_area { Faker::Movies::LordOfTheRings.character }
-    end
-
-    trait :valid_kitchen_area do
-      kitchen_area { Faker::Number.within(range: 2.0..100.0) }
     end
 
     trait :invalid_big_kitchen_area do
