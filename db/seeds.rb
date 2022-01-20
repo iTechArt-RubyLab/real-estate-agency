@@ -81,12 +81,6 @@ renovations = Renovation.create([{name: 'Euro-renovation'},
                                  {name: 'Emergency condition'},
                                  {name: 'Normal repair'},
                                  {name: 'Without finishing'}])
-flats = Flat.create([{celling_height: 2.3, floor: 12, kitchen_area: 10.2, living_area: 18.7, rooms_count: 3, total_area: 32.7, year_of_construction: 2012, renovation: renovations[2], wall_material: wall_materials[3]}, 
-                     {celling_height: 2.4, floor: 3, kitchen_area: 7.2, living_area: 9.3, rooms_count: 2, total_area: 21.3, year_of_construction: 1984, renovation: renovations[1], wall_material: wall_materials[2]}, 
-                     {celling_height: 1.98, floor: 9, kitchen_area: 8.9, living_area: 10.1, rooms_count: 1, total_area: 24.8, year_of_construction: 1999, renovation: renovations[4], wall_material: wall_materials[6]}, 
-                     {celling_height: 2.5, floor: 5, kitchen_area: 19.6, living_area: 34.9, rooms_count: 4, total_area: 67.1, year_of_construction: 2020, renovation: renovations[3], wall_material: wall_materials[7]}, 
-                     {celling_height: 2.1, floor: 1, kitchen_area: 11.4, living_area: 21.8, rooms_count: 3, total_area: 34.4, year_of_construction: 2016, renovation: renovations[5], wall_material: wall_materials[8]}, 
-                     {celling_height: 2.2, floor: 17, kitchen_area: 9.5, living_area: 15.6, rooms_count: 1, total_area: 31.5, year_of_construction: 2009, renovation: renovations[2], wall_material: wall_materials[3]}])
 
 roles = Role.create([{name: 'Admin', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_dictionary: true, can_edit_dictionary: true, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: true, can_approve_realtor: true, can_freeze_user: true}, 
                      {name: 'Registred user', can_read_lot: true, can_edit_lot: false, can_asign: false, can_read_dictionary: false, can_edit_dictionary: false, can_give_permission: false, can_work_with_all_property_types: false, can_create_role: false, can_approve_realtor: false, can_freeze_user: false}, 
@@ -230,6 +224,75 @@ country_side_houses = CountrySideHouse.create([
     }, 
     {
         floors_count: 3, land_area: 47.7, total_area: 61.1, year_of_construction: 2021, country_side_house_kind: country_side_house_kinds[5], ready_state: ready_states[5], wall_material: wall_materials[0],
+        lot_attributes: 
+        {
+            title: 'Go 1x1 mid only', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 95, description: 'descrption', street: streets[6] 
+            } 
+        }
+    }
+])
+
+flats = Flat.create([
+    {
+        celling_height: 2.3, floor: 12, kitchen_area: 10.2, living_area: 18.7, rooms_count: 3, total_area: 32.7, year_of_construction: 2012, renovation: renovations[2], wall_material: wall_materials[3],
+        lot_attributes: 
+        {
+            title: 'wtf', description: 'the best offer', price: 12.3, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[0],
+            address_attributes: 
+            { 
+                building: 34, description: 'descrption', street: streets[1] 
+            }
+        }
+    }, 
+    {
+        celling_height: 2.4, floor: 3, kitchen_area: 7.2, living_area: 9.3, rooms_count: 2, total_area: 21.3, year_of_construction: 1984, renovation: renovations[1], wall_material: wall_materials[2],
+        lot_attributes: 
+        { 
+            title: 'Great flat', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
+            address_attributes: 
+            { 
+                building: 12, description: 'descrption', street: streets[2] 
+            } 
+        }
+    }, 
+    {
+        celling_height: 1.98, floor: 9, kitchen_area: 8.9, living_area: 10.1, rooms_count: 1, total_area: 24.8, year_of_construction: 1999, renovation: renovations[4], wall_material: wall_materials[6],
+        lot_attributes: 
+        {
+            title: 'Only today', description: 'the best offer', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 65, description: 'descrption', street: streets[3] 
+            } 
+        }
+    }, 
+    {
+        celling_height: 2.5, floor: 5, kitchen_area: 19.6, living_area: 34.9, rooms_count: 4, total_area: 67.1, year_of_construction: 2020, renovation: renovations[3], wall_material: wall_materials[7],
+        lot_attributes: 
+        {
+            title: 'Buy one get second for free', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 140, description: 'descrption', street: streets[4]
+            } 
+        }
+    }, 
+    {
+        celling_height: 2.1, floor: 1, kitchen_area: 11.4, living_area: 21.8, rooms_count: 3, total_area: 34.4, year_of_construction: 2016, renovation: renovations[5], wall_material: wall_materials[8],
+        lot_attributes: 
+        {
+            title: 'ASAP', description: 'the worst offer', price: 25.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 2, description: 'descrption', street: streets[5]
+            } 
+        }
+    }, 
+    {
+        celling_height: 2.2, floor: 17, kitchen_area: 9.5, living_area: 15.6, rooms_count: 1, total_area: 31.5, year_of_construction: 2009, renovation: renovations[2], wall_material: wall_materials[3],
         lot_attributes: 
         {
             title: 'Go 1x1 mid only', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
