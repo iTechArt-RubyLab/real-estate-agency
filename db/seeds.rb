@@ -110,10 +110,10 @@ commercial_premises = CommercialPremise.create([
         area: 23.5, floor: 1, number_of_premises: 3, plot_of_land: 11, commercial_premises_kind: commercial_premises_kinds[1], 
         lot_attributes: 
         {
-            title: 'wtf', description: 'the best offer', price: 12.3, asigner: users[0], asignee: users.second,  client: users[2], deal_type: deal_types[0],
+            title: 'Building for sale in the city center', description: 'For sale detached 2-storey office building in the city center, fenced', price: 12.3, asigner: users[0], asignee: users.second,  client: users[2], deal_type: deal_types[1],
             address_attributes: 
             { 
-                building: 34, description: 'descrption', street: streets[1] 
+                building: 34, description: 'The building is located in the courtyards, across the road from the Komarovsky market, 5-7 minutes. walk from the metro station "Y. Kolas Square".', street: streets[1] 
             }
         }
     }, 
@@ -121,10 +121,10 @@ commercial_premises = CommercialPremise.create([
         area: 123.8, floor: 3, number_of_premises: 10, plot_of_land: 61, commercial_premises_kind: commercial_premises_kinds[2],
         lot_attributes: 
         { 
-            title: 'Great flat', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
+            title: 'Commercial space for sale', description: 'Installment offered.', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
             address_attributes: 
             { 
-                building: 12, description: 'descrption', street: streets[2] 
+                building: 12, description: 'Located on Pobediteley Avenue, in the Minsk Arena area.', street: streets[2] 
             } 
         }
     }, 
@@ -132,7 +132,7 @@ commercial_premises = CommercialPremise.create([
         area: 13.3, floor: 4, number_of_premises: 1, plot_of_land: 6, commercial_premises_kind: commercial_premises_kinds[3],
         lot_attributes: 
         {
-            title: 'Only today', description: 'the best offer', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            title: 'Multifunctional Business Center', description: 'Designer renovation of the office.', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 65, description: 'descrption', street: streets[3] 
@@ -143,7 +143,7 @@ commercial_premises = CommercialPremise.create([
         area: 82.4, floor: 1, number_of_premises: 2, plot_of_land: 41, commercial_premises_kind: commercial_premises_kinds[4],
         lot_attributes: 
         {
-            title: 'Buy one get second for free', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            title: 'Sale of class A business center "Depart" from the owner!', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 140, description: 'descrption', street: streets[4]
