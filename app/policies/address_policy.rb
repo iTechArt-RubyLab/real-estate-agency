@@ -1,2 +1,0 @@
-class AddressPolicy < DictionaryBasePolicy
-end
