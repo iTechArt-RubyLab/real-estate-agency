@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Country < ApplicationRecord
-  has_many :client_profiles, dependent: :delete_all
+  has_many :client_profiles, dependent: :nullify
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
 

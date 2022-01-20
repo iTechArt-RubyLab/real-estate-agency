@@ -19,7 +19,7 @@
 class ClientProfile < ApplicationRecord
   belongs_to :country, optional: true
   has_and_belongs_to_many :tags
-  has_one :user, as: :profilable
+  has_one :user, as: :profilable, dependent: :destroy
 
   validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
 
