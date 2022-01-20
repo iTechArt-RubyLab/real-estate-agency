@@ -64,6 +64,9 @@ class User < ApplicationRecord
 
   after_commit :set_default_avatar, on: %i[create update]
 
+  scope :with_clients, -> { where(profilable_type: 'ClientProfile') }
+  scope :with_realtors, -> { where(profilable_type: 'RealtorProfile') }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
