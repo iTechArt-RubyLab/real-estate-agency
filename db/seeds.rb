@@ -71,12 +71,7 @@ wall_materials = WallMaterial.create([{name: 'Brick'},
                                       {name: 'Monolithic'},
                                       {name: 'Silicate blocks'},
                                       {name: 'Frame block'}])
-country_side_houses = CountrySideHouse.create([{floors_count: 2, land_area: 12.3, total_area: 17.6, year_of_construction: 2016, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[4]}, 
-                                               {floors_count: 1, land_area: 10.5, total_area: 13.2, year_of_construction: 2011, country_side_house_kind: country_side_house_kinds[1], ready_state: ready_states[1], wall_material: wall_materials[1]}, 
-                                               {floors_count: 3, land_area: 29.4, total_area: 36.3, year_of_construction: 2020, country_side_house_kind: country_side_house_kinds[2], ready_state: ready_states[2], wall_material: wall_materials[2]}, 
-                                               {floors_count: 0, land_area: 15.3, total_area: 19.2, year_of_construction: 2019, country_side_house_kind: country_side_house_kinds[3], ready_state: ready_states[3], wall_material: wall_materials[4]}, 
-                                               {floors_count: 1, land_area: 11.9, total_area: 16.7, year_of_construction: 2007, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[3]}, 
-                                               {floors_count: 3, land_area: 47.7, total_area: 61.1, year_of_construction: 2021, country_side_house_kind: country_side_house_kinds[5], ready_state: ready_states[5], wall_material: wall_materials[0]}])
+
 renovations = Renovation.create([{name: 'Euro-renovation'},
                                  {name: 'Satisfactory repair'},
                                  {name: 'Construction finishing'},
@@ -166,6 +161,75 @@ commercial_premises = CommercialPremise.create([
     }, 
     {
         area: 10.6, floor: 1, number_of_premises: 1, plot_of_land: 5, commercial_premises_kind: commercial_premises_kinds[6],
+        lot_attributes: 
+        {
+            title: 'Go 1x1 mid only', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 95, description: 'descrption', street: streets[6] 
+            } 
+        }
+    }
+])
+
+country_side_houses = CountrySideHouse.create([
+    {
+        floors_count: 2, land_area: 12.3, total_area: 17.6, year_of_construction: 2016, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[4],
+        lot_attributes: 
+        {
+            title: 'wtf', description: 'the best offer', price: 12.3, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[0],
+            address_attributes: 
+            { 
+                building: 34, description: 'descrption', street: streets[1] 
+            }
+        }
+    }, 
+    {
+        floors_count: 1, land_area: 10.5, total_area: 13.2, year_of_construction: 2011, country_side_house_kind: country_side_house_kinds[1], ready_state: ready_states[1], wall_material: wall_materials[1],
+        lot_attributes: 
+        { 
+            title: 'Great flat', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[2],  client: users[1], deal_type: deal_types[1],
+            address_attributes: 
+            { 
+                building: 12, description: 'descrption', street: streets[2] 
+            } 
+        }
+    }, 
+    {
+        floors_count: 3, land_area: 29.4, total_area: 36.3, year_of_construction: 2020, country_side_house_kind: country_side_house_kinds[2], ready_state: ready_states[2], wall_material: wall_materials[2],
+        lot_attributes: 
+        {
+            title: 'Only today', description: 'the best offer', price: 134.1, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
+            address_attributes: 
+            { 
+                building: 65, description: 'descrption', street: streets[3] 
+            } 
+        }
+    }, 
+    {
+        floors_count: 0, land_area: 15.3, total_area: 19.2, year_of_construction: 2019, country_side_house_kind: country_side_house_kinds[3], ready_state: ready_states[3], wall_material: wall_materials[4],
+        lot_attributes: 
+        {
+            title: 'Buy one get second for free', description: 'the best offer', price: 16.9, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 140, description: 'descrption', street: streets[4]
+            } 
+        }
+    }, 
+    {
+        floors_count: 1, land_area: 11.9, total_area: 16.7, year_of_construction: 2007, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[3],
+        lot_attributes: 
+        {
+            title: 'ASAP', description: 'the worst offer', price: 25.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[3],
+            address_attributes: 
+            { 
+                building: 2, description: 'descrption', street: streets[5]
+            } 
+        }
+    }, 
+    {
+        floors_count: 3, land_area: 47.7, total_area: 61.1, year_of_construction: 2021, country_side_house_kind: country_side_house_kinds[5], ready_state: ready_states[5], wall_material: wall_materials[0],
         lot_attributes: 
         {
             title: 'Go 1x1 mid only', description: 'the best offer', price: 18.6, asigner: users[0], asignee: users[1],  client: users[2], deal_type: deal_types[2],
