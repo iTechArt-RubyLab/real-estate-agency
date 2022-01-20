@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       resources :streets
     end
   end
-  resources :addresses
   resources :streets
   resources :districts
   resources :roles
