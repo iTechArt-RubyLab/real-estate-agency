@@ -4,7 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  description  :text
-#  lotable_type :string           not null
+#  lotable_type :string
 #  price        :decimal(, )
 #  title        :string
 #  created_at   :datetime         not null
@@ -12,9 +12,9 @@
 #  address_id   :bigint           not null
 #  asignee_id   :bigint
 #  asigner_id   :bigint
-#  client_id    :bigint           not null
+#  client_id    :bigint
 #  deal_type_id :bigint           not null
-#  lotable_id   :bigint           not null
+#  lotable_id   :bigint
 #
 # Indexes
 #
@@ -36,9 +36,17 @@
 class Lot < ApplicationRecord
   belongs_to :deal_type
   belongs_to :address
-  belongs_to :lotable, polymorphic: true
+  belongs_to :lotable, polymorphic: true, optional: true
   belongs_to :asigner, class_name: 'User', optional: true
   belongs_to :asignee, class_name: 'User', optional: true
-  belongs_to :client, class_name: 'User'
+  belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
+
+  validates :title, length: { in: 5..50 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
+  validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
+  validates :price, inclusion: { in: 0.1..10_000_000.0 }
+
+  scope :with_title, ->(title) { where(title: title) }
+  scope :with_description, ->(description) { where(description: description) }
+  scope :with_price, ->(price) { where(price: price) }
 end
