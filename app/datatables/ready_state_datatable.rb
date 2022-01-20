@@ -4,6 +4,7 @@ class ReadyStateDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :ready_state_path, :edit_ready_state_path
 
   def initialize(params, opts = {})
+    @ready_states = opts[:ready_states]
     @view = opts[:view_context]
     super
   end
@@ -29,6 +30,6 @@ class ReadyStateDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    ReadyState.all
+    @ready_states = ReadyState.all
   end
 end
