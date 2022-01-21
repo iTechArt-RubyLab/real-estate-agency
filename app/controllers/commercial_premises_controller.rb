@@ -82,7 +82,7 @@ class CommercialPremisesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def commercial_premise_params
-    params.require(:commercial_premise).permit(:area, :floor, :number_of_premises, :plot_of_land,
-                                               :commercial_premises_kind_id)
+    params.require(:commercial_premise).permit(:area, :floor, :number_of_premises, :plot_of_land, :commercial_premises_kind_id,
+                                               lot_attributes: [:title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[building description street_id] }])
   end
 end
