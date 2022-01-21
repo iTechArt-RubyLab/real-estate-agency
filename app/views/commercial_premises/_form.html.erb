@@ -1,5 +1,5 @@
 <% presenter = CommercialPremisePresenter.new %>
-<%= form_with(model: commercial_premise) do |form| %>
+<%= form_for :commercial_premise, url: commercial_premises_path do |f| %>
   <% if commercial_premise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(commercial_premise.errors.count, "error") %> prohibited this commercial_premise from being saved:</h2>
@@ -13,31 +13,72 @@
   <% end %>
 
   <div class="field mb-3">
-    <%= form.label :commercial_premises_kind_id %>
-    <%= form.collection_select :commercial_premises_kind_id, presenter.ordered_commercial_premises_kinds, :id, :name %>
+    <%= f.label :area %>
+    <%= f.text_field :area, class: "form-control"  %>
   </div>
 
   <div class="field mb-3">
-    <%= form.label :area %>
-    <%= form.text_field :area, class: "form-control"  %>
+    <%= f.label :floor %>
+    <%= f.number_field :floor, class: "form-control"  %>
   </div>
 
   <div class="field mb-3">
-    <%= form.label :floor %>
-    <%= form.number_field :floor, class: "form-control"  %>
+    <%= f.label :number_of_premises %>
+    <%= f.number_field :number_of_premises, class: "form-control" %>
   </div>
 
   <div class="field mb-3">
-    <%= form.label :number_of_premises %>
-    <%= form.number_field :number_of_premises, class: "form-control" %>
+    <%= f.label :plot_of_land %>
+    <%= f.number_field :plot_of_land, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= f.label :commercial_premises_kind_id %>
+    <%= f.collection_select :commercial_premises_kind_id, presenter.ordered_commercial_premises_kinds, :id, :name %>
   </div>
 
-  <div class="field mb-3">
-    <%= form.label :plot_of_land %>
-    <%= form.number_field :plot_of_land, class: "form-control" %>
-  </div>
+  <%= f.fields_for :lot_attributes do |lot| %>
+    <div class="field mb-3">
+      <%= lot.label :title %>
+      <%= lot.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= lot.label :description %>
+      <%= lot.text_field :description, class: "form-control" %>
+    </div>
+
+    <div class="field mb-3">
+      <%= lot.label :price %>
+      <%= lot.number_field :price, class: "form-control" %>
+    </div>
+
+    <% lot.hidden_field :client_id, value: 1 %>
+
+    <div class="field mb-3">
+      <%= lot.label :deal_type_id %>
+      <%= lot.collection_select :deal_type_id, DealType.order(:name), :id, :name %>
+    </div>
+
+    <%= lot.fields_for :address_attributes do |address| %>
+      <div class="field mb-3">
+        <%= address.label :building %>
+        <%= address.number_field :building, class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= address.label :description %>
+        <%= address.text_field :description, class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= address.label :street_id %>
+        <%= address.collection_select :street_id, Street.order(:name), :id, :name %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
-    <%= form.submit 'Save', class:"btn btn-outline-success" %>
+    <%= f.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>
