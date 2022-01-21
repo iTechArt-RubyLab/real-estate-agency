@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :streets
   resources :districts
   resources :roles
+  resources :user
   devise_for :users, controllers: { 
     omniauth_callbacks: 'omniauth',
     sessions: 'users/sessions',
