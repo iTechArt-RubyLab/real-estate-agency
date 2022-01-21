@@ -3,7 +3,10 @@ class LotsController < ApplicationController
 
   # GET /lots or /lots.json
   def index
-    @lots = Lot.all
+    respond_to do |format|
+      format.html
+      format.json { render json: LotDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /lots/1 or /lots/1.json
