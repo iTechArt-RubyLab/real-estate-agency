@@ -77,6 +77,7 @@ class FlatsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def flat_params
     params.require(:flat).permit(:rooms_count, :floor, :year_of_construction, :celling_height, :total_area,
-                                 :living_area, :kitchen_area, :renovation_id, :wall_material_id)
+                                 :living_area, :kitchen_area, :renovation_id, :wall_material_id,
+                                 lot_attributes: [:title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[building description street_id] }])
   end
 end
