@@ -84,6 +84,6 @@ class CountrySideHousesController < ApplicationController
   def country_side_house_params
     params.require(:country_side_house).permit(:total_area, :land_area, :floors_count, :year_of_construction,
                                                :wall_material_id, :country_side_house_kind_id, :ready_state_id,
-                                               lot_attributes: [:title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[building description street_id] }])
+                                               lot_attributes: [:title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[building description street_id] }, { images: [] }])
   end
 end
