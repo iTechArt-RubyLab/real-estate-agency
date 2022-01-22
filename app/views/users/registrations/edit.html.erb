@@ -43,6 +43,62 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
+  <% if resource.profilable_type = 'ClientProfile' %>
+    <%= f.fields_for :client_profile_attributes do |client| %>
+      <div class="field mb-3">
+        <%= client.label :country_id %>
+        <%= client.collection_select :country_id, Country.order(:name), :id, :name %>
+      </div>
+
+      <div class="field mb-3">
+          <%= client.label :description %>
+          <%= client.text_field :description, class: "form-control" %>
+      </div>
+    <% end %>
+  <% elsif resource.profilable_type = 'RealtorProfile' %>
+    <%= f.fields_for :realtor_profile_attributes do |realtor| %>
+      <div class="field mb-3">
+        <%= realtor.label :registration_number %>
+        <%= realtor.collection_select :registration_number, class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= realtor.label :employment_date %>
+        <%= realtor.date_select :employment_date, class: "form-control" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= f.label :city_id %>
+    <%= f.collection_select :city_id, City.order(:name), :id, :name %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :second_name %>
+    <%= f.text_field :second_name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= f.label :gender %>
+    <%= f.select :gender, User.genders.map {|gen| gen.first } %>
+  </div>
+
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
     <%= f.submit "Update", class:"btn btn-outline-success" %>
   </div>
