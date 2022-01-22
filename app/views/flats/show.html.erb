@@ -1,4 +1,49 @@
 <p>
+  <strong>Title:</strong>
+  <%= @flat.lot.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @flat.lot.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @flat.lot.price %>
+</p>
+
+<p>
+  <strong>Deal type:</strong>
+  <%= @flat.lot.deal_type.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @flat.lot.address.street.district.city.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @flat.lot.address.street.district.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @flat.lot.address.street.name %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @flat.lot.address.building %>
+</p>
+
+<p>
+  <strong>Address description:</strong>
+  <%= @flat.lot.address.description %>
+</p>
+
+<p>
   <strong>Renovation:</strong>
   <%= @flat.renovation.name %>
 </p>
@@ -42,6 +87,35 @@
   <strong>Year of construction:</strong>
   <%= @flat.year_of_construction %>
 </p>
+
+<% if current_user.profilable_type = 'RealtorProfile' %>
+  <p>
+    <strong>Asigner:</strong>
+    <% if @flat.lot.asigner.nil? %>
+      <%= 'Asigner not match' %>
+    <% else %>
+      <%= @flat.lot.asigner.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Asignee:</strong>
+    <% if @flat.lot.asignee.nil? %>
+      <%= 'Asignee not match' %>
+    <% else %>
+      <%= @flat.lot.asignee.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Client:</strong>
+    <% if @flat.lot.client.nil? %>
+      <%= 'Client not match' %>
+    <% else %>
+      <%= @flat.lot.client.email %>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_flat_path(@flat), class: "btn btn-warning" %>
 <%= link_to 'Back', flats_path, class: "btn btn-danger" %>
