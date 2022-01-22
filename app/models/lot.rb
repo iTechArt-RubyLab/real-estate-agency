@@ -34,6 +34,7 @@
 #  fk_rails_...  (deal_type_id => deal_types.id)
 #
 class Lot < ApplicationRecord
+  has_many_attached :images
   belongs_to :deal_type
   belongs_to :address
   belongs_to :lotable, polymorphic: true, optional: true
