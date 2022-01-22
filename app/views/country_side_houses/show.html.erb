@@ -1,4 +1,49 @@
 <p>
+  <strong>Title:</strong>
+  <%= @country_side_house.lot.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @country_side_house.lot.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @country_side_house.lot.price %>
+</p>
+
+<p>
+  <strong>Deal type:</strong>
+  <%= @country_side_house.lot.deal_type.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @country_side_house.lot.address.street.district.city.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @country_side_house.lot.address.street.district.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @country_side_house.lot.address.street.name %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @country_side_house.lot.address.building %>
+</p>
+
+<p>
+  <strong>Address description:</strong>
+  <%= @country_side_house.lot.address.description %>
+</p>
+
+<p>
   <strong>Kind:</strong>
   <%= @country_side_house.country_side_house_kind.name %>
 </p>
@@ -32,6 +77,35 @@
   <strong>Wall material:</strong>
   <%= @country_side_house.wall_material.name %>
 </p>
+
+<% if current_user.profilable_type = 'RealtorProfile' %>
+  <p>
+    <strong>Asigner:</strong>
+    <% if @country_side_house.lot.asigner.nil? %>
+      <%= 'Asigner not match' %>
+    <% else %>
+      <%= @country_side_house.lot.asigner.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Asignee:</strong>
+    <% if @country_side_house.lot.asignee.nil? %>
+      <%= 'Asignee not match' %>
+    <% else %>
+      <%= @country_side_house.lot.asignee.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Client:</strong>
+    <% if @country_side_house.lot.client.nil? %>
+      <%= 'Client not match' %>
+    <% else %>
+      <%= @country_side_house.lot.client.email %>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_country_side_house_path(@country_side_house), class: "btn btn-warning" %>
 <%= link_to 'Back', country_side_houses_path, class: "btn btn-danger" %>

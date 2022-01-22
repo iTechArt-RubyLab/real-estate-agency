@@ -1,4 +1,49 @@
 <p>
+  <strong>Title:</strong>
+  <%= @commercial_premise.lot.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @commercial_premise.lot.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @commercial_premise.lot.price %>
+</p>
+
+<p>
+  <strong>Deal type:</strong>
+  <%= @commercial_premise.lot.deal_type.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @commercial_premise.lot.address.street.district.city.name %>
+</p>
+
+<p>
+  <strong>District:</strong>
+  <%= @commercial_premise.lot.address.street.district.name %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @commercial_premise.lot.address.street.name %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @commercial_premise.lot.address.building %>
+</p>
+
+<p>
+  <strong>Address description:</strong>
+  <%= @commercial_premise.lot.address.description %>
+</p>
+
+<p>
   <strong>Kind:</strong>
   <%= @commercial_premise.commercial_premises_kind.name %>
 </p>
@@ -22,6 +67,35 @@
   <strong>Plot of land:</strong>
   <%= @commercial_premise.plot_of_land %>
 </p>
+
+<% if current_user.profilable_type = 'RealtorProfile' %>
+  <p>
+    <strong>Asigner:</strong>
+    <% if @commercial_premise.lot.asigner.nil? %>
+      <%= 'Asigner not match' %>
+    <% else %>
+      <%= @commercial_premise.lot.asigner.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Asignee:</strong>
+    <% if @commercial_premise.lot.asignee.nil? %>
+      <%= 'Asignee not match' %>
+    <% else %>
+      <%= @commercial_premise.lot.asignee.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Client:</strong>
+    <% if @commercial_premise.lot.client.nil? %>
+      <%= 'Client not match' %>
+    <% else %>
+      <%= @commercial_premise.lot.client.email %>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_commercial_premise_path(@commercial_premise), class: "btn btn-warning" %>
 <%= link_to 'Back', commercial_premises_path, class: "btn btn-danger" %>
