@@ -49,6 +49,18 @@
 
   <%= f.fields_for :lot_attributes do |lot| %>
     <div class="field mb-3">
+      <%= lot.label :images %></br>
+      <% if !@country_side_house.lot.nil? %>
+        <% if @country_side_house.lot.images.attached? %>
+          <% @country_side_house.lot.images.each do |image| %>
+            <%= image_tag image.variant(resize_to_limit: [250, 250]).processed %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= lot.file_field :images, multiple: true, type: "file", class: "form-control" %>
+    </div>
+
+    <div class="field mb-3">
       <%= lot.label :title %>
       <%= lot.text_field :title, class: "form-control" %>
     </div>
