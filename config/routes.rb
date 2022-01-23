@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :lots
   resources :deal_types
   get 'admin_panel', to: 'admin_panel#index'
+  scope '/reports' do
+    get 'users-count', to: 'reports#users_count'
+  end
   resources :client_profiles
   resources :countries
   resources :client_profiles
