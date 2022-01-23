@@ -16,7 +16,10 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
       date_of_birth: { source: 'User.date_of_birth', cond: :like, searchable: true },
       gender: { source: 'User.gender', cond: :like, searchable: true },
       role_id: { source: 'Role.name', cond: :like, searchable: true },
-      profilable_type: { source: 'User.profilable_type', cond: :like, searchable: true }
+      profilable_type: { source: 'User.profilable_type', cond: :like, searchable: true },
+      last_sign_in_at: { source: 'User.last_sign_in_at', cond: :like, searchable: false },
+      sign_in_count: { source: 'User.sign_in_count', cond: :like, searchable: false },
+      last_sign_in_ip: { source: 'User.last_sign_in_ip', cond: :like, searchable: false }
     }
   end
 
@@ -24,19 +27,22 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         email: record.email,
-        city_id: record.city.name,
+        city_id: record.city&.name,
         first_name: record.first_name,
         last_name: record.last_name,
         second_name: record.second_name,
         date_of_birth: record.date_of_birth,
         gender: record.gender,
-        role_id: record.role.name,
-        profilable_type: record.profilable_type
+        role_id: record.role&.name,
+        profilable_type: record.profilable_type,
+        last_sign_in_at: record.last_sign_in_at,
+        sign_in_count: record.sign_in_count,
+        last_sign_in_ip: record.last_sign_in_ip
       }
     end
   end
 
   def get_raw_records
-    User.joins(:city, :role)
+    User.left_joins(:city, :role)
   end
 end
