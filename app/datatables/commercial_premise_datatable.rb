@@ -56,6 +56,6 @@ class CommercialPremiseDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @commercial_premises = CommercialPremise.includes(:commercial_premises_kind, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+    @commercial_premises = CommercialPremise.left_joins(:commercial_premises_kind, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
   end
 end
