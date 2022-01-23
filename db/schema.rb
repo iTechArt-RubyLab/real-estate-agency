@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   create_table "lots", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "state"
     t.decimal "price"
     t.bigint "deal_type_id", null: false
     t.bigint "address_id", null: false
