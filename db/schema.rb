@@ -253,6 +253,9 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.string "uid"
     t.string "provider"
     t.bigint "city_id"
