@@ -33,6 +33,8 @@ gem 'rails-i18n', '~> 6.0'
 
 gem 'pundit'
 
+gem 'aasm'
+
 gem 'devise'
 
 gem 'omniauth-github'
