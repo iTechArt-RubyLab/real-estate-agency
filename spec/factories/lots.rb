@@ -6,6 +6,7 @@
 #  description  :text
 #  lotable_type :string
 #  price        :decimal(, )
+#  state        :integer
 #  title        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

@@ -3,6 +3,7 @@ class CreateLots < ActiveRecord::Migration[6.1]
     create_table :lots do |t|
       t.string :title
       t.text :description
+      t.integer :state
       t.decimal :price
       t.references :deal_type, null: false, foreign_key: true
       t.references :address, null: false, foreign_key: true

@@ -6,6 +6,7 @@
 #  description  :text
 #  lotable_type :string
 #  price        :decimal(, )
+#  state        :integer
 #  title        :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -34,6 +35,8 @@
 #  fk_rails_...  (deal_type_id => deal_types.id)
 #
 class Lot < ApplicationRecord
+  include AASM
+
   has_many_attached :images
   belongs_to :deal_type
   belongs_to :address
@@ -42,12 +45,45 @@ class Lot < ApplicationRecord
   belongs_to :asignee, class_name: 'User', optional: true
   belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
+  enum state: %i[not_started in_progress published completed blocked]
 
   validates_with AsigneeValidator
 
   validates :title, length: { in: 5..50 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
   validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
   validates :price, inclusion: { in: 0.1..10_000_000.0 }
+
+  aasm column: :state, enum: true do
+    state :not_started, initial: true
+    state :in_progress
+    state :published
+    state :completed
+    state :blocked
+
+    event :take_to_work do
+      transitions from: :not_started, to: :in_progress
+    end
+
+    event :remove_from_work do
+      transitions from: [:in_progress, :published], to: :not_started
+    end
+
+    event :publish do
+      transitions from: :in_progress, to: :published
+    end
+
+    event :complete do
+      transitions from: :published, to: :completed
+    end
+
+    event :block do
+      transitions from: [:not_started, :in_progress, :published], to: :blocked
+    end
+
+    event :unblock do
+      transitions from: :blocked, to: :not_started
+    end
+  end
 
   scope :with_title, ->(title) { where(title: title) }
   scope :with_description, ->(description) { where(description: description) }
