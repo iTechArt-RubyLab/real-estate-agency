@@ -11,11 +11,13 @@
 #  date_of_birth          :date
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  failed_attempts        :integer          default(0), not null
 #  first_name             :string
 #  gender                 :integer
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
+#  locked_at              :datetime
 #  profilable_type        :string
 #  provider               :string
 #  remember_created_at    :datetime
@@ -25,6 +27,7 @@
 #  sign_in_count          :integer          default(0), not null
 #  uid                    :string
 #  unconfirmed_email      :string
+#  unlock_token           :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  city_id                :bigint
