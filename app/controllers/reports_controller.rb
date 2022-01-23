@@ -1,39 +1,29 @@
 class ReportsController < ApplicationController
   def users_count
-    User.count
+    @users_count = User.count
   end
 
   def clients_count
-    clients = 0
-    User.all.map { |user| clients += 1 if user.profilable_type == 'ClientProfile' }
-    clients
+    @clients_count = User.where(profilable_type: 'ClientProfile').count
   end
 
   def realtors_count
-    realtors = 0
-    User.all.map { |user| realtors += 1 if user.profilable_type == 'ClientProfile' }
-    realtors
+    @realtors_count = User.where(profilable_type: 'RealtorProfile').count
   end
 
   def lots_count
-    Lot.count
+    @lots_count = Lot.count
   end
 
   def commercial_premises_count
-    commercial_premises = 0
-    Lot.all.map { |lot| commercial_premises += 1 if lot.lotable_type == 'CommercialPremise' }
-    commercial_premises
+    @commercial_premises_count = Lot.where(lotable_type: 'CommercialPemise').count
   end
 
   def country_side_houses_count
-    country_side_houses = 0
-    Lot.all.map { |lot| country_side_houses += 1 if lot.lotable_type == 'CountrySideHouse' }
-    country_side_houses
+    @country_side_houses_count = Lot.where(lotable_type: 'CountrySideHouse').count
   end
 
   def flats_count
-    flats = 0
-    Lot.all.map { |lot| flats += 1 if lot.lotable_type == 'Flat' }
-    flats
+    @flats_count = Lot.where(lotable_type: 'Flat').count
   end
 end
