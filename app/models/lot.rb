@@ -43,6 +43,7 @@ class Lot < ApplicationRecord
   belongs_to :asignee, class_name: 'User', optional: true
   belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
+  enum state: %i[not_started in_progress published completed blocked]
 
   validates_with AsigneeValidator
 
