@@ -47,6 +47,8 @@ gem 'jquery-rails'
 
 gem 'popper_js', '~> 2.9.3'
 
+gem 'stimulus-rails'
+
 gem 'image_processing'
 
 gem 'gravatar_image_tag'
