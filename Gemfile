@@ -35,6 +35,8 @@ gem 'pundit'
 
 gem 'aasm'
 
+gem 'after_commit_everywhere'
+
 gem 'devise'
 
 gem 'omniauth-github'
