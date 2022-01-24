@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   scope '/reports' do
     get 'users-count', to: 'reports#users_count'
     get 'clients-count', to: 'reports#clients_count'
+    get 'realtors-count', to: 'reports#realtors_count'
   end
   resources :client_profiles
   resources :countries
