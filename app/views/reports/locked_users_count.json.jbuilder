@@ -1,0 +1,1 @@
+json.locked_users_count @locked_users_count
