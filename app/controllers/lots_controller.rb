@@ -71,6 +71,6 @@ class LotsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def lot_params
-    params.require(:lot).permit(:title, :description, :price, :deal_type_id, :address_id, :lotable_id, :lotable_type)
+    params.require(:lot).permit(:title, :description, :price, :state, :deal_type_id, :address_id, :lotable_id, :lotable_type)
   end
 end
