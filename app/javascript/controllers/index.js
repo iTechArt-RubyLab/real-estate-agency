@@ -30,3 +30,6 @@ application.register("flats-count", FlatsCountController)
 
 import NotStartedLotsCountController from "./not_started_lots_count_controller"
 application.register("not-started-lots-count", NotStartedLotsCountController)
+
+import InProgressLotsCountController from "./in_progress_lots_count_controller"
+application.register("in-progress-lots-count", InProgressLotsCountController)

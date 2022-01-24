@@ -30,4 +30,8 @@ class ReportsController < ApplicationController
   def not_started_lots_count
     @not_started_lots_count = Lot.where(state: 'not_started').count
   end
+
+  def in_progress_lots_count
+    @in_progress_lots_count = Lot.where(state: 'in_progress').count
+  end
 end
