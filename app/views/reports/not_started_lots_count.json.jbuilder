@@ -1,0 +1,1 @@
+json.not_started_lots_count @not_started_lots_count
