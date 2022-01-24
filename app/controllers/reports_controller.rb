@@ -26,4 +26,8 @@ class ReportsController < ApplicationController
   def flats_count
     @flats_count = Lot.where(lotable_type: 'Flat').count
   end
+
+  def not_started_lots_count
+    @not_started_lots_count = Lot.where(state: 'not_started').count
+  end
 end

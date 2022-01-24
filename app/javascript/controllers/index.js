@@ -27,3 +27,6 @@ application.register("country-side-houses-count", CountrySideHousesCountControll
 
 import FlatsCountController from "./flats_count_controller"
 application.register("flats-count", FlatsCountController)
+
+import NotStartedLotsCountController from "./not_started_lots_count_controller"
+application.register("not-started-lots-count", NotStartedLotsCountController)
