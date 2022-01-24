@@ -42,4 +42,8 @@ class ReportsController < ApplicationController
   def completed_lots_count
     @completed_lots_count = Lot.where(state: 'completed').count
   end
+
+  def blocked_lots_count
+    @blocked_lots_count = Lot.where(state: 'blocked').count
+  end
 end
