@@ -20,9 +20,9 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
       building: { source: 'Address.building', cond: :like, searchable: true },
       address_description: { source: 'Address.description', cond: :like, searchable: true },
       lotable_type: { source: 'Lot.lotable_type', cond: :like, searchable: true },
-      asigner_id: { source: 'Lot.asigner_id', cond: :like, searchable: true },
-      asignee_id: { source: 'Lot.asignee_id', cond: :like, searchable: true },
-      client_id: { source: 'Lot.client_id', cond: :like, searchable: true },
+      asigner: { source: 'User.first_name', cond: :like, searchable: true },
+      asignee: { source: 'User.first_name', cond: :like, searchable: true },
+      client: { source: 'User.first_name', cond: :like, searchable: true },
       actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end
@@ -40,9 +40,9 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
         building: record.address.building,
         address_description: record.address.description,
         lotable_type: record.lotable_type,
-        asigner_id: record.asigner_id,
-        asignee_id: record.asignee_id,
-        client_id: record.client_id,
+        asigner: record.asigner.first_name,
+        asignee: record.asignee.first_name,
+        client: record.client.first_name,
         actions: link_to('Show', record.lotable_type.split(/(?=[A-Z])/).join('_').downcase + "s/#{record.lotable.id}")
           .concat(' | ')
           .concat(link_to('Edit', record.lotable_type.split(/(?=[A-Z])/).join('_').downcase + "s/#{record.lotable.id}/edit"))
@@ -53,6 +53,6 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Lot.joins(:deal_type, :address, address: [street: [district: [:city]]])
+    Lot.includes(:deal_type, :asigner, :asignee, :client, address: [street: [district: [:city]]]).references(:user)
   end
 end
