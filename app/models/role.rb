@@ -12,6 +12,7 @@
 #  can_give_permission              :boolean
 #  can_read_dictionary              :boolean
 #  can_read_lot                     :boolean
+#  can_read_others_lots             :boolean
 #  can_work_with_all_property_types :boolean
 #  name                             :string
 #  created_at                       :datetime         not null
@@ -29,6 +30,7 @@ class Role < ApplicationRecord
                       can_approve_realtor: true,
                       can_asign: true,
                       can_create_role: true,
+                      can_read_others_lots: true,
                       can_edit_dictionary: true,
                       can_edit_lot: true,
                       can_freeze_user: true,
@@ -43,6 +45,7 @@ class Role < ApplicationRecord
                       can_approve_realtor: false,
                       can_asign: false,
                       can_create_role: false,
+                      can_read_others_lots: false,
                       can_edit_dictionary: false,
                       can_edit_lot: true,
                       can_freeze_user: false,
@@ -57,6 +60,7 @@ class Role < ApplicationRecord
                       can_approve_realtor: false,
                       can_asign: false,
                       can_create_role: false,
+                      can_read_others_lots: true,
                       can_edit_dictionary: false,
                       can_edit_lot: true,
                       can_freeze_user: true,

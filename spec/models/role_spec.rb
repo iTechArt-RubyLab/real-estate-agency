@@ -12,6 +12,7 @@
 #  can_give_permission              :boolean
 #  can_read_dictionary              :boolean
 #  can_read_lot                     :boolean
+#  can_read_others_lots             :boolean
 #  can_work_with_all_property_types :boolean
 #  name                             :string
 #  created_at                       :datetime         not null
