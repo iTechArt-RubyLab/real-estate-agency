@@ -6,88 +6,88 @@
   <% end %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Title:</strong>
   <%= @country_side_house.lot.title %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Description:</strong>
   <%= @country_side_house.lot.description %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Price:</strong>
   <%= @country_side_house.lot.price %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Deal type:</strong>
   <%= @country_side_house.lot.deal_type.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>City:</strong>
   <%= @country_side_house.lot.address.street.district.city.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>District:</strong>
   <%= @country_side_house.lot.address.street.district.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Street:</strong>
   <%= @country_side_house.lot.address.street.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Building:</strong>
   <%= @country_side_house.lot.address.building %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Address description:</strong>
   <%= @country_side_house.lot.address.description %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Kind:</strong>
   <%= @country_side_house.country_side_house_kind.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Ready state:</strong>
   <%= @country_side_house.ready_state.name %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Floors count:</strong>
   <%= @country_side_house.floors_count %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Land area:</strong>
   <%= @country_side_house.land_area %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Total area:</strong>
   <%= @country_side_house.total_area %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Year of construction:</strong>
   <%= @country_side_house.year_of_construction %>
 </p>
 
-<p>
+<p style="text-align: center; font-size: 20px">
   <strong>Wall material:</strong>
   <%= @country_side_house.wall_material.name %>
 </p>
 
 <% if current_user.profilable_type = 'RealtorProfile' %>
-  <p>
+  <p style="text-align: center; font-size: 20px">
     <strong>Asigner:</strong>
     <% if @country_side_house.lot.asigner.nil? %>
       <%= 'Asigner not match' %>
@@ -96,7 +96,7 @@
     <% end %>
   </p>
 
-  <p>
+  <p style="text-align: center; font-size: 20px">
     <strong>Asignee:</strong>
     <% if @country_side_house.lot.asignee.nil? %>
       <%= 'Asignee not match' %>
@@ -105,7 +105,7 @@
     <% end %>
   </p>
 
-  <p>
+  <p style="text-align: center; font-size: 20px">
     <strong>Client:</strong>
     <% if @country_side_house.lot.client.nil? %>
       <%= 'Client not match' %>
