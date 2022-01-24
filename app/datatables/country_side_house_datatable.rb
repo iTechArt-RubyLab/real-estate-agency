@@ -60,6 +60,6 @@ class CountrySideHouseDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @country_side_houses = CountrySideHouse.includes(:country_side_house_kind, :ready_state, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+    @country_side_houses
   end
 end

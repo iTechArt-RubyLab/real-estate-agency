@@ -30,6 +30,6 @@ class RenovationDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @renovations = Renovation.all
+    @renovations
   end
 end

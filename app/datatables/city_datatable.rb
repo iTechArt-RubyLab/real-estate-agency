@@ -36,6 +36,6 @@ class CityDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @cities = City.all
+    @cities
   end
 end
