@@ -24,3 +24,6 @@ application.register("commercial-premises-count", CommercialPremisesCountControl
 
 import CountrySideHousesCountController from "./country_side_houses_count_controller"
 application.register("country-side-houses-count", CountrySideHousesCountController)
+
+import FlatsCountController from "./flats_count_controller"
+application.register("flats-count", FlatsCountController)

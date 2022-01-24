@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'lots-count', to: 'reports#lots_count'
     get 'commercial-premises-count', to: 'reports#commercial_premises_count'
     get 'country-side-houses-count', to: 'reports#country_side_houses_count'
+    get 'flats-count', to: 'reports#flats_count'
   end
   resources :client_profiles
   resources :countries
