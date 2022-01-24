@@ -1,0 +1,1 @@
+json.completed_lots_count @completed_lots_count

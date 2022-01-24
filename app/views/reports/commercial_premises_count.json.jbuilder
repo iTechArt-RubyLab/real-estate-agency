@@ -1,0 +1,1 @@
+json.commercial_premises_count @commercial_premises_count
