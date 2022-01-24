@@ -30,6 +30,6 @@ class ReadyStateDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @ready_states = ReadyState.all
+    @ready_states
   end
 end

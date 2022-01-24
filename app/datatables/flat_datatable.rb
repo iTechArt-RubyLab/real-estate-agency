@@ -64,6 +64,6 @@ class FlatDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @flats = Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+    @flats
   end
 end

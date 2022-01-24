@@ -30,6 +30,6 @@ class TagDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @tags = Tag.all
+    @tags
   end
 end

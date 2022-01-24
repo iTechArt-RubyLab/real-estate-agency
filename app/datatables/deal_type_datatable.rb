@@ -30,6 +30,6 @@ class DealTypeDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @deal_types = DealType.all
+    @deal_types
   end
 end

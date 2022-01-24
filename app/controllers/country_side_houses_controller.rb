@@ -4,7 +4,7 @@ class CountrySideHousesController < ApplicationController
 
   # GET /country_side_houses or /country_side_houses.json
   def index
-    @country_side_houses = CountrySideHouse.all
+    @country_side_houses = CountrySideHouse.includes(:country_side_house_kind, :ready_state, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
     authorize @country_side_houses
     respond_to do |format|
       format.html

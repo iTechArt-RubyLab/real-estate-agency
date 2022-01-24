@@ -32,6 +32,6 @@ class CountryDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @countries = Country.all
+    @countries
   end
 end

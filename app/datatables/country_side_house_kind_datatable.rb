@@ -30,6 +30,6 @@ class CountrySideHouseKindDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @country_side_house_kinds = CountrySideHouseKind.all
+    @country_side_house_kinds
   end
 end

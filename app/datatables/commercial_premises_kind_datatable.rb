@@ -30,6 +30,6 @@ class CommercialPremisesKindDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @commercial_premises_kinds = CommercialPremisesKind.all
+    @commercial_premises_kinds
   end
 end

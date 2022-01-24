@@ -3,7 +3,7 @@ class DealTypesController < ApplicationController
 
   # GET /deal_types or /deal_types.json
   def index
-    @deal_types = City.all
+    @deal_types = DealType.all
     authorize @deal_types
     respond_to do |format|
       format.html

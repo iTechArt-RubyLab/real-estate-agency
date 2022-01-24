@@ -30,6 +30,6 @@ class PropertyTypeDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @property_types = PropertyType.all
+    @property_types
   end
 end
