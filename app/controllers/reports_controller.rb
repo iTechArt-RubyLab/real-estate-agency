@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
   end
 
   def commercial_premises_count
-    @commercial_premises_count = Lot.where(lotable_type: 'CommercialPemise').count
+    @commercial_premises_count = Lot.where(lotable_type: 'CommercialPremise').count
   end
 
   def country_side_houses_count

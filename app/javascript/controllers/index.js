@@ -18,3 +18,6 @@ application.register("realtors-count", RealtorsCountController)
 
 import LotsCountController from "./lots_count_controller"
 application.register("lots-count", LotsCountController)
+
+import CommercialPremisesCountController from "./commercial_premises_count_controller"
+application.register("commercial-premises-count", CommercialPremisesCountController)
