@@ -50,6 +50,6 @@ class RoleDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @roles = Role.all
+    @roles
   end
 end

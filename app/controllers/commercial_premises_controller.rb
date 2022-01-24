@@ -4,7 +4,7 @@ class CommercialPremisesController < ApplicationController
 
   # GET /commercial_premises or /commercial_premises.json
   def index
-    @commercial_premises = CommercialPremise.all
+    @commercial_premises = CommercialPremise.includes(:commercial_premises_kind, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
     authorize @commercial_premises
     respond_to do |format|
       format.html

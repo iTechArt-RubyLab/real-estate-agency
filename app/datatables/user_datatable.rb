@@ -2,6 +2,7 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
   def initialize(params, opts = {})
+    @users = opts[:users]
     @view = opts[:view_context]
     super
   end
@@ -43,6 +44,6 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    User.left_joins(:city, :role)
+    @users
   end
 end

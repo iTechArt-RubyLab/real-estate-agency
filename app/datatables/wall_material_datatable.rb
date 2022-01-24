@@ -30,6 +30,6 @@ class WallMaterialDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    @wall_materials = WallMaterial.all
+    @wall_materials
   end
 end
