@@ -11,6 +11,10 @@ class ReportsController < ApplicationController
     @realtors_count = User.where(profilable_type: 'RealtorProfile').count
   end
 
+  def locked_users_count
+    @locked_users_count = User.where.not(locked_at: nil).count
+  end
+
   def lots_count
     @lots_count = Lot.count
   end
