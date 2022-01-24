@@ -38,4 +38,8 @@ class ReportsController < ApplicationController
   def published_lots_count
     @published_lots_count = Lot.where(state: 'published').count
   end
+
+  def completed_lots_count
+    @completed_lots_count = Lot.where(state: 'completed').count
+  end
 end

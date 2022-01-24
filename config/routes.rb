@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'not-started-lots-count', to: 'reports#not_started_lots_count'
     get 'in-progress-lots-count', to: 'reports#in_progress_lots_count'
     get 'published-lots-count', to: 'reports#published_lots_count'
+    get 'completed-lots-count', to: 'reports#completed_lots_count'
   end
   resources :client_profiles
   resources :countries
