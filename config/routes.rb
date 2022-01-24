@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'admin_panel', to: 'admin_panel#index'
   scope '/reports' do
     get 'users-count', to: 'reports#users_count'
+    get 'clients-count', to: 'reports#clients_count'
   end
   resources :client_profiles
   resources :countries

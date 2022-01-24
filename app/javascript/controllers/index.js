@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import UsersCountController from "./users_count_controller"
 application.register("users-count", UsersCountController)
+
+import ClientsCountController from "./clients_count_controller"
+application.register("clients-count", ClientsCountController)
