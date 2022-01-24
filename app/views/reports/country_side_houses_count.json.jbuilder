@@ -1,0 +1,1 @@
+json.country_side_houses_count @country_side_houses_count
