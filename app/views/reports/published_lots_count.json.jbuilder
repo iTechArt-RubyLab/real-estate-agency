@@ -1,0 +1,1 @@
+json.published_lots_count @published_lots_count

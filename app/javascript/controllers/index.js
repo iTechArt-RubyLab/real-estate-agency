@@ -33,3 +33,6 @@ application.register("not-started-lots-count", NotStartedLotsCountController)
 
 import InProgressLotsCountController from "./in_progress_lots_count_controller"
 application.register("in-progress-lots-count", InProgressLotsCountController)
+
+import PublishedLotsCountController from "./published_lots_count_controller"
+application.register("published-lots-count", PublishedLotsCountController)
