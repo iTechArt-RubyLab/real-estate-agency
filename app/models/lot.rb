@@ -65,7 +65,7 @@ class Lot < ApplicationRecord
     end
 
     event :remove_from_work do
-      transitions from: [:in_progress, :published], to: :not_started
+      transitions from: %i[in_progress published], to: :not_started
     end
 
     event :publish do
@@ -77,7 +77,7 @@ class Lot < ApplicationRecord
     end
 
     event :block do
-      transitions from: [:not_started, :in_progress, :published], to: :blocked
+      transitions from: %i[not_started in_progress published], to: :blocked
     end
 
     event :unblock do

@@ -5,6 +5,7 @@ class CreateRoles < ActiveRecord::Migration[6.1]
       t.boolean :can_read_lot
       t.boolean :can_edit_lot
       t.boolean :can_asign
+      t.boolean :can_read_others_lots
       t.boolean :can_read_dictionary
       t.boolean :can_edit_dictionary
       t.boolean :can_give_permission

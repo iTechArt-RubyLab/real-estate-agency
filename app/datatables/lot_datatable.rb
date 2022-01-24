@@ -4,6 +4,7 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
   def_delegators :@view, :link_to, :flat_path, :edit_flat_path
 
   def initialize(params, opts = {})
+    @lots = opts[:lots]
     @view = opts[:view_context]
     super
   end
@@ -53,6 +54,6 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    Lot.includes(:deal_type, :asigner, :asignee, :client, address: [street: [district: [:city]]]).references(:user)
+    @lots
   end
 end

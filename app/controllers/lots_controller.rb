@@ -1,11 +1,15 @@
 class LotsController < ApplicationController
+  include Authenticated
   before_action :set_lot, only: %i[show edit update destroy]
 
   # GET /lots or /lots.json
   def index
+    @lots = policy_scope(Lot)
+    @lots = @lots.joins(:deal_type, :address, address: [street: [district: [:city]]])
+    authorize @lots
     respond_to do |format|
       format.html
-      format.json { render json: LotDatatable.new(params, view_context: view_context) }
+      format.json { render json: LotDatatable.new(params, view_context: view_context, lots: @lots) }
     end
   end
 

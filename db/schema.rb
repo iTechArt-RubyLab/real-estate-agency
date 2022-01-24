@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.boolean "can_read_lot"
     t.boolean "can_edit_lot"
     t.boolean "can_asign"
+    t.boolean "can_read_others_lots"
     t.boolean "can_read_dictionary"
     t.boolean "can_edit_dictionary"
     t.boolean "can_give_permission"
