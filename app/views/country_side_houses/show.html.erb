@@ -1,4 +1,4 @@
-<p>
+<p style="text-align: center;">
   <% if @country_side_house.lot.images.attached? %>
     <% @country_side_house.lot.images.each do |image| %>
       <%= image_tag image.variant(resize_to_limit: [250, 250]).processed %>
@@ -86,7 +86,7 @@
   <%= @country_side_house.wall_material.name %>
 </p>
 
-<% if current_user.profilable_type = 'RealtorProfile' %>
+<% if current_user.role.can_edit_lot %>
   <p style="text-align: center; font-size: 20px">
     <strong>Asigner:</strong>
     <% if @country_side_house.lot.asigner.nil? %>
@@ -113,7 +113,11 @@
       <%= @country_side_house.lot.client.email %>
     <% end %>
   </p>
+  <div class="actions mb-2 d-grid gap-2 col-1 mx-auto">
+    <%= link_to 'Edit', edit_country_side_house_path(@country_side_house), class: "btn btn-warning" %>
+  </div>
 <% end %>
 
-<%= link_to 'Edit', edit_country_side_house_path(@country_side_house), class: "btn btn-warning" %>
-<%= link_to 'Back', country_side_houses_path, class: "btn btn-danger" %>
+<div class="actions mb-2 d-grid gap-2 col-1 mx-auto">
+  <%= link_to 'Back', country_side_houses_path, class: "btn btn-danger" %>
+</div>
