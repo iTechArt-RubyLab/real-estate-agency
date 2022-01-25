@@ -86,6 +86,10 @@ class User < ApplicationRecord
     end
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def avatar_miniature
     if avatar.attached?
       avatar.variant(resize: '150x150!').processed
