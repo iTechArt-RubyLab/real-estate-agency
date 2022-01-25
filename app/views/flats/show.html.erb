@@ -102,7 +102,7 @@
     <% if @flat.lot.asigner.nil? %>
       <%= 'Asigner not match' %>
     <% else %>
-      <%= @flat.lot.asigner.email %>
+      <%= @flat.lot.asigner.full_name %>
     <% end %>
   </p>
 
@@ -111,7 +111,7 @@
     <% if @flat.lot.asignee.nil? %>
       <%= 'Asignee not match' %>
     <% else %>
-      <%= @flat.lot.asignee.email %>
+      <%= @flat.lot.asignee.full_name %>
     <% end %>
   </p>
 
@@ -120,7 +120,7 @@
     <% if @flat.lot.client.nil? %>
       <%= 'Client not match' %>
     <% else %>
-      <%= @flat.lot.client.email %>
+      <%= @flat.lot.client.full_name %>
     <% end %>
   </p>
 

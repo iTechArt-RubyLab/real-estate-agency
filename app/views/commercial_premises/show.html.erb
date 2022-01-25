@@ -82,7 +82,7 @@
     <% if @commercial_premise.lot.asigner.nil? %>
       <%= 'Asigner not match' %>
     <% else %>
-      <%= @commercial_premise.lot.asigner.email %>
+      <%= @commercial_premise.lot.asigner.full_name %>
     <% end %>
   </p>
 
@@ -91,7 +91,7 @@
     <% if @commercial_premise.lot.asignee.nil? %>
       <%= 'Asignee not match' %>
     <% else %>
-      <%= @commercial_premise.lot.asignee.email %>
+      <%= @commercial_premise.lot.asignee.full_name %>
     <% end %>
   </p>
 
@@ -100,7 +100,7 @@
     <% if @commercial_premise.lot.client.nil? %>
       <%= 'Client not match' %>
     <% else %>
-      <%= @commercial_premise.lot.client.email %>
+      <%= @commercial_premise.lot.client.full_name %>
     <% end %>
   </p>
 

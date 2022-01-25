@@ -92,7 +92,7 @@
     <% if @country_side_house.lot.asigner.nil? %>
       <%= 'Asigner not match' %>
     <% else %>
-      <%= @country_side_house.lot.asigner.email %>
+      <%= @country_side_house.lot.asigner.full_name %>
     <% end %>
   </p>
 
@@ -101,7 +101,7 @@
     <% if @country_side_house.lot.asignee.nil? %>
       <%= 'Asignee not match' %>
     <% else %>
-      <%= @country_side_house.lot.asignee.email %>
+      <%= @country_side_house.lot.asignee.full_name %>
     <% end %>
   </p>
 
@@ -110,7 +110,7 @@
     <% if @country_side_house.lot.client.nil? %>
       <%= 'Client not match' %>
     <% else %>
-      <%= @country_side_house.lot.client.email %>
+      <%= @country_side_house.lot.client.full_name %>
     <% end %>
   </p>
   <div class="actions mb-2 d-grid gap-2 col-1 mx-auto">
