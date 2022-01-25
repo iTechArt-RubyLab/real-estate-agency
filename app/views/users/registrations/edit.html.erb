@@ -43,7 +43,7 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
-  <% if resource.profilable_type = 'ClientProfile' %>
+  <% if resource.profilable_type == 'ClientProfile' %>
     <%= f.fields_for :client_profile_attributes do |client| %>
       <div class="field mb-3">
         <%= client.label :country_id %>
@@ -55,7 +55,7 @@
           <%= client.text_field :description, class: "form-control" %>
       </div>
     <% end %>
-  <% elsif resource.profilable_type = 'RealtorProfile' %>
+  <% elsif resource.profilable_type == 'RealtorProfile' %>
     <%= f.fields_for :realtor_profile_attributes do |realtor| %>
       <div class="field mb-3">
         <%= realtor.label :registration_number %>
