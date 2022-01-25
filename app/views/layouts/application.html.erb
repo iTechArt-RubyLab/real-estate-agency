@@ -43,6 +43,9 @@
             <%= link_to 'My lots', lots_path, class: "nav-link" %>
           </li>
         <% end %>
+        <li class="nav-item">
+          <%= link_to (image_tag current_user.avatar, size: '45'), edit_user_registration_path %>
+        </li>
         <li class="nav-item" style="margin-right: 15px;">
           <%= link_to current_user.full_name, edit_user_registration_path, class: "nav-link" %>
         </li>
