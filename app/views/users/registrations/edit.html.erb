@@ -4,12 +4,12 @@
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-4">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field avatar_picture mb-3">
-    <%= image_tag(resource.avatar_miniature) if resource.avatar.attached? %>
+    <%= image_tag(resource.avatar_miniature, class: "rounded-circle") if resource.avatar.attached? %>
   </div>
 
   <div class="field mb-3">
@@ -42,32 +42,6 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
-
-  <% if resource.profilable_type == 'ClientProfile' %>
-    <%= f.fields_for :client_profile_attributes do |client| %>
-      <div class="field mb-3">
-        <%= client.label :country_id %>
-        <%= client.collection_select :country_id, Country.order(:name), :id, :name %>
-      </div>
-
-      <div class="field mb-3">
-          <%= client.label :description %>
-          <%= client.text_field :description, class: "form-control" %>
-      </div>
-    <% end %>
-  <% elsif resource.profilable_type == 'RealtorProfile' %>
-    <%= f.fields_for :realtor_profile_attributes do |realtor| %>
-      <div class="field mb-3">
-        <%= realtor.label :registration_number %>
-        <%= realtor.collection_select :registration_number, class: "form-control" %>
-      </div>
-
-      <div class="field mb-3">
-        <%= realtor.label :employment_date %>
-        <%= realtor.date_select :employment_date, class: "form-control" %>
-      </div>
-    <% end %>
-  <% end %>
 
   <div class="field mb-3">
     <%= f.label :city_id %>
