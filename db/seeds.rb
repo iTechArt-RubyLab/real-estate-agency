@@ -81,6 +81,13 @@ renovations = Renovation.create!([{name: 'Euro renovation'},
                                  {name: 'Normal repair'},
                                  {name: 'Without finishing'}])
 
+countries = Country.create!([{name: 'Belarus', phone_code: '+375'}, 
+                             {name: 'Russia', phone_code: '+7'}, 
+                             {name: 'Ukraine', phone_code: '+380'}, 
+                             {name: 'USA', phone_code: '+1'}, 
+                             {name: 'England', phone_code: '+44'}, 
+                             {name: 'France', phone_code: '+33'}])
+
 roles = Role.create!([{name: 'Manager', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_others_lots: true, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: false, can_approve_realtor: true, can_freeze_user: true}])
 
 realtor_profiles = []
