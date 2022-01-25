@@ -97,7 +97,7 @@ end
 
 client_profiles = []
 6.times do
-  client_profiles << ClientProfile.create!(description: Faker::Lorem.sentence)
+  client_profiles << ClientProfile.create!(description: Faker::Lorem.sentence, country: countries.first)
 end
 
 users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, city: cities.first, gender: 'male', date_of_birth: '1990-01-28', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
