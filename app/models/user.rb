@@ -67,6 +67,10 @@ class User < ApplicationRecord
 
   after_commit :set_default_avatar, on: %i[create update]
 
+  validates :first_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :second_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
+  validates :last_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
+
   scope :with_clients, -> { where(profilable_type: 'ClientProfile') }
   scope :with_realtors, -> { where(profilable_type: 'RealtorProfile') }
 
@@ -97,7 +101,7 @@ class User < ApplicationRecord
       avatar.attach(
         io: File.open(
           Rails.root.join(
-            'app', 'assets', 'images', 'default_avatar.png'
+            'app', 'assets', 'images', 'default_avatar.jpg'
           )
         ), filename: 'default_avatar.png',
         content_type: 'image/png'

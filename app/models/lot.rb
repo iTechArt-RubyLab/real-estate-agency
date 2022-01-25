@@ -49,8 +49,8 @@ class Lot < ApplicationRecord
 
   validates_with AsigneeValidator
 
-  validates :title, length: { in: 5..50 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
-  validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
+  validates :title, length: { in: 5..100 }
+  validates :description, length: { in: 5..500 }
   validates :price, inclusion: { in: 0.1..10_000_000.0 }
 
   aasm column: :state, enum: true do
