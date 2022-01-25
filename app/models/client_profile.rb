@@ -22,7 +22,7 @@ class ClientProfile < ApplicationRecord
   has_one :user, as: :profilable, dependent: :destroy
   accepts_nested_attributes_for :user
 
-  validates :description, length: { in: 5..500 }, format: { with: /\A[1-9a-zA-Z ]+\z/ }
+  validates :description, length: { in: 5..500 }
 
   scope :with_description, ->(description) { where(description: description) }
 end

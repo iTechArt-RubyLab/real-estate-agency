@@ -11,4 +11,6 @@
 class RealtorProfile < ApplicationRecord
   has_one :user, as: :profilable, dependent: :destroy
   accepts_nested_attributes_for :user
+
+  validates :registration_number, length: { is: 8 }
 end
