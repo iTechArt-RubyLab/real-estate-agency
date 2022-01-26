@@ -65,7 +65,9 @@
       <%= lot.number_field :price, class: "form-control" %>
     </div>
 
-    <% lot.hidden_field :client_id, value: 1 %>
+    <div class="field">
+      <%= lot.hidden_field :client_id, value: current_user.id %>
+    </div>
 
     <div class="field mb-3">
       <%= lot.label :deal_type_id %>
