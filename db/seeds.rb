@@ -81,6 +81,13 @@ renovations = Renovation.create!([{name: 'Euro renovation'},
                                  {name: 'Normal repair'},
                                  {name: 'Without finishing'}])
 
+countries = Country.create!([{name: 'Belarus', phone_code: '+375'}, 
+                             {name: 'Russia', phone_code: '+7'}, 
+                             {name: 'Ukraine', phone_code: '+380'}, 
+                             {name: 'USA', phone_code: '+1'}, 
+                             {name: 'England', phone_code: '+44'}, 
+                             {name: 'France', phone_code: '+33'}])
+
 roles = Role.create!([{name: 'Manager', can_read_lot: true, can_edit_lot: true, can_asign: true, can_read_others_lots: true, can_read_dictionary: true, can_edit_dictionary: false, can_give_permission: true, can_work_with_all_property_types: true, can_create_role: false, can_approve_realtor: true, can_freeze_user: true}])
 
 realtor_profiles = []
@@ -90,7 +97,7 @@ end
 
 client_profiles = []
 6.times do
-  client_profiles << ClientProfile.create!(description: Faker::Lorem.sentence)
+  client_profiles << ClientProfile.create!(description: Faker::Lorem.sentence, country: countries.first)
 end
 
 users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, city: cities.first, gender: 'male', date_of_birth: '1990-01-28', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
