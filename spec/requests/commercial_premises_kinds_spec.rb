@@ -16,11 +16,11 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
   # CommercialPremisesKind. As you add validations to CommercialPremisesKind, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    attributes_for :commercial_premises_kind
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    attributes_for :commercial_premises_kind, :invalid_short
   end
 
   describe 'GET /index' do
@@ -85,7 +85,7 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        attributes_for :commercial_premises_kind
       end
 
       it 'updates the requested commercial_premises_kind' do
@@ -93,7 +93,7 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
         patch commercial_premises_kind_url(commercial_premises_kind),
               params: { commercial_premises_kind: new_attributes }
         commercial_premises_kind.reload
-        skip('Add assertions for updated state')
+        attributes_for :commercial_premises_kind
       end
 
       it 'redirects to the commercial_premises_kind' do
