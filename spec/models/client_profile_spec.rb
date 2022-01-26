@@ -2,11 +2,12 @@
 #
 # Table name: client_profiles
 #
-#  id          :bigint           not null, primary key
-#  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  country_id  :bigint
+#  id           :bigint           not null, primary key
+#  description  :text
+#  phone_number :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  country_id   :bigint
 #
 # Indexes
 #

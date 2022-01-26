@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   create_table "client_profiles", force: :cascade do |t|
     t.bigint "country_id"
     t.text "description"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_client_profiles_on_country_id"
