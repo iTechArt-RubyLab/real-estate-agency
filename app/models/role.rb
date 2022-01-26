@@ -47,7 +47,7 @@ class Role < ApplicationRecord
                       can_create_role: false,
                       can_read_others_lots: false,
                       can_edit_dictionary: false,
-                      can_edit_lot: true,
+                      can_edit_lot: false,
                       can_freeze_user: false,
                       can_give_permission: false,
                       can_read_dictionary: false,
