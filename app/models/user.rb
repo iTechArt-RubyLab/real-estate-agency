@@ -65,7 +65,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, :lockable
 
-  after_commit :set_default_avatar, on: %i[create update]
+  after_commit :default_avatar, on: %i[create update]
 
   validates :first_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
   validates :second_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
@@ -94,20 +94,20 @@ class User < ApplicationRecord
     if avatar.attached?
       avatar.variant(resize: '150x150!').processed
     else
-      '/default_avatar.png'
+      '/default_avatar.jpg'
     end
   end
 
   private
 
-  def set_default_avatar
+  def default_avatar
     unless avatar.attached?
       avatar.attach(
         io: File.open(
           Rails.root.join(
             'app', 'assets', 'images', 'default_avatar.jpg'
           )
-        ), filename: 'default_avatar.png',
+        ), filename: 'default_avatar.jpg',
         content_type: 'image/png'
       )
     end
