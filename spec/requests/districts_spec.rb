@@ -16,17 +16,19 @@ RSpec.describe '/districts', type: :request do
   # District. As you add validations to District, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    attributes_for :district
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    attributes_for :district, :invalid_long
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
       District.create! valid_attributes
-      get districts_url
+      binding.pry
+      host! 'localhost:3000'
+      get '/districts'
       expect(response).to be_successful
     end
   end
@@ -34,14 +36,16 @@ RSpec.describe '/districts', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       district = District.create! valid_attributes
-      get district_url(district)
+      host! 'localhost:3000'
+      get district_path(district)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_district_url
+      host! 'localhost:3000'
+      get new_district_path
       expect(response).to be_successful
     end
   end
@@ -49,7 +53,8 @@ RSpec.describe '/districts', type: :request do
   describe 'GET /edit' do
     it 'render a successful response' do
       district = District.create! valid_attributes
-      get edit_district_url(district)
+      host! 'localhost:3000'
+      get edit_district_path(district)
       expect(response).to be_successful
     end
   end

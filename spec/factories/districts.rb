@@ -18,7 +18,7 @@
 #
 FactoryBot.define do
   factory :district, class: District do
-    association :city
+    city { create :city }
     name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
 
     trait :invalid_long do
