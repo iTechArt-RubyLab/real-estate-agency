@@ -44,11 +44,6 @@
   </div>
 
   <div class="field mb-3">
-    <%= f.label :city_id %>
-    <%= f.collection_select :city_id, City.order(:name), :id, :name %>
-  </div>
-
-  <div class="field mb-3">
     <%= f.label :first_name %>
     <%= f.text_field :first_name, class: "form-control" %>
   </div>

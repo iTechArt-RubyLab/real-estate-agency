@@ -30,13 +30,11 @@
 #  unlock_token           :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  city_id                :bigint
 #  profilable_id          :bigint
 #  role_id                :bigint
 #
 # Indexes
 #
-#  index_users_on_city_id               (city_id)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_profilable            (profilable_type,profilable_id)
@@ -45,7 +43,6 @@
 #
 # Foreign Keys
 #
-#  fk_rails_...  (city_id => cities.id)
 #  fk_rails_...  (role_id => roles.id)
 #
 class User < ApplicationRecord
@@ -55,7 +52,6 @@ class User < ApplicationRecord
   has_many :asignee_lot, foreign_key: :asignee_id, class_name: 'Lot', dependent: :nullify
   has_many :client_lot, foreign_key: :client_id, class_name: 'Lot', dependent: :nullify
   belongs_to :role, optional: true
-  belongs_to :city, optional: true
   enum gender: %i[male female]
   belongs_to :profilable, polymorphic: true, optional: true
   accepts_nested_attributes_for :profilable
