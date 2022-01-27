@@ -12,7 +12,7 @@ class Country < ApplicationRecord
   has_many :client_profiles, dependent: :nullify
 
   validates :name, length: { in: 3..30 }, format: { with: /\A[a-zA-Z ]+\z/ }
-  validates :phone_code, length: { in: 2..15 }, format: { with: /[+]{1}\d+/ }
+  validates :phone_code, length: { in: 2..15 }, format: { with: /\A[+]{1}\d+\Z/ }
 
   scope :with_name, ->(name) { where(name: name) }
 end

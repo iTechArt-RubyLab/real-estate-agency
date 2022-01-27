@@ -28,85 +28,78 @@
 require 'rails_helper'
 
 RSpec.describe CountrySideHouse, type: :model do
-  describe '.country_side_house' do
-    let(:country_side_house) { create :country_side_house }
-
-    context 'with valid attributes' do
-      it { expect(country_side_house).to be_valid }
-    end
+  context 'with valid attributes' do
+    subject(:country_side_house) { create :country_side_house }
+    include_examples 'valid model'
   end
 
   describe '#floors_count' do
-    let(:invalid_big_floors_count) { build :country_side_house, :invalid_big_floors_count }
-    let(:invalid_negative_floors_count) { build :country_side_house, :invalid_negative_floors_count }
-    let(:invalid_with_letters_floors_count) { build :country_side_house, :invalid_with_letters_floors_count }
-
-    context 'when too big floors count' do
-      it { expect(invalid_big_floors_count).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_floors_count) { build :country_side_house, :invalid_big_floors_count }
+      include_examples 'invalid model'
     end
 
-    context 'when negative floors count' do
-      it { expect(invalid_negative_floors_count).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_floors_count) { build :country_side_house, :invalid_negative_floors_count }
+      include_examples 'invalid model'
     end
 
-    context 'when floors count with letters' do
-      it { expect(invalid_with_letters_floors_count).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_floors_count) { build :country_side_house, :invalid_with_letters_floors_count }
+      include_examples 'invalid model'
     end
   end
 
   describe '#land_area' do
-    let(:invalid_big_land_area) { build :country_side_house, :invalid_big_land_area }
-    let(:invalid_negative_land_area) { build :country_side_house, :invalid_negative_land_area }
-    let(:invalid_with_letters_land_area) { build :country_side_house, :invalid_with_letters_land_area }
-
-    context 'when too big land area' do
-      it { expect(invalid_big_land_area).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_land_area) { build :country_side_house, :invalid_big_land_area }
+      include_examples 'invalid model'
     end
 
-    context 'when negative land area' do
-      it { expect(invalid_negative_land_area).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_land_area) { build :country_side_house, :invalid_negative_land_area }
+      include_examples 'invalid model'
     end
 
-    context 'when land area with letters' do
-      it { expect(invalid_with_letters_land_area).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_land_area) { build :country_side_house, :invalid_with_letters_land_area }
+      include_examples 'invalid model'
     end
   end
 
   describe '#total_area' do
-    let(:invalid_big_total_area) { build :country_side_house, :invalid_big_total_area }
-    let(:invalid_negative_total_area) { build :country_side_house, :invalid_negative_total_area }
-    let(:invalid_with_letters_total_area) { build :country_side_house, :invalid_with_letters_total_area }
-
-    context 'when too big total area' do
-      it { expect(invalid_big_total_area).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_total_area) { build :country_side_house, :invalid_big_total_area }
+      include_examples 'invalid model'
     end
 
-    context 'when negative total area' do
-      it { expect(invalid_negative_total_area).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_total_area) { build :country_side_house, :invalid_negative_total_area }
+      include_examples 'invalid model'
     end
 
-    context 'when total area with letters' do
-      it { expect(invalid_with_letters_total_area).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_total_area) { build :country_side_house, :invalid_with_letters_total_area }
+      include_examples 'invalid model'
     end
   end
 
   describe '#year_of_construction' do
-    let(:invalid_big_year_of_construction) { build :country_side_house, :invalid_big_year_of_construction }
-    let(:invalid_negative_year_of_construction) { build :country_side_house, :invalid_negative_year_of_construction }
-    let(:invalid_with_letters_year_of_construction) do
-      build :country_side_house, :invalid_with_letters_year_of_construction
+    context 'when too big' do
+      subject(:invalid_big_year_of_construction) { build :country_side_house, :invalid_big_year_of_construction }
+      include_examples 'invalid model'
     end
 
-    context 'when too big year of construction' do
-      it { expect(invalid_big_year_of_construction).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_year_of_construction) { build :country_side_house, :invalid_negative_year_of_construction }
+      include_examples 'invalid model'
     end
 
-    context 'when negative year of construction' do
-      it { expect(invalid_negative_year_of_construction).not_to be_valid }
-    end
-
-    context 'when year of construction with letters' do
-      it { expect(invalid_with_letters_year_of_construction).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_year_of_construction) do
+        build :country_side_house, :invalid_with_letters_year_of_construction
+      end
+      include_examples 'invalid model'
     end
   end
 end

@@ -20,24 +20,20 @@
 require 'rails_helper'
 
 RSpec.describe ClientProfile, type: :model do
-  describe '.client_profile' do
-    let(:client_profile) { create :client_profile }
-
-    context 'with valid attributes' do
-      it { expect(client_profile).to be_valid }
-    end
+  context 'with valid attributes' do
+    subject(:client_profile) { create :client_profile }
+    include_examples 'valid model'
   end
 
   describe '#description' do
-    let(:invalid_long_description) { build :client_profile, :invalid_long_description }
-    let(:invalid_short_description) { build :client_profile, :invalid_short_description }
-
     context 'when too long' do
-      it { expect(invalid_long_description).not_to be_valid }
+      subject(:invalid_long) { build :client_profile, :invalid_long }
+      include_examples 'invalid model'
     end
 
     context 'when too short' do
-      it { expect(invalid_short_description).not_to be_valid }
+      subject(:invalid_short) { build :client_profile, :invalid_short }
+      include_examples 'invalid model'
     end
   end
 end
