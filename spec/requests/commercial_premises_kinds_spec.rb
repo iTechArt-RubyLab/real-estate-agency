@@ -13,6 +13,12 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/commercial_premises_kinds', type: :request do
+    before(:all) do
+      sign_in FactoryBot.create(:user)
+    end
+    let(:current_user) { subject.current_user }
+
+
   # CommercialPremisesKind. As you add validations to CommercialPremisesKind, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
