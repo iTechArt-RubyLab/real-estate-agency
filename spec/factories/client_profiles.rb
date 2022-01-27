@@ -21,11 +21,11 @@ FactoryBot.define do
     association :country
     description { Faker::Lorem.sentence }
 
-    trait :invalid_long_description do
+    trait :invalid_long do
       description { Faker::Lorem.characters(number: 510) }
     end
 
-    trait :invalid_short_description do
+    trait :invalid_short do
       description { Faker::Lorem.characters(number: 2) }
     end
   end
