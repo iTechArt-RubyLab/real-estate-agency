@@ -43,19 +43,19 @@ FactoryBot.define do
     price { Faker::Number.within(range: 0.1..10_000_000.0) }
 
     trait :invalid_long_title do
-      title { Faker::Lorem.characters(number: 51, min_alpha: 51) }
+      title { Faker::Lorem.characters(number: 101) }
     end
 
     trait :invalid_short_title do
-      title { Faker::Lorem.characters(number: 1, min_alpha: 1) }
+      title { Faker::Lorem.characters(number: 3) }
     end
 
     trait :invalid_long_description do
-      description { Faker::Lorem.characters(number: 501, min_alpha: 500) }
+      description { Faker::Lorem.characters(number: 501) }
     end
 
     trait :invalid_short_description do
-      description { Faker::Lorem.characters(number: 1, min_alpha: 1) }
+      description { Faker::Lorem.characters(number: 3) }
     end
 
     trait :invalid_big_price do

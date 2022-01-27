@@ -37,55 +37,49 @@
 require 'rails_helper'
 
 RSpec.describe Lot, type: :model do
-  describe '.lot' do
-    let(:lot) { create :lot }
-
-    context 'with valid attributes' do
-      it { expect(lot).to be_valid }
-    end
+  context 'with valid attributes' do
+    subject(:lot) { create :lot }
+    include_examples 'valid model'
   end
 
   describe '#title' do
-    let(:invalid_long_title) { build :lot, :invalid_long_title }
-    let(:invalid_short_title) { build :lot, :invalid_short_title }
-
-    context 'when too long title' do
-      it { expect(invalid_long_title).not_to be_valid }
+    context 'when too long' do
+      subject(:invalid_long_title) { build :lot, :invalid_long_title }
+      include_examples 'invalid model'
     end
 
-    context 'when too short title' do
-      it { expect(invalid_short_title).not_to be_valid }
+    context 'when too short' do
+      subject(:invalid_short_title) { build :lot, :invalid_short_title }
+      include_examples 'invalid model'
     end
   end
 
   describe '#description' do
-    let(:invalid_long_description) { build :lot, :invalid_long_description }
-    let(:invalid_short_description) { build :lot, :invalid_short_description }
-
-    context 'when too long description' do
-      it { expect(invalid_long_description).not_to be_valid }
+    context 'when too long' do
+      subject(:invalid_long_description) { build :lot, :invalid_long_description }
+      include_examples 'invalid model'
     end
 
-    context 'when too short description' do
-      it { expect(invalid_short_description).not_to be_valid }
+    context 'when too short' do
+      subject(:invalid_short_description) { build :lot, :invalid_short_description }
+      include_examples 'invalid model'
     end
   end
 
   describe '#price' do
-    let(:invalid_big_price) { build :lot, :invalid_big_price }
-    let(:invalid_negative_price) { build :lot, :invalid_negative_price }
-    let(:invalid_with_letters_price) { build :lot, :invalid_with_letters_price }
-
-    context 'when too big price' do
-      it { expect(invalid_big_price).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_price) { build :lot, :invalid_big_price }
+      include_examples 'invalid model'
     end
 
-    context 'when negative price' do
-      it { expect(invalid_negative_price).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_price) { build :lot, :invalid_negative_price }
+      include_examples 'invalid model'
     end
 
-    context 'when price with letters' do
-      it { expect(invalid_with_letters_price).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_price) { build :lot, :invalid_with_letters_price }
+      include_examples 'invalid model'
     end
   end
 end
