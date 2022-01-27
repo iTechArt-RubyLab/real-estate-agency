@@ -94,6 +94,10 @@ class User < ApplicationRecord
     end
   end
 
+  def build_profilable(params)
+    self.profilable = profilable_type.constantize.new(params)
+  end
+
   private
 
   def default_avatar
