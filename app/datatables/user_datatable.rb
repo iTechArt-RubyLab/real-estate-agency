@@ -10,7 +10,6 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   def view_columns
     @view_columns ||= {
       email: { source: 'User.email', cond: :like, searchable: true },
-      city_id: { source: 'City.name', cond: :like, searchable: true },
       first_name: { source: 'User.first_name', cond: :like, searchable: true },
       last_name: { source: 'User.last_name', cond: :like, searchable: true },
       second_name: { source: 'User.second_name', cond: :like, searchable: true },
@@ -28,7 +27,6 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         email: record.email,
-        city_id: record.city&.name,
         first_name: record.first_name,
         last_name: record.last_name,
         second_name: record.second_name,

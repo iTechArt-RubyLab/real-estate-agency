@@ -43,10 +43,34 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
-  <div class="field mb-3">
-    <%= f.label :city_id %>
-    <%= f.collection_select :city_id, City.order(:name), :id, :name %>
-  </div>
+  <%= f.fields_for :profilable_attributes do |profile| %>
+    <% if resource.profilable_type == 'ClientProfile' %>
+      <div class="field mb-3">
+        <%= profile.label :country_id %>
+        <%= profile.collection_select :country_id, Country.order(:name), :id, :name  %>
+      </div>
+
+      <div class="field mb-3">
+        <%= profile.label :phone_number %>
+        <%= profile.text_field :phone_number, class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= profile.label :description %>
+        <%= profile.text_field :description, class: "form-control" %>
+      </div>
+    <% elsif resource.profilable_type == 'RealtorProfile' %>
+      <div class="field mb-3">
+        <%= profile.label :registration_number %>
+        <%= profile.text_field :registration_number, class: "form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= profile.label :employment_date %>
+        <%= profile.date_select :employment_date, class: "form-control" %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="field mb-3">
     <%= f.label :first_name %>

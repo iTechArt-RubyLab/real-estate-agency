@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   create_table "client_profiles", force: :cascade do |t|
     t.bigint "country_id"
     t.text "description"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_client_profiles_on_country_id"
@@ -260,7 +261,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.datetime "locked_at"
     t.string "uid"
     t.string "provider"
-    t.bigint "city_id"
     t.string "first_name"
     t.string "last_name"
     t.string "second_name"
@@ -271,7 +271,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.bigint "role_id"
     t.string "profilable_type"
     t.bigint "profilable_id"
-    t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["profilable_type", "profilable_id"], name: "index_users_on_profilable"
@@ -303,6 +302,5 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   add_foreign_key "lots", "users", column: "asigner_id"
   add_foreign_key "lots", "users", column: "client_id"
   add_foreign_key "streets", "districts"
-  add_foreign_key "users", "cities"
   add_foreign_key "users", "roles"
 end
