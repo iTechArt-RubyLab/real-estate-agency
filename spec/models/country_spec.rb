@@ -11,26 +11,47 @@
 require 'rails_helper'
 
 RSpec.describe Country, type: :model do
-  describe '.country' do
-    let(:country) { create :country }
-    let(:invalid_long) { build :country, :invalid_long }
-    let(:invalid_short) { build :country, :invalid_short }
-    let(:invalid_with_numbers) { build :country, :invalid_with_numbers }
+  context 'with valid attributes' do
+    subject(:country) { create :country }
+    include_examples 'valid model'
+  end
 
-    context 'with valid attributes' do
-      it { expect(country).to be_valid }
-    end
-
+  describe '#name' do
     context 'when too long' do
-      it { expect(invalid_long).not_to be_valid }
+      subject(:invalid_long_name) { build :country, :invalid_long_name }
+      include_examples 'invalid model'
     end
 
     context 'when too short' do
-      it { expect(invalid_short).not_to be_valid }
+      subject(:invalid_short_name) { build :country, :invalid_short_name }
+      include_examples 'invalid model'
     end
 
     context 'when with numbers' do
-      it { expect(invalid_with_numbers).not_to be_valid }
+      subject(:invalid_name_with_numbers) { build :country, :invalid_name_with_numbers }
+      include_examples 'invalid model'
+    end
+  end
+
+  describe '#phone_code' do
+    context 'when too long' do
+      subject(:invalid_long_phone_code) { build :country, :invalid_long_phone_code }
+      include_examples 'invalid model'
+    end
+
+    context 'when too short' do
+      subject(:invalid_short_phone_code) { build :country, :invalid_short_phone_code }
+      include_examples 'invalid model'
+    end
+
+    context 'when with letters' do
+      subject(:invalid_phone_code_with_letters) { build :country, :invalid_phone_code_with_letters }
+      include_examples 'invalid model'
+    end
+
+    context 'when without plus' do
+      subject(:invalid_phone_code_without_plus) { build :country, :invalid_phone_code_without_plus }
+      include_examples 'invalid model'
     end
   end
 end

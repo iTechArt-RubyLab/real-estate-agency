@@ -20,42 +20,37 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  describe '.address' do
-    let(:address) { create :address }
-
-    context 'with valid attributes' do
-      it { expect(address).to be_valid }
-    end
+  context 'with valid attributes' do
+    subject(:address) { create :address }
+    include_examples 'valid model'
   end
 
   describe '#building' do
-    let(:invalid_big_building) { build :address, :invalid_big_building }
-    let(:invalid_negative_building) { build :address, :invalid_negative_building }
-    let(:invalid_with_letters_building) { build :address, :invalid_with_letters_building }
-
     context 'when too big' do
-      it { expect(invalid_big_building).not_to be_valid }
+      subject(:invalid_big_building) { build :address, :invalid_big_building }
+      include_examples 'invalid model'
     end
 
     context 'when negative' do
-      it { expect(invalid_negative_building).not_to be_valid }
+      subject(:invalid_negative_building) { build :address, :invalid_negative_building }
+      include_examples 'invalid model'
     end
 
     context 'when with letters' do
-      it { expect(invalid_with_letters_building).not_to be_valid }
+      subject(:invalid_with_letters_building) { build :address, :invalid_with_letters_building }
+      include_examples 'invalid model'
     end
   end
 
   describe '#description' do
-    let(:invalid_long_description) { build :address, :invalid_long_description }
-    let(:invalid_short_description) { build :address, :invalid_short_description }
-
     context 'when too long' do
-      it { expect(invalid_long_description).not_to be_valid }
+      subject(:invalid_long_description) { build :address, :invalid_long_description }
+      include_examples 'invalid model'
     end
 
     context 'when too short' do
-      it { expect(invalid_short_description).not_to be_valid }
+      subject(:invalid_short_description) { build :address, :invalid_short_description }
+      include_examples 'invalid model'
     end
   end
 end
