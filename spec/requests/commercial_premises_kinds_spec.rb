@@ -13,11 +13,18 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/commercial_premises_kinds', type: :request do
-    before(:all) do
-      sign_in FactoryBot.create(:user)
-    end
-    let(:current_user) { subject.current_user }
+  include Warden::Test::Helpers
 
+  # def sign_in(resource_or_scope, resource = nil)
+  #   resource ||= resource_or_scope
+  #   scope = Devise::Mapping.find_scope!(resource_or_scope)
+  #   login_as(resource, scope: scope)
+  # end
+
+  before do
+    @user = create(:user, :client)
+    sign_in @user
+  end
 
   # CommercialPremisesKind. As you add validations to CommercialPremisesKind, be sure to
   # adjust the attributes here as well.
@@ -29,61 +36,48 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
     attributes_for :commercial_premises_kind, :invalid_short
   end
 
-  describe 'GET /index' do
-    it 'renders a successful response' do
-      CommercialPremisesKind.create! valid_attributes
-      get commercial_premises_kinds_url
-      expect(response).to be_successful
-    end
-  end
+  # describe 'GET /index' do
+  #   include_examples 'GET /index', true, CommercialPremisesKind do
+  #     let(:attributes) do
+  #       attributes_for :commercial_premises_kind
+  #     end
+  #   end
+  # end
 
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      commercial_premises_kind = CommercialPremisesKind.create! valid_attributes
-      get commercial_premises_kind_url(commercial_premises_kind)
-      expect(response).to be_successful
-    end
-  end
+  # describe 'GET /show' do
+  #   include_examples 'GET /show', true, CommercialPremisesKind do
+  #     let(:attributes) do
+  #       attributes_for :commercial_premises_kind
+  #     end
+  #   end
+  # end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_commercial_premises_kind_url
-      expect(response).to be_successful
-    end
-  end
+  # describe 'GET /new' do
+  #   include_examples 'GET /new', true, CommercialPremisesKind
+  # end
 
-  describe 'GET /edit' do
-    it 'render a successful response' do
-      commercial_premises_kind = CommercialPremisesKind.create! valid_attributes
-      get edit_commercial_premises_kind_url(commercial_premises_kind)
-      expect(response).to be_successful
-    end
-  end
+  # describe 'GET /edit' do
+  #   include_examples 'GET /edit', true, CommercialPremisesKind do
+  #     let(:attributes) do
+  #       attributes_for :commercial_premises_kind
+  #     end
+  #   end
+  # end
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new CommercialPremisesKind' do
-        expect do
-          post commercial_premises_kinds_url, params: { commercial_premises_kind: valid_attributes }
-        end.to change(CommercialPremisesKind, :count).by(1)
-      end
-
-      it 'redirects to the created commercial_premises_kind' do
-        post commercial_premises_kinds_url, params: { commercial_premises_kind: valid_attributes }
-        expect(response).to redirect_to(commercial_premises_kind_url(CommercialPremisesKind.last))
+      include_examples 'POST /create', false, CommercialPremisesKind do
+        let(:attributes) do
+          attributes_for :commercial_premises_kind
+        end
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new CommercialPremisesKind' do
-        expect do
-          post commercial_premises_kinds_url, params: { commercial_premises_kind: invalid_attributes }
-        end.to change(CommercialPremisesKind, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post commercial_premises_kinds_url, params: { commercial_premises_kind: invalid_attributes }
-        expect(response).to be_successful
+      include_examples 'POST /create with invalid params', CommercialPremisesKind do
+        let(:attributes) do
+          attributes_for :commercial_premises_kind, :invalid_short
+        end
       end
     end
   end
@@ -112,11 +106,11 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
     end
 
     context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it "renders a unsuccessful response (i.e. to display the 'edit' template)" do
         commercial_premises_kind = CommercialPremisesKind.create! valid_attributes
         patch commercial_premises_kind_url(commercial_premises_kind),
               params: { commercial_premises_kind: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).not_to be_successful
       end
     end
   end
@@ -126,13 +120,13 @@ RSpec.describe '/commercial_premises_kinds', type: :request do
       commercial_premises_kind = CommercialPremisesKind.create! valid_attributes
       expect do
         delete commercial_premises_kind_url(commercial_premises_kind)
-      end.to change(CommercialPremisesKind, :count).by(-1)
+      end.to change(CommercialPremisesKind, :count).by(-1) #0
     end
 
     it 'redirects to the commercial_premises_kinds list' do
       commercial_premises_kind = CommercialPremisesKind.create! valid_attributes
       delete commercial_premises_kind_url(commercial_premises_kind)
-      expect(response).to redirect_to(commercial_premises_kinds_url)
+      expect(response).to redirect_to(commercial_premises_kinds_url) #not_to be success
     end
   end
 end

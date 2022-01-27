@@ -17,7 +17,7 @@ module ControllerMacros
 
   def log_out
     before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:user]
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       sign_out current_user
     end
     let(:current_user) { subject.current_user || FactoryBot.create(:user) }
