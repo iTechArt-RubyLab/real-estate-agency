@@ -28,137 +28,127 @@
 require 'rails_helper'
 
 RSpec.describe Flat, type: :model do
-  describe '.flat' do
-    let(:flat) { create :flat }
-
-    context 'with valid attributes' do
-      it { expect(flat).to be_valid }
-    end
+  context 'with valid attributes' do
+    subject(:flat) { create :flat }
+    include_examples 'valid model'
   end
 
   describe '#rooms_count' do
-    let(:invalid_big_rooms_count) { build :flat, :invalid_big_rooms_count }
-    let(:invalid_negative_rooms_count) { build :flat, :invalid_negative_rooms_count }
-    let(:invalid_with_letters_rooms_count) { build :flat, :invalid_with_letters_rooms_count }
-
-    context 'when too big rooms count' do
-      it { expect(invalid_big_rooms_count).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_rooms_count) { build :flat, :invalid_big_rooms_count }
+      include_examples 'invalid model'
     end
 
-    context 'when negative rooms count' do
-      it { expect(invalid_negative_rooms_count).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_rooms_count) { build :flat, :invalid_negative_rooms_count }
+      include_examples 'invalid model'
     end
 
-    context 'when rooms count with letters' do
-      it { expect(invalid_with_letters_rooms_count).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_rooms_count) { build :flat, :invalid_with_letters_rooms_count }
+      include_examples 'invalid model'
     end
   end
 
   describe '#floor' do
-    let(:invalid_big_floor) { build :flat, :invalid_big_floor }
-    let(:invalid_negative_floor) { build :flat, :invalid_negative_floor }
-    let(:invalid_with_letters_floor) { build :flat, :invalid_with_letters_floor }
-
-    context 'when too big floor' do
-      it { expect(invalid_big_floor).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_floor) { build :flat, :invalid_big_floor }
+      include_examples 'invalid model'
     end
 
-    context 'when negative floor' do
-      it { expect(invalid_negative_floor).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_floor) { build :flat, :invalid_negative_floor }
+      include_examples 'invalid model'
     end
 
-    context 'when floor with letters' do
-      it { expect(invalid_with_letters_floor).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_floor) { build :flat, :invalid_with_letters_floor }
+      include_examples 'invalid model'
     end
   end
 
   describe '#year_of_construction' do
-    let(:invalid_big_year_of_construction) { build :flat, :invalid_big_year_of_construction }
-    let(:invalid_negative_year_of_construction) { build :flat, :invalid_negative_year_of_construction }
-    let(:invalid_with_letters_year_of_construction) { build :flat, :invalid_with_letters_year_of_construction }
-
-    context 'when too big year of construction' do
-      it { expect(invalid_big_year_of_construction).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_year_of_construction) { build :flat, :invalid_big_year_of_construction }
+      include_examples 'invalid model'
     end
 
-    context 'when negative year of construction' do
-      it { expect(invalid_negative_year_of_construction).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_year_of_construction) { build :flat, :invalid_negative_year_of_construction }
+      include_examples 'invalid model'
     end
 
-    context 'when year of construction with letters' do
-      it { expect(invalid_with_letters_year_of_construction).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_year_of_construction) { build :flat, :invalid_with_letters_year_of_construction }
+      include_examples 'invalid model'
     end
   end
 
   describe '#celling_height' do
-    let(:invalid_big_celling_height) { build :flat, :invalid_big_celling_height }
-    let(:invalid_negative_celling_height) { build :flat, :invalid_negative_celling_height }
-    let(:invalid_with_letters_celling_height) { build :flat, :invalid_with_letters_celling_height }
-
-    context 'when too big celling height' do
-      it { expect(invalid_big_celling_height).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_celling_height) { build :flat, :invalid_big_celling_height }
+      include_examples 'invalid model'
     end
 
-    context 'when negative celling height' do
-      it { expect(invalid_negative_celling_height).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_celling_height) { build :flat, :invalid_negative_celling_height }
+      include_examples 'invalid model'
     end
 
-    context 'when celling height with letters' do
-      it { expect(invalid_with_letters_celling_height).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_celling_height) { build :flat, :invalid_with_letters_celling_height }
+      include_examples 'invalid model'
     end
   end
 
   describe '#total_area' do
-    let(:invalid_big_total_area) { build :flat, :invalid_big_total_area }
-    let(:invalid_negative_total_area) { build :flat, :invalid_negative_total_area }
-    let(:invalid_with_letters_total_area) { build :flat, :invalid_with_letters_total_area }
-
-    context 'when too big total area' do
-      it { expect(invalid_big_total_area).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_total_area) { build :flat, :invalid_big_total_area }
+      include_examples 'invalid model'
     end
 
-    context 'when negative total area' do
-      it { expect(invalid_negative_total_area).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_total_area) { build :flat, :invalid_negative_total_area }
+      include_examples 'invalid model'
     end
 
-    context 'when total area with letters' do
-      it { expect(invalid_with_letters_total_area).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_total_area) { build :flat, :invalid_with_letters_total_area }
+      include_examples 'invalid model'
     end
   end
 
   describe '#living_area' do
-    let(:invalid_big_living_area) { build :flat, :invalid_big_living_area }
-    let(:invalid_negative_living_area) { build :flat, :invalid_negative_living_area }
-    let(:invalid_with_letters_living_area) { build :flat, :invalid_with_letters_living_area }
-
-    context 'when too big living area' do
-      it { expect(invalid_big_living_area).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_living_area) { build :flat, :invalid_big_living_area }
+      include_examples 'invalid model'
     end
 
-    context 'when negative living area' do
-      it { expect(invalid_negative_living_area).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_living_area) { build :flat, :invalid_negative_living_area }
+      include_examples 'invalid model'
     end
 
-    context 'when living area with letters' do
-      it { expect(invalid_with_letters_living_area).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_living_area) { build :flat, :invalid_with_letters_living_area }
+      include_examples 'invalid model'
     end
   end
 
   describe '#kitchen_area' do
-    let(:invalid_big_kitchen_area) { build :flat, :invalid_big_kitchen_area }
-    let(:invalid_negative_kitchen_area) { build :flat, :invalid_negative_kitchen_area }
-    let(:invalid_with_letters_kitchen_area) { build :flat, :invalid_with_letters_kitchen_area }
-
-    context 'when too big kitchen area' do
-      it { expect(invalid_big_kitchen_area).not_to be_valid }
+    context 'when too big' do
+      subject(:invalid_big_kitchen_area) { build :flat, :invalid_big_kitchen_area }
+      include_examples 'invalid model'
     end
 
-    context 'when negative kitchen area' do
-      it { expect(invalid_negative_kitchen_area).not_to be_valid }
+    context 'when negative' do
+      subject(:invalid_negative_kitchen_area) { build :flat, :invalid_negative_kitchen_area }
+      include_examples 'invalid model'
     end
 
-    context 'when kitchen area with letters' do
-      it { expect(invalid_with_letters_kitchen_area).not_to be_valid }
+    context 'when with letters' do
+      subject(:invalid_with_letters_kitchen_area) { build :flat, :invalid_with_letters_kitchen_area }
+      include_examples 'invalid model'
     end
   end
 end
