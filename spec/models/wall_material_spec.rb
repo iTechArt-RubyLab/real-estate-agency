@@ -10,26 +10,25 @@
 require 'rails_helper'
 
 RSpec.describe WallMaterial, type: :model do
-  describe '.wall_material' do
-    let(:wall_material) { create :wall_material }
-    let(:invalid_long) { build :wall_material, :invalid_long }
-    let(:invalid_short) { build :wall_material, :invalid_short }
-    let(:invalid_with_numbers) { build :wall_material, :invalid_with_numbers }
+  context 'with valid attributes' do
+    subject(:wall_material) { create :wall_material }
+    include_examples 'valid model'
+  end
 
-    context 'with valid attributes' do
-      it { expect(wall_material).to be_valid }
-    end
-
+  describe '#name' do
     context 'when too long' do
-      it { expect(invalid_long).not_to be_valid }
+      subject(:invalid_long) { build :wall_material, :invalid_long }
+      include_examples 'invalid model'
     end
 
     context 'when too short' do
-      it { expect(invalid_short).not_to be_valid }
+      subject(:invalid_short) { build :wall_material, :invalid_short }
+      include_examples 'invalid model'
     end
 
     context 'when with numbers' do
-      it { expect(invalid_with_numbers).not_to be_valid }
+      subject(:invalid_with_numbers) { build :wall_material, :invalid_with_numbers }
+      include_examples 'invalid model'
     end
   end
 end
