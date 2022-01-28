@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  get 'commercial_premises_catalog', to: 'commercial_premises_catalog#index'
   resources :lots
   resources :deal_types
   get 'admin_panel', to: 'admin_panel#index'
