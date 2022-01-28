@@ -3,6 +3,7 @@ class CreateRoles < ActiveRecord::Migration[6.1]
     create_table :roles do |t|
       t.string :name
       t.boolean :can_read_lot
+      t.boolean :can_create_lot
       t.boolean :can_edit_lot
       t.boolean :can_asign
       t.boolean :can_read_others_lots
