@@ -15,7 +15,7 @@ class CommercialPremisePolicy < ApplicationPolicy
   end
 
   def create?
-    user.role.can_read_lot
+    user.role.can_create_lot
   end
 
   def new?

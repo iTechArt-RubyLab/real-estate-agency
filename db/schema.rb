@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.boolean "can_read_lot"
+    t.boolean "can_create_lot"
     t.boolean "can_edit_lot"
     t.boolean "can_asign"
     t.boolean "can_read_others_lots"

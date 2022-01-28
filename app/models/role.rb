@@ -5,6 +5,7 @@
 #  id                               :bigint           not null, primary key
 #  can_approve_realtor              :boolean
 #  can_asign                        :boolean
+#  can_create_lot                   :boolean
 #  can_create_role                  :boolean
 #  can_edit_dictionary              :boolean
 #  can_edit_lot                     :boolean
@@ -37,6 +38,7 @@ class Role < ApplicationRecord
                       can_give_permission: true,
                       can_read_dictionary: true,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: true)
   end
 
@@ -52,6 +54,7 @@ class Role < ApplicationRecord
                       can_give_permission: false,
                       can_read_dictionary: false,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: false)
   end
 
@@ -67,6 +70,7 @@ class Role < ApplicationRecord
                       can_give_permission: false,
                       can_read_dictionary: true,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: false)
   end
 end
