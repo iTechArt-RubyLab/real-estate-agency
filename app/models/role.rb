@@ -38,6 +38,7 @@ class Role < ApplicationRecord
                       can_give_permission: true,
                       can_read_dictionary: true,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: true)
   end
 
@@ -53,6 +54,7 @@ class Role < ApplicationRecord
                       can_give_permission: false,
                       can_read_dictionary: false,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: false)
   end
 
@@ -68,6 +70,7 @@ class Role < ApplicationRecord
                       can_give_permission: false,
                       can_read_dictionary: true,
                       can_read_lot: true,
+                      can_create_lot: true,
                       can_work_with_all_property_types: false)
   end
 end
