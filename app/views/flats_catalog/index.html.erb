@@ -1,0 +1,41 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Flats</h1>
+      <p class="lead text-muted">In this section you will find an apartment suitable for any of your desires. Here you will find a wide and up-to-date range of apartments, from a small cozy studio to a spacious penthouse. Go to the catalog and choose the apartment of your dreams!</p>
+      <p>
+        <%= link_to "Back to main page", root_path, class: "btn btn-secondary my-2" %>
+        <%= link_to "Add new flat", new_flat_path, class: "btn btn-primary my-2" %>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <% flats = Flat.all %>
+      <% for item in flats %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= image_tag(item.lot.images_miniature, height: "225", class: "bd-placeholder-img card-img-top") if item.lot.images.attached? %>
+            <div class="card-body">
+              <small class="text-muted"><%= "#{item.lot.deal_type.name}" %></small>
+              <p class="card-text"><%= item.lot.title %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to "Show", flat_path(item.id), class: "btn btn-sm btn-outline-secondary" %>
+                  <% if current_user.role.can_edit_lot %>
+                    <%= link_to "Edit", edit_flat_path(item.id), class: "btn btn-sm btn-outline-secondary" %>
+                    <%= link_to "Delete", flat_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                </div>
+                <small class="text-muted"><%= "#{item.lot.price}$" %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
