@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  get 'country_side_houses_catalog', to: 'country_side_houses_catalog#index'
   get 'commercial_premises_catalog', to: 'commercial_premises_catalog#index'
   resources :lots
   resources :deal_types
