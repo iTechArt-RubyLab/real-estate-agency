@@ -4,7 +4,7 @@
       <%= image_tag 'flat.jpg', class: "rounded-circle", width: "140", height: "140"%>
       <h2>Flats</h2>
       <p>In this section you will find an apartment suitable for any of your desires. Here you will find a wide and up-to-date range of apartments, from a small cozy studio to a spacious penthouse. Go to the catalog and choose the apartment of your dreams!</p>
-      <%= link_to 'View all flats', flats_path,  class: "btn btn-secondary" %>
+      <%= link_to 'View all flats', flats_catalog_path,  class: "btn btn-secondary" %>
       <% if user_signed_in? %>
         </br><%= link_to 'Add new flat', new_flat_path,  class: "btn btn-secondary mt-2" %>
       <% end %>
@@ -13,7 +13,7 @@
       <%= image_tag 'country_side_house.jpg', class: "rounded-circle", width: "140", height: "140"%>
       <h2>Country side houses</h2>
       <p>Do you want to live away from the bustle of the city and noisy neighbors? This section is for you. Do you want a house near the forest? Maybe on the shore of a lake or river? Or a well-maintained dacha with a garden and a vegetable garden? Then go to the directory and find the house that you like!</p>
-      <%= link_to 'View all country side houses', country_side_houses_path,  class: "btn btn-secondary" %>
+      <%= link_to 'View all country side houses', country_side_houses_catalog_path,  class: "btn btn-secondary" %>
       <% if user_signed_in? %>
         <%= link_to 'Add new country side house', new_country_side_house_path,  class: "btn btn-secondary mt-2" %>
       <% end %>
@@ -22,7 +22,7 @@
       <%= image_tag 'commercial_premise.jpg', class: "rounded-circle", width: "140", height: "140"%>
       <h2>Commercial premises</h2>
       <p>This directory will help you find any commercial space to implement any of your business ideas. Look here for everything from bars to shopping centers and make all your ambitions come true!</p>
-      <%= link_to 'View all commercial premises', commercial_premises_path,  class: "btn btn-secondary" %>
+      <%= link_to 'View all commercial premises', commercial_premises_catalog_path,  class: "btn btn-secondary" %>
       <% if user_signed_in? %>
         <%= link_to 'Add new commercial premise', new_commercial_premise_path,  class: "btn btn-secondary mt-2" %>
       <% end %>
