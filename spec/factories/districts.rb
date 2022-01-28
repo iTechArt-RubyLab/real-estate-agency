@@ -18,8 +18,19 @@
 #
 FactoryBot.define do
   factory :district, class: District do
-    city { create :city }
+    transient do
+      city { create :city }
+    end
     name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
+    before :create do |district, evaluator|
+      district.city = evaluator.city
+    end
+
+    trait :with_attributes_ids do
+      city_id { city.id }
+    end
+
+    city_id { city.id }
 
     trait :invalid_long do
       name { Faker::Lorem.characters(number: 21, min_alpha: 21) }

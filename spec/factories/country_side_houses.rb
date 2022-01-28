@@ -27,13 +27,22 @@
 #
 FactoryBot.define do
   factory :country_side_house, class: CountrySideHouse do
-    association :wall_material
-    association :country_side_house_kind
-    association :ready_state
+    wall_material { create :wall_material }
+    country_side_house_kind { create :country_side_house_kind }
+    ready_state { create :ready_state }
     floors_count { Faker::Number.within(range: 1..10) }
     land_area { Faker::Number.within(range: 0.1..1000.0) }
     total_area { Faker::Number.within(range: 0.1..1000.0) }
     year_of_construction { Faker::Number.within(range: 1900..2022) }
+    after :create do |country_side_house|
+      create :lot, lotable: country_side_house             # has_one
+    end
+
+    trait :with_attributes_ids do
+      wall_material_id { wall_material.id }
+      country_side_house_kind_id { country_side_house_kind.id }
+      ready_state_id { ready_state.id }
+    end
 
     trait :invalid_big_floors_count do
       floors_count { Faker::Number.within(range: 11..20) }
