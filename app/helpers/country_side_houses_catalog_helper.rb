@@ -1,0 +1,2 @@
+module CountrySideHousesCatalogHelper
+end
