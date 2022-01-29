@@ -10,7 +10,7 @@
 #
 FactoryBot.define do
   factory :country, class: Country do
-    name { Faker::Address.country }
+    name { Faker::Lorem.characters(number: 10, min_alpha: 10) }
     phone_code { "+#{Faker::Lorem.characters(number: 3, min_numeric: 3)}" }
 
     trait :invalid_long_name do

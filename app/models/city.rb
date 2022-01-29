@@ -15,10 +15,6 @@ class City < ApplicationRecord
   enum locality_size: %i[no_information village town city]
   enum region: %i[brest gomel grodno minsk minsk_region mogilev vitebsk]
 
-  def humanized_region
-    region.humanize
-  end
-
   validates :name, length: { in: 2..40 }, format: { with: /\A[a-zA-Z ]+\z/ }
 
   scope :with_region, ->(region) { where(region: region) }
