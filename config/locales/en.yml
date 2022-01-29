@@ -84,3 +84,25 @@ en:
       name_12: Desc12
       name_13: Desc13
       name_14: Desc14
+  home:
+    language_selection: Choose language
+    title1: Flats
+    title2: Country side houses
+    title3: Commercial premises
+    description1: In this section you will find an apartment suitable for any of your desires. Here you will find a wide and up-to-date range of apartments, from a small cozy studio to a spacious penthouse. Go to the catalog and choose the apartment of your dreams!
+    description2: Do you want to live away from the bustle of the city and noisy neighbors? This section is for you. Do you want a house near the forest? Maybe on the shore of a lake or river? Or a well-maintained dacha with a garden and a vegetable garden? Then go to the directory and find the house that you like!
+    description3: This directory will help you find commercial space to implement any of your business ideas. Look here for everything from bars to shopping centers and make all your ambitions come true!
+    quote1: The light is what guides you home, the warmth is what keeps you there.
+    author1: Ellie Rodriguez.
+    quote2: Just an hour away from most major cities, you can always find affordable real estate. You need to find an area that is growing in value, and over time, the property will fall under revaluation. By the time you retire, these three houses will be generating a steady income—much more reliable than a mutual fund.
+    author2: Robert Kiyosaki.
+    book2: Rich dad, poor dad.
+    quote3: In a cramped apartment, even thoughts are cramped.
+    author3: Fedor Mikhailovich Dostoevsky.
+    book3: Humiliated and insulted.
+    view1: View all flats
+    add1: Add new flat
+    view2: View all country side houses
+    add2: Add new country side house
+    view3: View all commercial premises
+    add3: Add new commercial premise
