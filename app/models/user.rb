@@ -61,8 +61,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, :lockable
 
-  after_commit :default_avatar, on: %i[create update]
-
   validates :first_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
   validates :second_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
   validates :last_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
@@ -87,29 +85,10 @@ class User < ApplicationRecord
   end
 
   def avatar_miniature
-    if avatar.attached?
-      avatar.variant(resize: '150x150!').processed
-    else
-      '/default_avatar.jpg'
-    end
+    avatar.variant(resize: '150x150!').processed
   end
 
   def build_profilable(params)
     self.profilable = profilable_type.constantize.new(params)
-  end
-
-  private
-
-  def default_avatar
-    unless avatar.attached?
-      avatar.attach(
-        io: File.open(
-          Rails.root.join(
-            'app', 'assets', 'images', 'default_avatar.jpg'
-          )
-        ), filename: 'default_avatar.jpg',
-        content_type: 'image/png'
-      )
-    end
   end
 end
