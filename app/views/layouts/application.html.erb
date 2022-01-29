@@ -47,7 +47,11 @@
           <%= link_to current_user.full_name, edit_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item" style="margin-right: 15px;">
-          <%= link_to (image_tag current_user.avatar, class: "rounded-circle", size: '45'), edit_user_registration_path %>
+          <% if current_user.avatar.attached? %>
+            <%= link_to (image_tag(current_user.avatar_miniature, class: "rounded-circle", size: '45')), edit_user_registration_path %>
+          <% else %>
+            <%= link_to (image_tag('default_avatar.jpg', class: "rounded-circle", size: '45')), edit_user_registration_path %>
+          <% end %>
         </li>
         <li class="nav-item" style="margin-right: 15px;">
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>

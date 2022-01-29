@@ -46,7 +46,6 @@ class Lot < ApplicationRecord
   belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
   enum state: %i[not_started in_progress published completed blocked]
-  after_commit :default_image, on: %i[create update]
 
   validates_with AsigneeValidator
 
@@ -91,25 +90,6 @@ class Lot < ApplicationRecord
   scope :with_price, ->(price) { where(price: price) }
 
   def images_miniature
-    if images.attached?
-      images.first.variant(resize: '419x225!').processed
-    else
-      '/default_item.jpg'
-    end
-  end
-
-  private
-
-  def default_image
-    return if images.attached?
-
-    images.attach(
-      io: File.open(
-        Rails.root.join(
-          'app', 'assets', 'images', 'default_item.jpg'
-        )
-      ), filename: 'default_item.jpg',
-      content_type: 'image/png'
-    )
+    images.first.variant(resize: '419x225!').processed
   end
 end
