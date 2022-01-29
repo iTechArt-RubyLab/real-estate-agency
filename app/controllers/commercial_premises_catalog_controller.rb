@@ -1,3 +1,5 @@
 class CommercialPremisesCatalogController < ApplicationController
-  def index; end
+  def index
+    @commercial_premises = CommercialPremise.all
+  end
 end

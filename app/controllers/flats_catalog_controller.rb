@@ -1,3 +1,5 @@
 class FlatsCatalogController < ApplicationController
-  def index; end
+  def index
+    @flats = Flat.all
+  end
 end
