@@ -100,6 +100,12 @@ client_profiles = []
   client_profiles << ClientProfile.create!(description: Faker::Lorem.sentence, country: countries.first)
 end
 
+def seed_image(item, file_name)
+  item.lot.images.attach(io: File.open(File.join(Rails.root, "/app/assets/images/#{file_name}.jpg")), filename: "#{file_name}.jpg")
+end
+
+#commercial_premises[0].lot.images.attach(io: File.open(File.join(Rails.root, "/app/assets/images/minecraft.jpg")), filename: 'minecraft.jpg')
+
 users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, gender: 'male', date_of_birth: '1990-01-28', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testclient", password_confirmation: "testclient", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.client, gender: 'male', date_of_birth: '2002-11-14', profilable: client_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.realtor, gender: 'female', date_of_birth: '1984-03-12', profilable: realtor_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
@@ -161,7 +167,7 @@ commercial_premises = CommercialPremise.create!([
         area: 14.5, floor: 2, number_of_premises: 1, plot_of_land: 7, commercial_premises_kind: commercial_premises_kinds[5],
         lot_attributes: 
         {
-            title: 'Commercial and public premises in a new residential complex', description: 'Equipment, natural lighting, heating, electricity, water: yes, bathroom: yes', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            title: 'Commercial premises in a new residential complex', description: 'Equipment, natural lighting, heating, electricity, water: yes, bathroom: yes', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 2, description: 'Private property, busy place, convenient parking, high ceilings, all utilities.', street: streets[5]
@@ -180,6 +186,11 @@ commercial_premises = CommercialPremise.create!([
         }
     }
 ])
+
+for i in 0..5 do
+  seed_image(commercial_premises[i], "cp#{i}")
+end
+
 
 country_side_houses = CountrySideHouse.create!([
     {
@@ -250,6 +261,10 @@ country_side_houses = CountrySideHouse.create!([
     }
 ])
 
+for i in 0..5 do
+  seed_image(country_side_houses[i], "csh#{i}")
+end
+
 flats = Flat.create!([
     {
         celling_height: 2.3, floor: 12, kitchen_area: 10.2, living_area: 18.7, rooms_count: 3, total_area: 32.7, year_of_construction: 2012, renovation: renovations[2], wall_material: wall_materials[3],
@@ -318,3 +333,7 @@ flats = Flat.create!([
         }
     }
 ])
+
+for i in 0..5 do
+  seed_image(flats[i], "f#{i}")
+end

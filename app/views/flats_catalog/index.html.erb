@@ -18,7 +18,11 @@
       <% for item in flats %>
         <div class="col">
           <div class="card shadow-sm">
-            <%= image_tag(item.lot.images_miniature, height: "225", class: "bd-placeholder-img card-img-top") if item.lot.images.attached? %>
+            <% if item.lot.images.attached? %>
+              <%= image_tag(item.lot.images_miniature, height: "225", class: "bd-placeholder-img card-img-top") %>
+            <% else %>
+              <%= image_tag('default_item.jpg', height: "225", class: "bd-placeholder-img card-img-top") %>
+            <% end %>
             <div class="card-body">
               <small class="text-muted"><%= "#{item.lot.deal_type.name}" %></small>
               <p class="card-text"><%= item.lot.title %></p>

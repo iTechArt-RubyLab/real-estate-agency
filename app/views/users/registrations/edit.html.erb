@@ -9,7 +9,11 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field avatar_picture mb-3">
-    <%= image_tag(resource.avatar_miniature, class: "rounded-circle") if resource.avatar.attached? %>
+    <% if resource.avatar.attached? %>
+      <%= image_tag(resource.avatar_miniature, class: "rounded-circle") %>
+    <% else %>
+      <%= image_tag('default_avatar.jpg', class: "rounded-circle") %>
+    <% end %>
   </div>
 
   <div class="field mb-3">
