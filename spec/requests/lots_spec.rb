@@ -13,117 +13,16 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/lots', type: :request do
-  # Lot. As you add validations to Lot, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
-  end
-
-  let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+  before do
+    @user = create(:user, :admin)
+    sign_in @user
   end
 
   describe 'GET /index' do
-    it 'renders a successful response' do
-      Lot.create! valid_attributes
-      get lots_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      lot = Lot.create! valid_attributes
-      get lot_url(lot)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_lot_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'render a successful response' do
-      lot = Lot.create! valid_attributes
-      get edit_lot_url(lot)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'POST /create' do
-    context 'with valid parameters' do
-      it 'creates a new Lot' do
-        expect do
-          post lots_url, params: { lot: valid_attributes }
-        end.to change(Lot, :count).by(1)
+    include_examples 'GET /index', Lot do
+      let(:attributes) do
+        attributes_for :lot
       end
-
-      it 'redirects to the created lot' do
-        post lots_url, params: { lot: valid_attributes }
-        expect(response).to redirect_to(lot_url(Lot.last))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'does not create a new Lot' do
-        expect do
-          post lots_url, params: { lot: invalid_attributes }
-        end.to change(Lot, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post lots_url, params: { lot: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe 'PATCH /update' do
-    context 'with valid parameters' do
-      let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
-      end
-
-      it 'updates the requested lot' do
-        lot = Lot.create! valid_attributes
-        patch lot_url(lot), params: { lot: new_attributes }
-        lot.reload
-        skip('Add assertions for updated state')
-      end
-
-      it 'redirects to the lot' do
-        lot = Lot.create! valid_attributes
-        patch lot_url(lot), params: { lot: new_attributes }
-        lot.reload
-        expect(response).to redirect_to(lot_url(lot))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        lot = Lot.create! valid_attributes
-        patch lot_url(lot), params: { lot: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested lot' do
-      lot = Lot.create! valid_attributes
-      expect do
-        delete lot_url(lot)
-      end.to change(Lot, :count).by(-1)
-    end
-
-    it 'redirects to the lots list' do
-      lot = Lot.create! valid_attributes
-      delete lot_url(lot)
-      expect(response).to redirect_to(lots_url)
     end
   end
 end

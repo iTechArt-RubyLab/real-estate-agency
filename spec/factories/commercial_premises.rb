@@ -21,11 +21,18 @@
 #
 FactoryBot.define do
   factory :commercial_premise, class: CommercialPremise do
-    association :commercial_premises_kind
+    commercial_premises_kind { create :commercial_premises_kind }
     area { Faker::Number.within(range: 0.1..1000.0) }
     floor { Faker::Number.within(range: 1..34) }
     number_of_premises { Faker::Number.within(range: 1..100) }
     plot_of_land { Faker::Number.within(range: 1..1000) }
+    after :create do |commercial_premise|
+      create :lot, lotable: commercial_premise             # has_one
+    end
+
+    trait :with_attributes_ids do
+      commercial_premises_kind_id { commercial_premises_kind.id }
+    end
 
     trait :invalid_big_area do
       area { Faker::Number.within(range: 1000.1..2000.0) }

@@ -27,8 +27,8 @@
 #
 FactoryBot.define do
   factory :flat, class: Flat do
-    association :renovation
-    association :wall_material
+    renovation { create :renovation }
+    wall_material { create :wall_material }
     rooms_count { Faker::Number.within(range: 1..40) }
     floor { Faker::Number.within(range: 1..34) }
     year_of_construction { Faker::Number.within(range: 1900..2022) }
@@ -36,6 +36,14 @@ FactoryBot.define do
     total_area { Faker::Number.within(range: 2.0..1000.0) }
     living_area { Faker::Number.within(range: 2.0..100.0) }
     kitchen_area { Faker::Number.within(range: 2.0..100.0) }
+    after :create do |flat|
+      create :lot, lotable: flat             # has_one
+    end
+
+    trait :with_attributes_ids do
+      wall_material_id { wall_material.id }
+      renovation_id { renovation.id }
+    end
 
     trait :invalid_big_rooms_count do
       rooms_count { Faker::Number.within(range: 41..100) }
