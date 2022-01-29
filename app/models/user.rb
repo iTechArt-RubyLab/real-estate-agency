@@ -61,10 +61,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, :lockable
 
-  validates :first_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
-  validates :second_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
-  validates :last_name, length: { in: 2..30 }, format: { with: /\A[a-zA-Z]+\z/ }
-
   scope :with_clients, -> { where(profilable_type: 'ClientProfile') }
   scope :with_realtors, -> { where(profilable_type: 'RealtorProfile') }
 
@@ -72,7 +68,6 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.first_name = auth.info.name
       user.role = Role.client
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
