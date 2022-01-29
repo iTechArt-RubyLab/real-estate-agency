@@ -1,3 +1,5 @@
 class CountrySideHousesCatalogController < ApplicationController
-  def index; end
+  def index
+    @country_side_houses = CountrySideHouse.all
+  end
 end
