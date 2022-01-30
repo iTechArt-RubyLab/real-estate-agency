@@ -20,6 +20,8 @@ class CountrySideHousesController < ApplicationController
   # GET /country_side_houses/new
   def new
     @country_side_house = CountrySideHouse.new
+    @country_side_house.build_lot
+    @country_side_house.lot.build_address
     authorize @country_side_house
   end
 

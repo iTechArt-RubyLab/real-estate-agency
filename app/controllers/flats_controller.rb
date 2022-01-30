@@ -20,6 +20,8 @@ class FlatsController < ApplicationController
   # GET /flats/new
   def new
     @flat = Flat.new
+    @flat.build_lot
+    @flat.lot.build_address
     authorize @flat
   end
 

@@ -20,6 +20,8 @@ class CommercialPremisesController < ApplicationController
   # GET /commercial_premises/new
   def new
     @commercial_premise = CommercialPremise.new
+    @commercial_premise.build_lot
+    @commercial_premise.lot.build_address
     authorize @commercial_premise
   end
 
