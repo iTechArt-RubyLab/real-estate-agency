@@ -6,4 +6,12 @@ class FlatPresenter
   def ordered_wall_materials
     WallMaterial.order(:name)
   end
+
+  def ordered_deal_types
+    DealType.order(:name)
+  end
+
+  def ordered_streets
+    Street.order(:name)
+  end
 end
