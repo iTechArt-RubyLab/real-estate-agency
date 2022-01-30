@@ -41,7 +41,7 @@ module Users
     end
 
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:user, :profilable_type, :first_name, :last_name, :second_name, :gender, :date_of_birth, :avatar, { profilable_attributes: %i[description country_id phone_number registration_number employment_date] }])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:user, :profilable_type, :first_name, :last_name, :second_name, :gender, :date_of_birth, :avatar, { profilable_attributes: %i[id description country_id phone_number registration_number employment_date] }])
     end
   end
 end

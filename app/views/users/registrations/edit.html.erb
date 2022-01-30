@@ -47,7 +47,7 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
 
-  <%= f.fields_for :profilable_attributes do |profile| %>
+  <%= f.fields_for :profilable do |profile| %>
     <% if resource.profilable_type == 'ClientProfile' %>
       <div class="field mb-3">
         <%= profile.label :country_id %>
