@@ -1,4 +1,5 @@
 <% presenter = DistrictPresenter.new %>
+<div class="container" style="width: 600px;">
 <%= form_with(model: district) do |form| %>
   <% if district.errors.any? %>
     <div id="error_explanation">
@@ -26,3 +27,4 @@
     <%= form.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>
+</div>
