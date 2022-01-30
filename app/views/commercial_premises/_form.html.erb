@@ -72,7 +72,7 @@
 
     <div class="field mb-3">
       <%= lot.label :deal_type_id %>
-      <%= lot.collection_select :deal_type_id, DealType.order(:name), :id, :name %>
+      <%= lot.collection_select :deal_type_id, presenter.ordered_deal_types, :id, :name %>
     </div>
 
     <%= lot.fields_for :address do |address| %>
@@ -88,7 +88,7 @@
 
       <div class="field mb-3">
         <%= address.label :street_id %>
-        <%= address.collection_select :street_id, Street.order(:name), :id, :name %>
+        <%= address.collection_select :street_id, presenter.ordered_streets, :id, :name %>
       </div>
     <% end %>
   <% end %>

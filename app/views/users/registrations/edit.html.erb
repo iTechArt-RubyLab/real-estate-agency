@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag :users %>
+<% presenter = UserPresenter.new %>
 
 <div class="title">
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -51,7 +52,7 @@
     <% if resource.profilable_type == 'ClientProfile' %>
       <div class="field mb-3">
         <%= profile.label :country_id %>
-        <%= profile.collection_select :country_id, Country.order(:name), :id, :name  %>
+        <%= profile.collection_select :country_id, presenter.ordered_countries, :id, :name  %>
       </div>
 
       <div class="field mb-3">
@@ -98,7 +99,7 @@
 
   <div class="field mb-3">
     <%= f.label :gender %>
-    <%= f.select :gender, User.genders.map {|gen| gen.first } %>
+    <%= f.select :gender, presenter.genders_with_names %>
   </div>
 
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
