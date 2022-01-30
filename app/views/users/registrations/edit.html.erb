@@ -71,7 +71,7 @@
 
       <div class="field mb-3">
         <%= profile.label :employment_date %>
-        <%= profile.date_select :employment_date, class: "form-control" %>
+        <%= profile.date_select :employment_date, class: "form-control", start_year: 1900, end_year: 2010 %>
       </div>
     <% end %>
   <% end %>
@@ -93,7 +93,7 @@
 
   <div class="field mb-3">
     <%= f.label :date_of_birth %>
-    <%= f.date_select :date_of_birth, class: "form-control" %>
+    <%= f.date_select :date_of_birth, class: "form-control", start_year: 1900, end_year: 2010 %>
   </div>
 
   <div class="field mb-3">
