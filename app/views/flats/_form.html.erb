@@ -1,6 +1,6 @@
 <% presenter = FlatPresenter.new %>
 <div class="container" style="width: 600px;">
-<%= form_for :flat, url: flats_path do |f| %>
+<%= form_for @flat do |f| %>
   <% if flat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
@@ -58,7 +58,7 @@
     <%= f.number_field :year_of_construction, class: "form-control" %>
   </div>
 
-  <%= f.fields_for :lot_attributes do |lot| %>
+  <%= f.fields_for :lot do |lot| %>
     <div class="field mb-3">
       <%= lot.label :images %></br>
       <% if !@flat.lot.nil? %>
@@ -95,7 +95,7 @@
       <%= lot.collection_select :deal_type_id, DealType.order(:name), :id, :name %>
     </div>
 
-    <%= lot.fields_for :address_attributes do |address| %>
+    <%= lot.fields_for :address do |address| %>
       <div class="field mb-3">
         <%= address.label :building %>
         <%= address.number_field :building, class: "form-control" %>
