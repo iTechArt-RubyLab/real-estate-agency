@@ -1,4 +1,5 @@
 <% presenter = CountrySideHousePresenter.new %>
+<div class="container" style="width: 600px;">
 <%= form_for :country_side_house, url: country_side_houses_path do |f| %>
   <% if country_side_house.errors.any? %>
     <div id="error_explanation">
@@ -106,3 +107,4 @@
     <%= f.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>
+</div>
