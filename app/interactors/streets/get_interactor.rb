@@ -1,14 +1,16 @@
 module Streets
-  class Finder
+  class GetInteractor
+    include Interactor
+
     def initialize(city_id)
       @city_id = city_id
     end
 
     def call
       if city_id.blank?
-        Street.all
+        Street.joins(:district)
       else
-        Street.joins(:district).where('districts.city_id = 2')
+        Street.joins(:district).where('districts.city_id = ?', city_id)
       end
     end
 

@@ -4,7 +4,7 @@ class DistrictsController < ApplicationController
 
   # GET /districts or /districts.json
   def index
-    @districts = District.preload(:streets)
+    @districts = Districts::GetInteractor.new.call
     authorize @districts
     respond_to do |format|
       format.html

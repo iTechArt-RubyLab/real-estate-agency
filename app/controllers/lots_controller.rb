@@ -5,7 +5,7 @@ class LotsController < ApplicationController
   # GET /lots or /lots.json
   def index
     @lots = policy_scope(Lot)
-    @lots = @lots.joins(:deal_type, :address, address: [street: [district: [:city]]])
+    @lots = Lots::GetInteractor.new(@lots).call
     authorize @lots
     respond_to do |format|
       format.html

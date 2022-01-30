@@ -33,7 +33,7 @@ module Users
     end
 
     def user_sign_up_params
-      Users::ProfileCreatorService.new(profilable_type, params, sign_up_params).call
+      Users::ProfileCreatorInteractor.new(profilable_type, params, sign_up_params).call
     end
 
     def configure_sign_up_params
