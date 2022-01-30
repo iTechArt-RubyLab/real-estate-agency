@@ -4,7 +4,7 @@ class FlatsController < ApplicationController
 
   # GET /flats or /flats.json
   def index
-    @flats = Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+    @flats = Flats::GetInteractor.new.call
     authorize @flats
     respond_to do |format|
       format.html

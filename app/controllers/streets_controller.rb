@@ -3,7 +3,7 @@ class StreetsController < ApplicationController
   before_action :set_street, only: %i[show edit update destroy]
   # GET /streets or /streets.json
   def index
-    @streets = Streets::Finder.new(params[:city_id]).call
+    @streets = Streets::GetInteractor.new(params[:city_id]).call
     authorize @streets
     respond_to do |format|
       format.html
