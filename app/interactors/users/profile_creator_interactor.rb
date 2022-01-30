@@ -1,5 +1,5 @@
 module Users
-  class ProfileCreatorService
+  class ProfileCreatorInteractor
     def initialize(profilable_type, params, sign_up_params)
       @profilable_type = profilable_type
       @params = params
