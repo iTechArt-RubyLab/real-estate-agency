@@ -1,6 +1,6 @@
 <% presenter = CommercialPremisePresenter.new %>
 <div class="container" style="width: 600px;">
-<%= form_for :commercial_premise, url: commercial_premises_path do |f| %>
+<%= form_for @commercial_premise do |f| %>
   <% if commercial_premise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(commercial_premise.errors.count, "error") %> prohibited this commercial_premise from being saved:</h2>
@@ -38,7 +38,7 @@
     <%= f.collection_select :commercial_premises_kind_id, presenter.ordered_commercial_premises_kinds, :id, :name %>
   </div>
 
-  <%= f.fields_for :lot_attributes do |lot| %>
+  <%= f.fields_for :lot do |lot| %>
     <div class="field mb-3">
       <%= lot.label :images %></br>
       <% if !@commercial_premise.lot.nil? %>
@@ -75,7 +75,7 @@
       <%= lot.collection_select :deal_type_id, DealType.order(:name), :id, :name %>
     </div>
 
-    <%= lot.fields_for :address_attributes do |address| %>
+    <%= lot.fields_for :address do |address| %>
       <div class="field mb-3">
         <%= address.label :building %>
         <%= address.number_field :building, class: "form-control" %>

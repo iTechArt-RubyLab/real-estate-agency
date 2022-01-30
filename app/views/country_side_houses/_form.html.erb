@@ -1,6 +1,6 @@
 <% presenter = CountrySideHousePresenter.new %>
 <div class="container" style="width: 600px;">
-<%= form_for :country_side_house, url: country_side_houses_path do |f| %>
+<%= form_for @country_side_house do |f| %>
   <% if country_side_house.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(country_side_house.errors.count, "error") %> prohibited this country_side_house from being saved:</h2>
@@ -48,7 +48,7 @@
     <%= f.collection_select :wall_material_id, presenter.ordered_wall_materials, :id, :name %>
   </div>
 
-  <%= f.fields_for :lot_attributes do |lot| %>
+  <%= f.fields_for :lot do |lot| %>
     <div class="field mb-3">
       <%= lot.label :images %></br>
       <% if !@country_side_house.lot.nil? %>
@@ -85,7 +85,7 @@
       <%= lot.collection_select :deal_type_id, DealType.order(:name), :id, :name %>
     </div>
 
-    <%= lot.fields_for :address_attributes do |address| %>
+    <%= lot.fields_for :address do |address| %>
       <div class="field mb-3">
         <%= address.label :building %>
         <%= address.number_field :building, class: "form-control" %>

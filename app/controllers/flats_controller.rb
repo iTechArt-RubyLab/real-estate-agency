@@ -47,7 +47,7 @@ class FlatsController < ApplicationController
   def update
     authorize @flat
     respond_to do |format|
-      if @flat.update(flat_params)
+      if @flat.update!(flat_params)
         format.html { redirect_to flat_url(@flat), notice: 'Flat was successfully updated.' }
         format.json { render :show, status: :ok, location: @flat }
       else
@@ -78,6 +78,6 @@ class FlatsController < ApplicationController
   def flat_params
     params.require(:flat).permit(:rooms_count, :floor, :year_of_construction, :celling_height, :total_area,
                                  :living_area, :kitchen_area, :renovation_id, :wall_material_id,
-                                 lot_attributes: [:title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[building description street_id] }, { images: [] }])
+                                 lot_attributes: [:id, :title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[id building description street_id] }, { images: [] }])
   end
 end
