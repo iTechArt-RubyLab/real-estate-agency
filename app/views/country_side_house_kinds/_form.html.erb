@@ -1,3 +1,4 @@
+<div class="container" style="width: 600px;">
 <%= form_with(model: country_side_house_kind) do |form| %>
   <% if country_side_house_kind.errors.any? %>
     <div id="error_explanation">
@@ -20,3 +21,4 @@
     <%= form.submit 'Save', class:"btn btn-outline-success" %>
   </div>
 <% end %>
+</div>
