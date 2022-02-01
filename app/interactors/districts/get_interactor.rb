@@ -3,7 +3,8 @@ module Districts
     include Interactor
 
     def call
-      District.preload(:streets)
+      districts = District.preload(:streets)
+      context.districts = districts
     end
   end
 end

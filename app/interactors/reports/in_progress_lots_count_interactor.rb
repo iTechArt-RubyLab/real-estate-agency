@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      Lot.where(state: 'in_progress').count
+      in_progress_lots_count = Lot.where(state: 'in_progress').count
+      context.in_progress_lots_count = in_progress_lots_count
     end
   end
 end

@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      Lot.where(lotable_type: 'CommercialPremise').count
+      comemrcial_premises_count = Lot.where(lotable_type: 'CommercialPremise').count
+      context.comemrcial_premises_count = comemrcial_premises_count
     end
   end
 end
