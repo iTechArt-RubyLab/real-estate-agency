@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      Lot.where(state: 'published').count
+      published_lots_count = Lot.where(state: 'published').count
+      context.published_lots_count = published_lots_count
     end
   end
 end
