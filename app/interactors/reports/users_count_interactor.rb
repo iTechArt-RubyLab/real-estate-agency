@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      User.count
+      users_count = User.count
+      context.users_count = users_count
     end
   end
 end

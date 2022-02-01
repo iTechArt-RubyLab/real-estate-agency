@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      Lot.count
+      lots_count = Lot.count
+      context.lots_count = lots_count
     end
   end
 end

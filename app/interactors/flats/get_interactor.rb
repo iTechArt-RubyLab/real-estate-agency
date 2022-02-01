@@ -3,7 +3,8 @@ module Flats
     include Interactor
 
     def call
-      Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+      flats = Flat.includes(:renovation, :wall_material, lot: [:deal_type, { address: [street: [district: [:city]]] }]).references(:lot)
+      context.flats = flats
     end
   end
 end
