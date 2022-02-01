@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      User.where(profilable_type: 'RealtorProfile').count
+      realtors_count = User.where(profilable_type: 'RealtorProfile').count
+      context.realtors_count = realtors_count
     end
   end
 end

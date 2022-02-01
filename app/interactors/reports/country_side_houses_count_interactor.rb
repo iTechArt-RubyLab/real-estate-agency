@@ -3,7 +3,8 @@ module Reports
     include Interactor
 
     def call
-      Lot.where(lotable_type: 'CountrySideHouse').count
+      country_side_houses_count = Lot.where(lotable_type: 'CountrySideHouse').count
+      context.country_side_houses_count = country_side_houses_count
     end
   end
 end
