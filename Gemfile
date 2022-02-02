@@ -62,6 +62,8 @@ gem 'stimulus-rails'
 gem 'image_processing'
 
 gem 'gravatar_image_tag'
+
+gem 'csv'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
