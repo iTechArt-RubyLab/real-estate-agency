@@ -1,0 +1,2 @@
+class DailyNewsletterMailer < ApplicationMailer
+end
