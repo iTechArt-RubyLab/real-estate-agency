@@ -1,7 +1,9 @@
 # == Route Map
 #
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
   get 'flats_catalog', to: 'flats_catalog#index'
   get 'country_side_houses_catalog', to: 'country_side_houses_catalog#index'
   get 'commercial_premises_catalog', to: 'commercial_premises_catalog#index'
