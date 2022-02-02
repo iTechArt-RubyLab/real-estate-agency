@@ -1,0 +1,4 @@
+daily_newsletter_mailer_job:
+  cron: "5 7 * * *"
+  class: "DailyNewsletterMailerJob"
+  queue: default
