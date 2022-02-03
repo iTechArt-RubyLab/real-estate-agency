@@ -1,6 +1,8 @@
 class UserDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
+  def_delegators :@view, :link_to, :edit_user_path
+
   def initialize(params, opts = {})
     @users = opts[:users]
     @view = opts[:view_context]
@@ -19,7 +21,9 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
       profilable_type: { source: 'User.profilable_type', cond: :like, searchable: true },
       last_sign_in_at: { source: 'User.last_sign_in_at', cond: :like, searchable: false },
       sign_in_count: { source: 'User.sign_in_count', cond: :like, searchable: false },
-      last_sign_in_ip: { source: 'User.last_sign_in_ip', cond: :like, searchable: false }
+      last_sign_in_ip: { source: 'User.last_sign_in_ip', cond: :like, searchable: false },
+      lockable: { source: 'User.access_locked?', cond: :like, searchable: false },
+      actions: { source: 'data.actions', searchable: false, orderable: false }
     }
   end
 
@@ -36,7 +40,9 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
         profilable_type: record.profilable_type,
         last_sign_in_at: record.last_sign_in_at,
         sign_in_count: record.sign_in_count,
-        last_sign_in_ip: record.last_sign_in_ip
+        last_sign_in_ip: record.last_sign_in_ip,
+        lockable: record.access_locked?,
+        actions: link_to('Edit', edit_user_path(record))
       }
     end
   end
