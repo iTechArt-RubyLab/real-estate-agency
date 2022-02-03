@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   resources :districts
   resources :roles
   resources :user
+  put 'lock_user', to: 'user#lock_user'
+  put 'unlock_user', to: 'user#unlock_user'
   devise_for :users, controllers: { 
     omniauth_callbacks: 'omniauth',
     sessions: 'users/sessions',
