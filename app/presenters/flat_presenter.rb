@@ -14,4 +14,8 @@ class FlatPresenter
   def ordered_streets
     Street.order(:name)
   end
+
+  def states_with_names
+    Lot.states.sort.map(&:first)
+  end
 end
