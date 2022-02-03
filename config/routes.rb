@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   resources :ready_states
   resources :country_side_house_kinds
   resources :commercial_premises
+  put 'remove_from_work', to: 'commercial_premises#remove_from_work'
+  put 'publish', to: 'commercial_premises#publish'
+  put 'complete', to: 'commercial_premises#complete'
+  put 'return_to_publish', to: 'commercial_premises#return_to_publish'
   resources :commercial_premises_kinds
   resources :flats
   resources :renovations
