@@ -1,0 +1,41 @@
+<% presenter = UserPresenter.new %>
+<div class="mx-auto" style="width: 300px;">
+  <h1>Editing User</h1>
+</div>
+
+<div class="container" style="width: 600px;">
+<%= form_for @user do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this renovation from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :role_id %>
+    <%= form.collection_select :role_id, presenter.ordered_roles, :id, :name %>
+  </div>
+
+  <% if !@user.role.can_freeze_user %>
+    <% if @user.access_locked? %>
+        <div class="field mb-3">
+        <h5><%= link_to 'Unlock user', unlock_user_path(id: @user.id), method: :put %></h5>
+        </div>
+    <% else %>
+        <div class="field mb-3">
+        <h5><%= link_to 'Lock user', lock_user_path(id: @user.id), method: :put %></h5>
+        </div>
+    <% end %>
+  <% end %>
+
+  <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
+    <%= form.submit 'Save', class:"btn btn-outline-success" %>
+  </div>
+<% end %>
+</div>
