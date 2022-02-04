@@ -1,5 +1,5 @@
 class CommercialPremisesCatalogController < ApplicationController
   def index
-    @commercial_premises = CommercialPremise.includes(:lot).where(lot: { state: 'published' })
+    @commercial_premises = CommercialPremisesCatalogs::GetInteractor.new.call
   end
 end
