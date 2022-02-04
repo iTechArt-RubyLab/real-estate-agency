@@ -1,6 +1,21 @@
 <% presenter = CommercialPremisePresenter.new %>
 <div class="container" style="width: 600px;">
-<%= form_for @commercial_premise do |f| %>
+  <% if current_user.role.can_edit_lot %>
+    <div class="field mb-3">
+      <h5>State: <%= @commercial_premise.lot.state %></h5>
+    </div>
+
+    <% if @commercial_premise.lot.state == 'published' %>
+      <%= button_to "Remove from work", remove_from_work_commercial_premises_path(id: @commercial_premise.id), method: :put, class: "btn btn-outline-danger mb-3" %>
+      <%= button_to "Complete", complete_commercial_premises_path(id: @commercial_premise.id), method: :put, class: "btn btn-outline-success mb-3" %>
+    <% elsif @commercial_premise.lot.state == 'not_started' %>
+      <%= button_to "Publish", publish_commercial_premises_path(id: @commercial_premise.id), method: :put, class: "btn btn-outline-success mb-3" %>
+    <% else %>
+      <%= button_to "Return to publish", return_to_publish_commercial_premises_path(id: @commercial_premise.id), method: :put, class: "btn btn-outline-danger mb-3" %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @commercial_premise do |f| %>
   <% if commercial_premise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(commercial_premise.errors.count, "error") %> prohibited this commercial_premise from being saved:</h2>
@@ -94,7 +109,7 @@
   <% end %>
 
   <div class="actions mb-2 d-grid gap-2 col-6 mx-auto">
-    <%= f.submit 'Save', class:"btn btn-outline-success" %>
+    <%= f.submit 'Save', class: "btn btn-outline-success" %>
   </div>
 <% end %>
 </div>

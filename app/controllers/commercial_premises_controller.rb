@@ -1,6 +1,6 @@
 class CommercialPremisesController < ApplicationController
   include Authenticated
-  before_action :set_commercial_premise, only: %i[show edit update destroy]
+  before_action :set_commercial_premise, only: %i[show edit update destroy remove_from_work publish complete return_to_publish]
 
   # GET /commercial_premises or /commercial_premises.json
   def index
@@ -73,6 +73,30 @@ class CommercialPremisesController < ApplicationController
       format.html { redirect_to commercial_premises_url, notice: 'Commercial premise was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def remove_from_work
+    authorize @commercial_premise
+    @commercial_premise.lot.remove_from_work
+    @commercial_premise.save
+  end
+
+  def publish
+    authorize @commercial_premise
+    @commercial_premise.lot.publish
+    @commercial_premise.save
+  end
+
+  def complete
+    authorize @commercial_premise
+    @commercial_premise.lot.complete
+    @commercial_premise.save
+  end
+
+  def return_to_publish
+    authorize @commercial_premise
+    @commercial_premise.lot.return_to_publish
+    @commercial_premise.save
   end
 
   private
