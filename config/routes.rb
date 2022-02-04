@@ -21,10 +21,8 @@ Rails.application.routes.draw do
     get 'country-side-houses-count', to: 'reports#country_side_houses_count'
     get 'flats-count', to: 'reports#flats_count'
     get 'not-started-lots-count', to: 'reports#not_started_lots_count'
-    get 'in-progress-lots-count', to: 'reports#in_progress_lots_count'
     get 'published-lots-count', to: 'reports#published_lots_count'
     get 'completed-lots-count', to: 'reports#completed_lots_count'
-    get 'blocked-lots-count', to: 'reports#blocked_lots_count'
   end
   resources :client_profiles
   resources :countries
