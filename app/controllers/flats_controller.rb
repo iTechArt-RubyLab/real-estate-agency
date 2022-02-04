@@ -68,7 +68,7 @@ class FlatsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def remove_from_work
     authorize @flat
     @flat.lot.remove_from_work
