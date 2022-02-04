@@ -104,8 +104,6 @@ def seed_image(item, file_name)
   item.lot.images.attach(io: File.open(File.join(Rails.root, "/app/assets/images/#{file_name}.jpg")), filename: "#{file_name}.jpg")
 end
 
-#commercial_premises[0].lot.images.attach(io: File.open(File.join(Rails.root, "/app/assets/images/minecraft.jpg")), filename: 'minecraft.jpg')
-
 users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, gender: 'male', date_of_birth: '1990-01-28', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testclient", password_confirmation: "testclient", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.client, gender: 'male', date_of_birth: '2002-11-14', profilable: client_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.realtor, gender: 'female', date_of_birth: '1984-03-12', profilable: realtor_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
@@ -123,7 +121,7 @@ commercial_premises = CommercialPremise.create!([
         area: 23.5, floor: 1, number_of_premises: 3, plot_of_land: 11, commercial_premises_kind: commercial_premises_kinds[1], 
         lot_attributes: 
         {
-            title: 'Building for sale in the city', description: 'For sale detached 2storey office building in the city center fenced', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[1],
+            state: 'published', title: 'Building for sale in the city', description: 'For sale detached 2storey office building in the city center fenced', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[1],
             address_attributes: 
             { 
                 building: 34, description: 'The building is located in the courtyards, across the road from the Komarovsky market, 5-7 minutes. walk from the metro station "Y. Kolas Square".', street: streets[1] 
@@ -134,7 +132,7 @@ commercial_premises = CommercialPremise.create!([
         area: 123.8, floor: 3, number_of_premises: 10, plot_of_land: 61, commercial_premises_kind: commercial_premises_kinds[3],
         lot_attributes: 
         { 
-            title: 'Commercial space for sale', description: 'Installment offered', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
+            state: 'published', title: 'Commercial space for sale', description: 'Installment offered', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
             address_attributes: 
             { 
                 building: 12, description: 'Located on Pobediteley Avenue, in the Minsk Arena area.', street: streets[2] 
@@ -145,7 +143,7 @@ commercial_premises = CommercialPremise.create!([
         area: 13.3, floor: 4, number_of_premises: 1, plot_of_land: 6, commercial_premises_kind: commercial_premises_kinds[2],
         lot_attributes: 
         {
-            title: 'Multifunctional Business Center', description: 'Designer renovation of the office', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: 'Multifunctional Business Center', description: 'Designer renovation of the office', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 65, description: 'Air conditioning, separate entrance, parking, access roads, alarm system, video surveillance, furniture, computer network, high-speed internet.', street: streets[3] 
@@ -156,7 +154,7 @@ commercial_premises = CommercialPremise.create!([
         area: 82.4, floor: 1, number_of_premises: 2, plot_of_land: 41, commercial_premises_kind: commercial_premises_kinds[4],
         lot_attributes: 
         {
-            title: 'Sale of class A business center from the owner', description: 'Offices overlooking the Minsk Sea.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Sale of class A business center from the owner', description: 'Offices overlooking the Minsk Sea.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 140, description: 'Separate entrance, ramp, shared construction.', street: streets[4]
@@ -167,7 +165,7 @@ commercial_premises = CommercialPremise.create!([
         area: 14.5, floor: 2, number_of_premises: 1, plot_of_land: 7, commercial_premises_kind: commercial_premises_kinds[5],
         lot_attributes: 
         {
-            title: 'Commercial premises in a new residential complex', description: 'Equipment, natural lighting, heating, electricity, water: yes, bathroom: yes', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Commercial premises in a new residential complex', description: 'Equipment, natural lighting, heating, electricity, water: yes, bathroom: yes', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 2, description: 'Private property, busy place, convenient parking, high ceilings, all utilities.', street: streets[5]
@@ -178,7 +176,7 @@ commercial_premises = CommercialPremise.create!([
         area: 10.6, floor: 1, number_of_premises: 1, plot_of_land: 5, commercial_premises_kind: commercial_premises_kinds.first,
         lot_attributes: 
         {
-            title: 'Complex of multifunctional premises for sale', description: 'The premises are equipped with the necessary engineering communications. Ideal for small to medium retail locations.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: 'Complex of multifunctional premises for sale', description: 'The premises are equipped with the necessary engineering communications. Ideal for small to medium retail locations.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 95, description: 'Convenient and affordable transport links. Public transport stops nearby. Parking. Convenient access ways. There is a loading and unloading area.', street: streets[6] 
@@ -197,7 +195,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 2, land_area: 12.3, total_area: 17.6, year_of_construction: 2016, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[4],
         lot_attributes: 
         {
-            title: 'Cottages in the residential complex Green Harbor', description: 'Unique architecture, magnificent nature and own operating organization.', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[0],
+            state: 'published', title: 'Cottages in the residential complex Green Harbor', description: 'Unique architecture, magnificent nature and own operating organization.', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[0],
             address_attributes: 
             { 
                 building: 34, description: 'Forest, biological reserve and golf courses, landscaped area.', street: streets[1] 
@@ -208,7 +206,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 1, land_area: 10.5, total_area: 13.2, year_of_construction: 2011, country_side_house_kind: country_side_house_kinds[1], ready_state: ready_states[1], wall_material: wall_materials[1],
         lot_attributes: 
         { 
-            title: 'Home for gourmet real estate!', description: 'Cottage for sale in a premium building district of the National Library.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
+            state: 'published', title: 'Home for gourmet real estate!', description: 'Cottage for sale in a premium building district of the National Library.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
             address_attributes: 
             { 
                 building: 12, description: 'Video surveillance inside the house and around the perimeter of the territory adjacent to it. All communications are central.', street: streets[2] 
@@ -219,7 +217,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 3, land_area: 29.4, total_area: 36.3, year_of_construction: 2020, country_side_house_kind: country_side_house_kinds[2], ready_state: ready_states[2], wall_material: wall_materials[2],
         lot_attributes: 
         {
-            title: 'Modern house in a cottage village near the forest!', description: 'Modern cottage with a good repair. Sauna, guest house, barbecue area. Year-round communications, video surveillance.', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: 'Modern house in a cottage village near the forest!', description: 'Modern cottage with a good repair. Sauna, guest house, barbecue area. Year-round communications, video surveillance.', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 65, description: 'The forest is nearby, a pond / river is nearby, a picturesque place, a bathhouse, a gazebo, landscape design, households. building, fireplace.', street: streets[3] 
@@ -230,7 +228,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 2, land_area: 15.3, total_area: 19.2, year_of_construction: 2019, country_side_house_kind: country_side_house_kinds[3], ready_state: ready_states[3], wall_material: wall_materials[4],
         lot_attributes: 
         {
-            title: 'Comfortable cottage for living and recreation in a historical place.', description: 'Artesian well, gas, combined heating, two wells, local sewage. Landscaping.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Comfortable cottage for living and recreation in a historical place.', description: 'Artesian well, gas, combined heating, two wells, local sewage. Landscaping.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 140, description: 'A very good location - on the banks of the river, next to the Vileika Canal and the Yanka Kupala Museum.', street: streets[4]
@@ -241,7 +239,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 1, land_area: 11.9, total_area: 16.7, year_of_construction: 2007, country_side_house_kind: country_side_house_kinds[4], ready_state: ready_states[4], wall_material: wall_materials[3],
         lot_attributes: 
         {
-            title: 'Cottage in a picturesque place with developed infrastructure.', description: 'Developed infrastructure nearby: school, post office, 2 shops, playground, mini-field for football and basketball. All communications: gas in the house, central water, sewerage, electrics.', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Cottage in a picturesque place with developed infrastructure.', description: 'Developed infrastructure nearby: school, post office, 2 shops, playground, mini-field for football and basketball. All communications: gas in the house, central water, sewerage, electrics.', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 2, description: 'Landscaped area, sown lawn. The site is fenced around the perimeter. Outbuilding. Parking for 3 cars. Canopy.', street: streets[5]
@@ -252,7 +250,7 @@ country_side_houses = CountrySideHouse.create!([
         floors_count: 3, land_area: 47.7, total_area: 61.1, year_of_construction: 2021, country_side_house_kind: country_side_house_kinds[5], ready_state: ready_states[2], wall_material: wall_materials[0],
         lot_attributes: 
         {
-            title: 'Buy your dream home by the lake!', description: 'Garage, gazebo, landscaping, households. buildings, furniture, fireplace, wood trim.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: 'Buy your dream home by the lake!', description: 'Garage, gazebo, landscaping, households. buildings, furniture, fireplace, wood trim.', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 95, description: 'The forest is nearby, the pond / river is nearby, a picturesque place.', street: streets[6] 
@@ -270,7 +268,7 @@ flats = Flat.create!([
         celling_height: 2.3, floor: 12, kitchen_area: 10.2, living_area: 18.7, rooms_count: 3, total_area: 32.7, year_of_construction: 2012, renovation: renovations[2], wall_material: wall_materials[3],
         lot_attributes: 
         {
-            title: 'Furnished apartment', description: 'Selling a cozy 3-room apartment in an ecologically clean area of the city.', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[0],
+            state: 'published', title: 'Furnished apartment', description: 'Selling a cozy 3-room apartment in an ecologically clean area of the city.', price: 12.3, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[0],
             address_attributes: 
             { 
                 building: 34, description: 'Nearby are schools, kindergartens, shops, banks. Within walking distance of bus stops, childrens beach.', street: streets[1] 
@@ -281,7 +279,7 @@ flats = Flat.create!([
         celling_height: 2.4, floor: 3, kitchen_area: 7.2, living_area: 9.3, rooms_count: 2, total_area: 21.3, year_of_construction: 1984, renovation: renovations[1], wall_material: wall_materials[2],
         lot_attributes: 
         { 
-            title: 'We offer you an excellent two-room apartment with European-style renovation', description: 'The apartment is insulated from the outside. Separate bathroom. There are always free parking spaces at the entrance', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
+            state: 'published', title: 'We offer you an excellent two-room apartment with European-style renovation', description: 'The apartment is insulated from the outside. Separate bathroom. There are always free parking spaces at the entrance', price: 18.6, asigner: users[0], asignee: users.third,  client: users[1], deal_type: deal_types[1],
             address_attributes: 
             { 
                 building: 12, description: 'Nearby are schools, kindergartens, shops, banks.', street: streets[2] 
@@ -292,7 +290,7 @@ flats = Flat.create!([
         celling_height: 1.98, floor: 9, kitchen_area: 8.9, living_area: 10.1, rooms_count: 1, total_area: 24.8, year_of_construction: 1999, renovation: renovations[4], wall_material: wall_materials[6],
         lot_attributes: 
         {
-            title: '4-room apartment on the banks of the Svisloch!', description: 'Built-in wardrobes, metal door, double glazing, water meters, car parking, intercom, ready to move in, green area.', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: '4-room apartment on the banks of the Svisloch!', description: 'Built-in wardrobes, metal door, double glazing, water meters, car parking, intercom, ready to move in, green area.', price: 134.1, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 65, description: 'Developed infrastructure: within walking distance of various shops, pharmacies, adult and childrens clinics, kindergartens, schools, public transport stops. Near the house forest park Pyshki.', street: streets[3] 
@@ -303,7 +301,7 @@ flats = Flat.create!([
         celling_height: 2.5, floor: 5, kitchen_area: 19.6, living_area: 34.9, rooms_count: 4, total_area: 67.1, year_of_construction: 2020, renovation: renovations[3], wall_material: wall_materials[7],
         lot_attributes: 
         {
-            title: 'Renovated apartment in Levada! Hurry up to buy!', description: 'The apartment is neat: double-glazed windows are installed, a metal entrance door, a loggia is glazed with aluminum frames, bathroom and toilet are tiled.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Renovated apartment in Levada! Hurry up to buy!', description: 'The apartment is neat: double-glazed windows are installed, a metal entrance door, a loggia is glazed with aluminum frames, bathroom and toilet are tiled.', price: 16.9, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 140, description: 'The house has been overhauled.', street: streets[4]
@@ -314,7 +312,7 @@ flats = Flat.create!([
         celling_height: 2.1, floor: 1, kitchen_area: 11.4, living_area: 21.8, rooms_count: 3, total_area: 34.4, year_of_construction: 2016, renovation: renovations[5], wall_material: wall_materials[8],
         lot_attributes: 
         {
-            title: 'Cozy 2-room apartment with excellent repair', description: 'Furniture, built-in wardrobes, metal door, double-glazed windows, water meters, car parking, intercom, ready to move in, green area, free layout, VIP apartment, new building.', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
+            state: 'published', title: 'Cozy 2-room apartment with excellent repair', description: 'Furniture, built-in wardrobes, metal door, double-glazed windows, water meters, car parking, intercom, ready to move in, green area, free layout, VIP apartment, new building.', price: 25.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[3],
             address_attributes: 
             { 
                 building: 2, description: 'Landscaped yard, close to shops and public transport.', street: streets[5]
@@ -325,7 +323,7 @@ flats = Flat.create!([
         celling_height: 2.2, floor: 17, kitchen_area: 9.5, living_area: 15.6, rooms_count: 1, total_area: 31.5, year_of_construction: 2009, renovation: renovations[2], wall_material: wall_materials[3],
         lot_attributes: 
         {
-            title: 'Species 4-room apartment on the first coastline of Svisloch!', description: 'The house is a museum, an apartment surrounded by an eternal holiday, a profitable investment!', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
+            state: 'published', title: 'Species 4-room apartment on the first coastline of Svisloch!', description: 'The house is a museum, an apartment surrounded by an eternal holiday, a profitable investment!', price: 18.6, asigner: users[0], asignee: users.third,  client: users[2], deal_type: deal_types[2],
             address_attributes: 
             { 
                 building: 95, description: 'Double-glazed windows, water meters, intercom, video intercom, city center, green area, free planning, new building', street: streets[6] 
