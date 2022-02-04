@@ -1,5 +1,5 @@
 class FlatsCatalogController < ApplicationController
   def index
-    @flats = Flat.all
+    @flats = Flat.includes(:lot).where(lot: { state: 'published' })
   end
 end
