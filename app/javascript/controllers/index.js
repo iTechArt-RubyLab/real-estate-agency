@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import UsersCountController from "./users_count_controller"
 application.register("users-count", UsersCountController)
 
@@ -34,14 +31,8 @@ application.register("flats-count", FlatsCountController)
 import NotStartedLotsCountController from "./not_started_lots_count_controller"
 application.register("not-started-lots-count", NotStartedLotsCountController)
 
-import InProgressLotsCountController from "./in_progress_lots_count_controller"
-application.register("in-progress-lots-count", InProgressLotsCountController)
-
 import PublishedLotsCountController from "./published_lots_count_controller"
 application.register("published-lots-count", PublishedLotsCountController)
 
 import CompletedLotsCountController from "./completed_lots_count_controller"
 application.register("completed-lots-count", CompletedLotsCountController)
-
-import BlockedLotsCountController from "./blocked_lots_count_controller"
-application.register("blocked-lots-count", BlockedLotsCountController)
