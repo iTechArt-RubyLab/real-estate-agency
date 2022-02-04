@@ -1,12 +1,27 @@
 <% presenter = FlatPresenter.new %>
 <div class="container" style="width: 600px;">
-<%= form_for @flat do |f| %>
-  <% if flat.errors.any? %>
+  <% if current_user.role.can_edit_lot %>
+    <div class="field mb-3">
+      <h5>State: <%= @flat.lot.state %></h5>
+    </div>
+
+    <% if @flat.lot.state == 'published' %>
+      <%= button_to "Remove from work", remove_from_work_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-danger mb-3" %>
+      <%= button_to "Complete", complete_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-success mb-3" %>
+    <% elsif @flat.lot.state == 'not_started' %>
+      <%= button_to "Publish", publish_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-success mb-3" %>
+    <% else %>
+      <%= button_to "Return to publish", return_to_publish_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-danger mb-3" %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @flat do |f| %>
+  <% if @flat.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
+      <h2><%= pluralize(@flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
 
       <ul>
-        <% flat.errors.each do |error| %>
+        <% @flat.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

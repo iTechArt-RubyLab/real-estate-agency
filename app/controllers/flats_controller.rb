@@ -1,6 +1,6 @@
 class FlatsController < ApplicationController
   include Authenticated
-  before_action :set_flat, only: %i[show edit update destroy]
+  before_action :set_flat, only: %i[show edit update destroy remove_from_work publish complete return_to_publish]
 
   # GET /flats or /flats.json
   def index
@@ -67,6 +67,30 @@ class FlatsController < ApplicationController
       format.html { redirect_to flats_url, notice: 'Flat was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def remove_from_work
+    authorize @flat
+    @flat.lot.remove_from_work
+    @flat.save
+  end
+
+  def publish
+    authorize @flat
+    @flat.lot.publish
+    @flat.save
+  end
+
+  def complete
+    authorize @flat
+    @flat.lot.complete
+    @flat.save
+  end
+
+  def return_to_publish
+    authorize @flat
+    @flat.lot.return_to_publish
+    @flat.save
   end
 
   private

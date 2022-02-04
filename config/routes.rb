@@ -33,12 +33,33 @@ Rails.application.routes.draw do
   resources :changes_histories
   resources :property_types
   resources :realtor_profiles
-  resources :country_side_houses
+  resources :country_side_houses do
+    collection do
+      put 'remove_from_work', to: 'country_side_houses#remove_from_work'
+      put 'publish', to: 'country_side_houses#publish'
+      put 'complete', to: 'country_side_houses#complete'
+      put 'return_to_publish', to: 'country_side_houses#return_to_publish'
+    end
+  end
   resources :ready_states
   resources :country_side_house_kinds
-  resources :commercial_premises
+  resources :commercial_premises do
+    collection do
+      put 'remove_from_work', to: 'commercial_premises#remove_from_work'
+      put 'publish', to: 'commercial_premises#publish'
+      put 'complete', to: 'commercial_premises#complete'
+      put 'return_to_publish', to: 'commercial_premises#return_to_publish'
+    end
+  end
   resources :commercial_premises_kinds
-  resources :flats
+  resources :flats do
+    collection do
+      put 'remove_from_work', to: 'flats#remove_from_work'
+      put 'publish', to: 'flats#publish'
+      put 'complete', to: 'flats#complete'
+      put 'return_to_publish', to: 'flats#return_to_publish'
+    end
+  end
   resources :renovations
   resources :wall_materials
   resources :cities do
