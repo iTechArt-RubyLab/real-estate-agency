@@ -45,7 +45,7 @@ class Lot < ApplicationRecord
   belongs_to :asignee, class_name: 'User', optional: true
   belongs_to :client, class_name: 'User', optional: true
   accepts_nested_attributes_for :address
-  enum state: %i[not_started in_progress published completed blocked]
+  enum state: %i[not_started published completed]
 
   validates_with AsigneeValidator
 
@@ -55,33 +55,23 @@ class Lot < ApplicationRecord
 
   aasm column: :state, enum: true do
     state :not_started, initial: true
-    state :in_progress
     state :published
     state :completed
-    state :blocked
-
-    event :take_to_work do
-      transitions from: :not_started, to: :in_progress
-    end
 
     event :remove_from_work do
-      transitions from: %i[in_progress published], to: :not_started
+      transitions from: :published, to: :not_started
     end
 
     event :publish do
-      transitions from: :in_progress, to: :published
+      transitions from: :not_started, to: :published
     end
 
     event :complete do
       transitions from: :published, to: :completed
     end
 
-    event :block do
-      transitions from: %i[not_started in_progress published], to: :blocked
-    end
-
-    event :unblock do
-      transitions from: :blocked, to: :not_started
+    event :return_to_publish do
+      transitions from: :completed, to: :published
     end
   end
 

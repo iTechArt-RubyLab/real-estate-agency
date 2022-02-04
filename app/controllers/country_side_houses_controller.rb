@@ -1,6 +1,6 @@
 class CountrySideHousesController < ApplicationController
   include Authenticated
-  before_action :set_country_side_house, only: %i[show edit update destroy]
+  before_action :set_country_side_house, only: %i[show edit update destroy remove_from_work publish complete return_to_publish]
 
   # GET /country_side_houses or /country_side_houses.json
   def index
@@ -73,6 +73,30 @@ class CountrySideHousesController < ApplicationController
       format.html { redirect_to country_side_houses_url, notice: 'Country side house was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def remove_from_work
+    authorize @country_side_house
+    @country_side_house.lot.remove_from_work
+    @country_side_house.save
+  end
+
+  def publish
+    authorize @country_side_house
+    @country_side_house.lot.publish
+    @country_side_house.save
+  end
+
+  def complete
+    authorize @country_side_house
+    @country_side_house.lot.complete
+    @country_side_house.save
+  end
+
+  def return_to_publish
+    authorize @country_side_house
+    @country_side_house.lot.return_to_publish
+    @country_side_house.save
   end
 
   private
