@@ -1,1 +1,0 @@
-json.in_progress_lots_count @in_progress_lots_count

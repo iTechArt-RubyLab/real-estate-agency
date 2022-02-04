@@ -35,19 +35,11 @@ class ReportsController < ApplicationController
     @not_started_lots_count = Reports::NotStartedLotsCountInteractor.new.call
   end
 
-  def in_progress_lots_count
-    @in_progress_lots_count = Reports::InProgressLotsCountInteractor.new.call
-  end
-
   def published_lots_count
     @published_lots_count = Reports::PublishedLotsCountInteractor.new.call
   end
 
   def completed_lots_count
     @completed_lots_count = Reports::CompletedLotsCountInteractor.new.call
-  end
-
-  def blocked_lots_count
-    @blocked_lots_count = Reports::BlockedLotsCountInteractor.new.call
   end
 end
