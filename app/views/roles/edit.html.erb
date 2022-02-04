@@ -1,6 +1,8 @@
-<h1>Editing Role</h1>
+<div class="mx-auto" style="width: 250px;">
+  <h1>Editing Role</h1>
+</div>
 
 <%= render 'form', role: @role %>
 
-<%= link_to 'Show', @role %> |
-<%= link_to 'Back', roles_path %>
+<%= link_to 'Show', @role, class: "btn btn-warning" %>
+<%= link_to 'Back', roles_path, class: "btn btn-danger" %>
