@@ -16,6 +16,6 @@ class CommercialPremisePresenter
   end
 
   def ordered_asignee
-    User.joins(:role).where(role: {name: 'Realtor'})
+    User.joins(:role).where(role: { name: 'Realtor' })
   end
 end
