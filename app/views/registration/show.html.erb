@@ -1,0 +1,34 @@
+<div class="modal modal-tour position-static d-block bg-light py-5" tabindex="-1" role="dialog" id="modalTour">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-6 shadow">
+      <div class="modal-body p-5">
+        <h2 class="fw-bold mb-0">Registrate your choice</h2>
+        <ul class="d-grid gap-4 my-5 list-unstyled">
+          <li class="d-flex gap-4">
+            <%= image_tag('contact.png', height: "48", width: "48", class: "bi text-muted flex-shrink-0") %>
+            <div>
+              <h5 class="mb-0">Contact a realtor</h5>
+              <%= @lot.asigner.full_name %><br>
+              <%= @lot.asigner.email %>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <%= image_tag('discuss.png', height: "48", width: "48", class: "bi text-muted flex-shrink-0") %>
+            <div>
+              <h5 class="mb-0">Discuss all questions</h5>
+              Agree on the price, contact the intermediary, view the property.
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <%= image_tag('purchase.png', height: "48", width: "48", class: "bi text-muted flex-shrink-0") %>
+            <div>
+              <h5 class="mb-0">Make a purchase</h5>
+              And come back to us for new purchases.
+            </div>
+          </li>
+        </ul>
+        <%= link_to "Great, thanks!", root_path, class: "btn btn-lg btn-primary mt-5 w-100" %>
+      </div>
+    </div>
+  </div>
+</div>
