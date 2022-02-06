@@ -43,9 +43,9 @@ class LotDatatable < AjaxDatatablesRails::ActiveRecord
         building: record.address.building,
         address_description: record.address.description,
         lotable_type: record.lotable_type,
-        asigner: record.asigner.first_name,
-        asignee: record.asignee.first_name,
-        client: record.client.first_name,
+        asigner: record&.asigner&.first_name,
+        asignee: record&.asignee&.first_name,
+        client: record&.client&.first_name,
         actions: link_to('Show', record.lotable_type.split(/(?=[A-Z])/).join('_').downcase + "s/#{record.lotable.id}")
           .concat(' | ')
           .concat(link_to('Edit', record.lotable_type.split(/(?=[A-Z])/).join('_').downcase + "s/#{record.lotable.id}/edit"))
