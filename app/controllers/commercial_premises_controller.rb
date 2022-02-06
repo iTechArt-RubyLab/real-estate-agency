@@ -53,6 +53,8 @@ class CommercialPremisesController < ApplicationController
     authorize @commercial_premise
     respond_to do |format|
       if @commercial_premise.update(commercial_premise_params)
+        @commercial_premise.lot.asigner = current_user
+        @commercial_premise.save
         format.html do
           redirect_to commercial_premise_url(@commercial_premise),
                       notice: 'Commercial premise was successfully updated.'
@@ -109,6 +111,6 @@ class CommercialPremisesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def commercial_premise_params
     params.require(:commercial_premise).permit(:area, :floor, :number_of_premises, :plot_of_land, :commercial_premises_kind_id,
-                                               lot_attributes: [:id, :title, :description, :price, :client_id, :deal_type_id, { address_attributes: %i[id building description street_id] }, { images: [] }])
+                                               lot_attributes: [:id, :title, :description, :price, :asignee_id, :client_id, :deal_type_id, { address_attributes: %i[id building description street_id] }, { images: [] }])
   end
 end

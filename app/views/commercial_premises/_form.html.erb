@@ -54,6 +54,13 @@
   </div>
 
   <%= f.fields_for :lot do |lot| %>
+    <% if current_user.role.can_edit_lot %>
+      <div class="field mb-3">
+        <%= lot.label :asignee_id %>
+        <%= lot.collection_select :asignee_id, presenter.ordered_asignee, :id, :full_name %>
+      </div>
+    <% end %>
+
     <div class="field mb-3">
       <%= lot.label :images %></br>
       <% if !@commercial_premise.lot.nil? %>
@@ -81,9 +88,11 @@
       <%= lot.number_field :price, class: "form-control" %>
     </div>
 
-    <div class="field">
-      <%= lot.hidden_field :client_id, value: current_user.id %>
-    </div>
+    <% if current_user.role.name = 'Client' %>
+      <div class="field">
+        <%= lot.hidden_field :client_id, value: current_user.id %>
+      </div>
+    <% end %>
 
     <div class="field mb-3">
       <%= lot.label :deal_type_id %>
