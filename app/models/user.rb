@@ -47,7 +47,6 @@
 #
 class User < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
-  has_many :changes_histories, dependent: :delete_all
   has_many :asigner_lot, foreign_key: :asigner_id, class_name: 'Lot', dependent: :nullify
   has_many :asignee_lot, foreign_key: :asignee_id, class_name: 'Lot', dependent: :nullify
   has_many :client_lot, foreign_key: :client_id, class_name: 'Lot', dependent: :nullify
