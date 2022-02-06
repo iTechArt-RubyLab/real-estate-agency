@@ -37,7 +37,7 @@
 class Lot < ApplicationRecord
   include AASM
 
-  has_many_attached :images
+  has_many_attached :images, dependent: :delete_all
   belongs_to :deal_type
   belongs_to :address
   belongs_to :lotable, polymorphic: true, optional: true
