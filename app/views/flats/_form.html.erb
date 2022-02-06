@@ -2,13 +2,13 @@
 <div class="container" style="width: 600px;">
   <% if current_user.role.can_edit_lot %>
     <div class="field mb-3">
-      <h5>State: <%= @flat.lot.state %></h5>
+      <h5>State: <%= @flat&.lot&.state %></h5>
     </div>
 
-    <% if @flat.lot.state == 'published' %>
+    <% if @flat&.lot&.state == 'published' %>
       <%= button_to "Remove from work", remove_from_work_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-danger mb-3" %>
       <%= button_to "Complete", complete_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-success mb-3" %>
-    <% elsif @flat.lot.state == 'not_started' %>
+    <% elsif @flat&.lot&.state == 'not_started' %>
       <%= button_to "Publish", publish_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-success mb-3" %>
     <% else %>
       <%= button_to "Return to publish", return_to_publish_flats_path(id: @flat.id), method: :put, class: "btn btn-outline-danger mb-3" %>

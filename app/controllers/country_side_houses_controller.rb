@@ -52,7 +52,7 @@ class CountrySideHousesController < ApplicationController
   def update
     authorize @country_side_house
     respond_to do |format|
-      if @country_side_house.update!(country_side_house_params)
+      if @country_side_house.update(country_side_house_params)
         format.html do
           redirect_to country_side_house_url(@country_side_house),
                       notice: 'Country side house was successfully updated.'

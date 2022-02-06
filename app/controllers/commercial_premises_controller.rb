@@ -52,7 +52,7 @@ class CommercialPremisesController < ApplicationController
   def update
     authorize @commercial_premise
     respond_to do |format|
-      if @commercial_premise.update!(commercial_premise_params)
+      if @commercial_premise.update(commercial_premise_params)
         format.html do
           redirect_to commercial_premise_url(@commercial_premise),
                       notice: 'Commercial premise was successfully updated.'
