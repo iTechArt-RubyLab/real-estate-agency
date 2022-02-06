@@ -31,6 +31,7 @@
                   <% if user_signed_in? && current_user.role.can_edit_lot %>
                     <%= link_to "Edit", edit_country_side_house_path(item.id), class: "btn btn-sm btn-outline-secondary" %>
                     <%= link_to "Delete", country_side_house_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-secondary" %>
+                    <%= link_to "Registrate", registration_path(item.id), class: "btn btn-sm btn-outline-secondary" %>
                   <% end %>
                 </div>
                 <small class="text-muted"><%= "#{item.lot.price}$" %></small>
