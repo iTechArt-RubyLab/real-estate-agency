@@ -14,4 +14,8 @@ class CommercialPremisePresenter
   def states_with_names
     Lot.states.sort.map(&:first)
   end
+
+  def ordered_asignee
+    User.joins(:role).where(role: {name: 'Realtor'})
+  end
 end
