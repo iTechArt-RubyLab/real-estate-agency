@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :client_profiles
   resources :countries
   resources :client_profiles
-  resources :tags
+  resources :changes_histories
   resources :property_types
   resources :realtor_profiles
   resources :country_side_houses do

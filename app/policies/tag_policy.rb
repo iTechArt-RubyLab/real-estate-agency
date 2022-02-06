@@ -1,2 +1,0 @@
-class TagPolicy < DictionaryBasePolicy
-end

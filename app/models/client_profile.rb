@@ -19,7 +19,6 @@
 #
 class ClientProfile < ApplicationRecord
   belongs_to :country, optional: true
-  has_and_belongs_to_many :tags
   has_one :user, as: :profilable, dependent: :destroy
   accepts_nested_attributes_for :user
 
