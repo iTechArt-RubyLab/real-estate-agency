@@ -52,14 +52,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.index ["street_id"], name: "index_addresses_on_street_id"
   end
 
-  create_table "changes_histories", force: :cascade do |t|
-    t.string "changes"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_changes_histories_on_user_id"
-  end
-
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.integer "locality_size"
@@ -288,7 +280,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "streets"
-  add_foreign_key "changes_histories", "users"
   add_foreign_key "client_profiles", "countries"
   add_foreign_key "commercial_premises", "commercial_premises_kinds"
   add_foreign_key "country_side_houses", "country_side_house_kinds"
