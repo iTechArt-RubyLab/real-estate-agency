@@ -49,7 +49,7 @@ class FlatsController < ApplicationController
   def update
     authorize @flat
     respond_to do |format|
-      if @flat.update!(flat_params)
+      if @flat.update(flat_params)
         format.html { redirect_to flat_url(@flat), notice: 'Flat was successfully updated.' }
         format.json { render :show, status: :ok, location: @flat }
       else

@@ -13,7 +13,7 @@ class UserController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update!(flat_params)
+      if @user.update(flat_params)
         format.html { redirect_to user_index_url, notice: 'User was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
