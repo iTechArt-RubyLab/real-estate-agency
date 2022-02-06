@@ -2,13 +2,13 @@
 <div class="container" style="width: 600px;">
   <% if current_user.role.can_edit_lot %>
     <div class="field mb-3">
-      <h5>State: <%= @country_side_house.lot.state %></h5>
+      <h5>State: <%= @country_side_house&.lot&.state %></h5>
     </div>
 
-    <% if @country_side_house.lot.state == 'published' %>
+    <% if @country_side_house&.lot&.state == 'published' %>
       <%= button_to "Remove from work", remove_from_work_country_side_houses_path(id: @country_side_house.id), method: :put, class: "btn btn-outline-danger mb-3" %>
       <%= button_to "Complete", complete_country_side_houses_path(id: @country_side_house.id), method: :put, class: "btn btn-outline-success mb-3" %>
-    <% elsif @country_side_house.lot.state == 'not_started' %>
+    <% elsif @country_side_house&.lot&.state == 'not_started' %>
       <%= button_to "Publish", publish_country_side_houses_path(id: @country_side_house.id), method: :put, class: "btn btn-outline-success mb-3" %>
     <% else %>
       <%= button_to "Return to publish", return_to_publish_country_side_houses_path(id: @country_side_house.id), method: :put, class: "btn btn-outline-danger mb-3" %>
