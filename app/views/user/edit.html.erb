@@ -22,15 +22,17 @@
     <%= form.collection_select :role_id, presenter.ordered_roles, :id, :name %>
   </div>
 
-  <% if !@user.role.can_freeze_user %>
-    <% if @user.access_locked? %>
-        <div class="field mb-3">
-        <h5><%= link_to 'Unlock user', unlock_user_path(id: @user.id), method: :put %></h5>
-        </div>
-    <% else %>
-        <div class="field mb-3">
-        <h5><%= link_to 'Lock user', lock_user_path(id: @user.id), method: :put %></h5>
-        </div>
+  <% if current_user.role.can_freeze_user %>
+    <% if @user.role.can_freeze_user %>
+      <% if @user.access_locked? %>
+          <div class="field mb-3">
+            <h5><%= link_to 'Unlock user', unlock_user_path(id: @user.id), method: :put %></h5>
+          </div>
+      <% else %>
+          <div class="field mb-3">
+            <h5><%= link_to 'Lock user', lock_user_path(id: @user.id), method: :put %></h5>
+          </div>
+      <% end %>
     <% end %>
   <% end %>
 
