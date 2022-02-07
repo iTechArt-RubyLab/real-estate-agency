@@ -4,13 +4,11 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
-  resources :ordering
   mount Sidekiq::Web => '/sidekiq'
+  root to: 'home#index'
   get 'flats_catalog', to: 'flats_catalog#index'
   get 'country_side_houses_catalog', to: 'country_side_houses_catalog#index'
   get 'commercial_premises_catalog', to: 'commercial_premises_catalog#index'
-  resources :lots
-  resources :deal_types
   get 'admin_panel', to: 'admin_panel#index'
   scope '/reports' do
     get 'users-count', to: 'reports#users_count'
@@ -36,12 +34,16 @@ Rails.application.routes.draw do
     get 'completed-lots-count', to: 'reports#completed_lots_count'
     post 'completed_lots_count_report', to: 'reports#completed_lots_count_report'
   end
-  resources :client_profiles
+  resources :ordering
+  resources :deal_types
   resources :countries
-  resources :client_profiles
-  resources :changes_histories
   resources :property_types
-  resources :realtor_profiles
+  resources :ready_states
+  resources :country_side_house_kinds
+  resources :commercial_premises_kinds
+  resources :renovations
+  resources :wall_materials
+  resources :lots
   resources :country_side_houses do
     collection do
       put 'remove_from_work', to: 'country_side_houses#remove_from_work'
@@ -50,8 +52,6 @@ Rails.application.routes.draw do
       put 'return_to_publish', to: 'country_side_houses#return_to_publish'
     end
   end
-  resources :ready_states
-  resources :country_side_house_kinds
   resources :commercial_premises do
     collection do
       put 'remove_from_work', to: 'commercial_premises#remove_from_work'
@@ -60,7 +60,6 @@ Rails.application.routes.draw do
       put 'return_to_publish', to: 'commercial_premises#return_to_publish'
     end
   end
-  resources :commercial_premises_kinds
   resources :flats do
     collection do
       put 'remove_from_work', to: 'flats#remove_from_work'
@@ -69,8 +68,6 @@ Rails.application.routes.draw do
       put 'return_to_publish', to: 'flats#return_to_publish'
     end
   end
-  resources :renovations
-  resources :wall_materials
   resources :cities do
     resources :streets
     resources :districts do
@@ -87,5 +84,4 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'omniauth',
     sessions: 'users/sessions',
     registrations: 'users/registrations' }
-  root to: 'home#index'
 end
