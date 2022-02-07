@@ -11,17 +11,17 @@ cities = City.create!([{name: I18n.t('city.name_1'), locality_size: I18n.t('city
                       {name: I18n.t('city.name_11'), locality_size: I18n.t('city.locality_size.ls_3'), region: I18n.t('city.region.region_5'), description: I18n.t('city.description.d_11')}, 
                       {name: I18n.t('city.name_12'), locality_size: I18n.t('city.locality_size.ls_3'), region: I18n.t('city.region.region_2'), description: I18n.t('city.description.d_12')}])
 
-districts = District.create!([{name: I18n.t('district.name_1'), city: cities[5]}, 
-                             {name: I18n.t('district.name_2'), city: cities[5]}, 
-                             {name: I18n.t('district.name_3'), city: cities[5]}, 
-                             {name: I18n.t('district.name_4'), city: cities[5]}, 
-                             {name: I18n.t('district.name_5'), city: cities[5]}, 
-                             {name: I18n.t('district.name_6'), city: cities[5]},
-                             {name: I18n.t('district.name_7'), city: cities[5]}, 
-                             {name: I18n.t('district.name_8'), city: cities[5]}, 
-                             {name: I18n.t('district.name_9'), city: cities[5]}, 
+districts = District.create!([{name: I18n.t('district.name_1'), city: cities[4]}, 
+                             {name: I18n.t('district.name_2'), city: cities[4]}, 
+                             {name: I18n.t('district.name_3'), city: cities[4]}, 
+                             {name: I18n.t('district.name_4'), city: cities[4]}, 
+                             {name: I18n.t('district.name_5'), city: cities[4]}, 
+                             {name: I18n.t('district.name_6'), city: cities[4]},
+                             {name: I18n.t('district.name_7'), city: cities[4]}, 
+                             {name: I18n.t('district.name_8'), city: cities[4]}, 
+                             {name: I18n.t('district.name_9'), city: cities[4]}, 
                              {name: I18n.t('district.name_10'), city: cities.second},
-                             {name: I18n.t('district.name_11'), city: cities[4]}, 
+                             {name: I18n.t('district.name_11'), city: cities[5]}, 
                              {name: I18n.t('district.name_12'), city: cities[3]}, 
                              {name: I18n.t('district.name_13'), city: cities[3]}, 
                              {name: I18n.t('district.name_14'), city: cities[7]}])
@@ -104,9 +104,9 @@ def seed_image(item, file_name)
   item.lot.images.attach(io: File.open(File.join(Rails.root, "/app/assets/images/#{file_name}.jpg")), filename: "#{file_name}.jpg")
 end
 
-users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, gender: 'male', date_of_birth: '1990-01-28', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
+users = User.create!([{email: "adminadmin@gmail.com", password: "testadmin", password_confirmation: "testadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.admin, gender: 'male', date_of_birth: '1990-01-28', first_name: "Grisha", last_name: "Marmeladov", second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testclient", password_confirmation: "testclient", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:01", last_sign_in_at: "2015-02-06 14:03:01", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.client, gender: 'male', date_of_birth: '2002-11-14', profilable: client_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
-                      {email: Faker::Internet.email, password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.realtor, gender: 'female', date_of_birth: '1984-03-12', profilable: realtor_profiles.first, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
+                      {email: "realtor@gmail.com", password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.realtor, gender: 'female', date_of_birth: '1984-03-12', profilable: realtor_profiles.first, first_name: "Nikolai", last_name: "Tsvetkov", second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testrealtor", password_confirmation: "testrealtor", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: Role.realtor, gender: 'male', date_of_birth: '1993-05-02', profilable: realtor_profiles.second, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name},
                       {email: Faker::Internet.email, password: "testmanager", password_confirmation: "testmanager", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:03:44", last_sign_in_at: "2015-02-06 14:03:44", current_sign_in_ip: Faker::Internet.ip_v4_address, last_sign_in_ip: Faker::Internet.ip_v4_address, confirmed_at: Time.now.utc, role: roles.first, gender: 'female', date_of_birth: '1979-12-10', profilable: realtor_profiles.third, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, second_name: Faker::Name.middle_name}])
 
