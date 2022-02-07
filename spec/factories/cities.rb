@@ -15,15 +15,11 @@ FactoryBot.define do
     name { Faker::Address.city }
 
     trait :invalid_long do
-      name { Faker::Lorem.characters(number: 41, min_alpha: 41) }
+      name { Faker::Lorem.characters(number: 61, min_alpha: 61) }
     end
 
     trait :invalid_short do
       name { Faker::Lorem.characters(number: 1, min_alpha: 1) }
-    end
-
-    trait :invalid_with_numbers do
-      name { Faker::Lorem.characters(number: 10, min_alpha: 4, min_numeric: 1) }
     end
   end
 end
