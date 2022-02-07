@@ -28,10 +28,5 @@ RSpec.describe City, type: :model do
       subject(:invalid_short) { build :city, :invalid_short }
       include_examples 'invalid model'
     end
-
-    context 'when with numbers' do
-      subject(:invalid_with_numbers) { build :city, :invalid_with_numbers }
-      include_examples 'invalid model'
-    end
   end
 end
