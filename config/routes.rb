@@ -4,7 +4,7 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
-  resources :registration
+  resources :ordering
   mount Sidekiq::Web => '/sidekiq'
   get 'flats_catalog', to: 'flats_catalog#index'
   get 'country_side_houses_catalog', to: 'country_side_houses_catalog#index'

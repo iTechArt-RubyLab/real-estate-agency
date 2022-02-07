@@ -70,11 +70,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.index ["country_id"], name: "index_client_profiles_on_country_id"
   end
 
-  create_table "client_profiles_tags", id: false, force: :cascade do |t|
-    t.bigint "client_profile_id", null: false
-    t.bigint "tag_id", null: false
-  end
-
   create_table "commercial_premises", force: :cascade do |t|
     t.decimal "area"
     t.integer "floor"
@@ -226,12 +221,6 @@ ActiveRecord::Schema.define(version: 2022_01_15_120428) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["district_id"], name: "index_streets_on_district_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

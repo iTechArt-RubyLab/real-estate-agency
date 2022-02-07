@@ -1,4 +1,4 @@
-class RegistrationController < ApplicationController
+class OrderingController < ApplicationController
   before_action :set_lot, only: %i[show]
 
   def show; end
