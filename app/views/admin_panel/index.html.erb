@@ -41,50 +41,61 @@
       <div class="col m-2 p-4 border report_item">
         <h3>Number of users</h3>
         <h2 data-controller="users-count"></h2>
+        <%= button_to 'Send report', action: 'users_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of clients</h3>
         <h2 data-controller="clients-count"></h2>
+        <%= button_to 'Send report', action: 'clients_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of realtors</h3>
         <h2 data-controller="realtors-count"></h2>
+        <%= button_to 'Send report', action: 'realtors_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of locked users</h3>
         <h2 data-controller="locked-users-count"></h2>
+        <%= button_to 'Send report', action: 'locked_users_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
     </div>
     <div class="col-3">
       <div class="col m-2 p-4 border report_item">
         <h3>Number of lots</h3>
         <h2 data-controller="lots-count"></h2>
+        <%= button_to 'Send report', action: 'lots_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of commercial premises</h3>
         <h2 data-controller="commercial-premises-count"></h2>
+        <%= button_to 'Send report', action: 'commercial_premises_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of country side houses</h3>
         <h2 data-controller="country-side-houses-count"></h2>
+        <%= button_to 'Send report', action: 'country_side_houses_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of flats</h3>
         <h2 data-controller="flats-count"></h2>
+        <%= button_to 'Send report', action: 'flats_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
     </div>
     <div class="col-3">
       <div class="col m-2 p-4 border report_item">
         <h3>Number of not started lots</h3>
         <h2 data-controller="not-started-lots-count"></h2>
+        <%= button_to 'Send report', action: 'not_started_lots_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of published lots</h3>
         <h2 data-controller="published-lots-count"></h2>
+        <%= button_to 'Send report', action: 'published_lots_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
       <div class="col m-2 p-4 border report_item">
         <h3>Number of completed lots</h3>
         <h2 data-controller="completed-lots-count"></h2>
+        <%= button_to 'Send report', action: 'completed_lots_count_report', controller: 'reports', class: "btn btn-outline-info" %>
       </div>
     </div>
   </div>

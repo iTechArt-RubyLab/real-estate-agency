@@ -14,16 +14,27 @@ Rails.application.routes.draw do
   get 'admin_panel', to: 'admin_panel#index'
   scope '/reports' do
     get 'users-count', to: 'reports#users_count'
+    post 'users_count_report', to: 'reports#users_count_report'
     get 'clients-count', to: 'reports#clients_count'
+    post 'clients_count_report', to: 'reports#clients_count_report'
     get 'realtors-count', to: 'reports#realtors_count'
+    post 'realtors_count_report', to: 'reports#realtors_count_report'
     get 'locked-users-count', to: 'reports#locked_users_count'
+    post 'locked_users_count_report', to: 'reports#locked_users_count_report'
     get 'lots-count', to: 'reports#lots_count'
+    post 'lots_count_report', to: 'reports#lots_count_report'
     get 'commercial-premises-count', to: 'reports#commercial_premises_count'
+    post 'commercial_premises_count_report', to: 'reports#commercial_premises_count_report'
     get 'country-side-houses-count', to: 'reports#country_side_houses_count'
+    post 'country_side_houses_count_report', to: 'reports#country_side_houses_count_report'
     get 'flats-count', to: 'reports#flats_count'
+    post 'flats_count_report', to: 'reports#flats_count_report'
     get 'not-started-lots-count', to: 'reports#not_started_lots_count'
+    post 'not_started_lots_count_report', to: 'reports#not_started_lots_count_report'
     get 'published-lots-count', to: 'reports#published_lots_count'
+    post 'published_lots_count_report', to: 'reports#published_lots_count_report'
     get 'completed-lots-count', to: 'reports#completed_lots_count'
+    post 'completed_lots_count_report', to: 'reports#completed_lots_count_report'
   end
   resources :client_profiles
   resources :countries
