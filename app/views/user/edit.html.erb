@@ -23,7 +23,7 @@
   </div>
 
   <% if current_user.role.can_freeze_user %>
-    <% if @user.role.can_freeze_user %>
+    <% if !@user.role.can_freeze_user %>
       <% if @user.access_locked? %>
           <div class="field mb-3">
             <h5><%= link_to 'Unlock user', unlock_user_path(id: @user.id), method: :put %></h5>
